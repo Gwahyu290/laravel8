@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Facebook;
 use App\Cabang;
 use Illuminate\Http\Request;
@@ -109,7 +109,26 @@ class FacebookController extends Controller
         ]);
         // return $request;
         // cara1
+        $cek = DB::select("select * from rekap where tgl='$facebook->tgl' AND nama_id='$facebook->nama_id'");
+        $nilai = $request->nilaifb;
+       
+
+        if($cek == null || $cek == ""){
+            $save = DB::table('rekap')->insert([
+                'nama_id' => $facebook->nama_id, 
+                'tgl' => $facebook->tgl,
+                'fb' => $nilai
+                ]);
+        }else{
+            foreach($cek as $c){
+                DB::table('rekap')->where('id_rekap', $c->id_rekap)->update([
+                    'fb' => ($c->fb - $facebook->nilaifb)+$nilai
+                    ]);
+            }        
+        }
+        
         $facebook->nilaifb = $request->nilaifb;
+        
         $facebook->save();
 
         return redirect('facebook')->with('status', 'Tugas Karyawan Berhasil di Nilai!!!');
