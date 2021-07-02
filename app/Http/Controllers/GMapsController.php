@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Googlemap;
 use App\Cabang;
 use Illuminate\Http\Request;
@@ -108,6 +108,24 @@ class GMapsController extends Controller
         ]);
         // return $request;
         // cara1
+        $cek = DB::select("select * from rekap where tgl='$googlemap->tgl' AND nama_id='$googlemap->nama_id'");
+        $nilai = $request->nilaigm;
+       
+
+        if($cek == null || $cek == ""){
+            $save = DB::table('rekap')->insert([
+                'nama_id' => $googlemap->nama_id, 
+                'tgl' => $googlemap->tgl,
+                'gm' => $nilai
+                ]);
+        }else{
+            foreach($cek as $c){
+                DB::table('rekap')->where('id_rekap', $c->id_rekap)->update([
+                    'gm' => ($c->gm - $googlemap->nilaigm)+$nilai
+                    ]);
+            }        
+        }
+
         $googlemap->nilaigm = $request->nilaigm;
         $googlemap->save();
 

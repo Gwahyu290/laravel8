@@ -118,6 +118,23 @@ class InstagramController extends Controller
         ]);
         // return $request;
         // cara1
+        $cek = DB::select("select * from rekap where tgl='$instagram->tgl' AND nama_id='$instagram->nama_id'");
+        $nilai = $request->nilaiins;
+       
+
+        if($cek == null || $cek == ""){
+            $save = DB::table('rekap')->insert([
+                'nama_id' => $instagram->nama_id, 
+                'tgl' => $instagram->tgl,
+                'ig' => $nilai
+                ]);
+        }else{
+            foreach($cek as $c){
+                DB::table('rekap')->where('id_rekap', $c->id_rekap)->update([
+                    'ig' => ($c->ig - $instagram->nilaiig)+$nilai
+                    ]);
+            }        
+        }
         $instagram->nilaiins = $request->nilaiins;
         $instagram->save();
 
