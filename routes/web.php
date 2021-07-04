@@ -57,5 +57,9 @@ route::resource('nilaiharian', 'NilaiHarianController');
 route::resource('nilaimingguan', 'NilaiMingguanController');
 route::resource('user','UserController');
 
+//search
+route::post('instagram','InstagramController@index');
+
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
