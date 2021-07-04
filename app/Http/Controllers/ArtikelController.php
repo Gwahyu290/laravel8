@@ -5,6 +5,7 @@ use App\Artikel;
 use App\Cabang;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent as Agent;
+use DB;
 
 class ArtikelController extends Controller
 {
@@ -105,13 +106,31 @@ class ArtikelController extends Controller
     {
         
         $request->validate([
-            'nilai' => 'required',
+            'nilaiar' => 'required',
         ],[
-            'nilai.required' => 'Status Karyawan tidak boleh kosong!!!'
+            'nilaiar.required' => 'Status Karyawan tidak boleh kosong!!!'
         ]);
         // return $request;
         // cara1
-        $artikel->nilai = $request->nilai;
+        $cek = DB::select("select * from rekapmingguan where tgl='$artikel->tgl' AND nama_id='$artikel->nama_id'");
+        $nilai = $request->nilaiar;
+       
+
+        if($cek == null || $cek == ""){
+            $save = DB::table('rekapmingguan')->insert([
+                'nama_id' => $artikel->nama_id, 
+                'tgl' => $artikel->tgl,
+                'ar' => $nilai
+                ]);
+        }else{
+            foreach($cek as $c){
+                DB::table('rekapmingguan')->where('id_mingguan', $c->id_mingguan)->update([
+                    'ar' => ($c->ar - $artikel->nilaiar)+$nilai
+                    ]);
+            }        
+        }
+
+        $artikel->nilaiar = $request->nilaiar;
         $artikel->save();
 
         return redirect('artikel')->with('status', 'Tugas Karyawan Berhasil di Nilai!!!');

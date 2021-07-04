@@ -5,6 +5,7 @@ use App\Whatsapp;
 use App\Cabang;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent as Agent;
+use DB;
 
 class WhatsappController extends Controller
 {
@@ -110,6 +111,24 @@ class WhatsappController extends Controller
         ]);
         // return $request;
         // cara1
+
+        $cek = DB::select("select * from rekapmingguan where tgl='$whatsapp->tgl' AND nama_id='$whatsapp->nama_id'");
+        $nilai = $request->nilaiwa;
+       
+
+        if($cek == null || $cek == ""){
+            $save = DB::table('rekapmingguan')->insert([
+                'nama_id' => $whatsapp->nama_id, 
+                'tgl' => $whatsapp->tgl,
+                'wa' => $nilai
+                ]);
+        }else{
+            foreach($cek as $c){
+                DB::table('rekapmingguan')->where('id_mingguan', $c->id_mingguan)->update([
+                    'wa' => ($c->wa - $whatsapp->nilaiwa)+$nilai
+                    ]);
+            }        
+        }
         $whatsapp->nilaiwa = $request->nilaiwa;
         $whatsapp->save();
 
