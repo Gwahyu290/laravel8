@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\User;
 use App\Instagram;
 use App\Cabang;
@@ -47,7 +47,6 @@ class InstagramController extends Controller
                 ->whereBetween('tgl',[$tgl1,$tgl2])->paginate(5);
         }
     $Agent = new Agent();
-
         
     if ($Agent->isMobile()) {
         return view('mobile.instagram.index', compact('instagrams'));
