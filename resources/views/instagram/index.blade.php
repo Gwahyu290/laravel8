@@ -35,21 +35,7 @@
               <div class="col-md-2 pr-1">
                       <div class="form-group">
                         <label>Nama Karyawan</label>
-                        <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Suwanto" name="q" >
-                      </div>
-              </div>
-              <div class="col-md-2 pr-1">
-                      <div class="form-group">
-                      @php
-                      $cabang = DB::select("select * from cabangs");
-                      @endphp
-                        <label>Cabang</label>
-                        <select class="form-control" name="cabang_id"   style="height:35px;">
-                        <option value="">Semua</option>
-                        @foreach ($cabang as $c)
-                        <option value="{{$c->id}}">{{$c->namacbg}}</option>
-                        @endforeach
-                        </select>
+                        <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Nama Karayawan" name="q" >
                       </div>
               </div>
               <div class="col-md-2 pr-1">
@@ -113,13 +99,6 @@
                         <a href="{{url('instagram/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">
                           <i class="fa fa-pencil"> Nilai Tugas</i>
                         </a>
-                        <form action="{{url('instagram/'.$item->id)}}" method="post" class="d-inline" onsubmit="return confirm('Yakin Ingin Hapus Data?')">
-                          @method('delete')
-                          @csrf
-                          <button class="btn btn-danger btn-sm">
-                              <i class="fa fa-trash"> Delete Data</i>
-                          </button>
-                        </form>
                       </td>
                     </tr>
                     @endforeach 
@@ -134,9 +113,6 @@
                  {{$instagrams->total()}}
                  Data
                </div>
-               <div class="pull-right">
-               {{ $instagrams->links()}}
-                </div>
                	</div>
                </div>
 
