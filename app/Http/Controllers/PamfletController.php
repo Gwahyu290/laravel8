@@ -5,6 +5,7 @@ use App\Pamflet;
 use App\Cabang;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent as Agent;
+use DB;
 
 class PamfletController extends Controller
 {
@@ -110,6 +111,24 @@ class PamfletController extends Controller
         ]);
         // return $request;
         // cara1
+        $cek = DB::select("select * from rekapmingguan where tgl='$pamflet->tgl' AND nama_id='$pamflet->nama_id'");
+        $nilai = $request->nilaipm;
+       
+
+        if($cek == null || $cek == ""){
+            $save = DB::table('rekapmingguan')->insert([
+                'nama_id' => $pamflet->nama_id, 
+                'tgl' => $pamflet->tgl,
+                'pam' => $nilai
+                ]);
+        }else{
+            foreach($cek as $c){
+                DB::table('rekapmingguan')->where('id_mingguan', $c->id_mingguan)->update([
+                    'pam' => ($c->pam - $pamflet->nilaipm)+$nilai
+                    ]);
+            }        
+        }
+
         $pamflet->nilaipm = $request->nilaipm;
         $pamflet->save();
 

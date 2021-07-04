@@ -35,8 +35,8 @@
                		<table class="table table-bordered">
                		<thead>
                			<tr class="text-center">
-               				<th>No</th>
-               				<th>Nama Karyawan</th>
+               			<th>No</th>
+               		    <th>Nama Karyawan</th>
                       <th>Wilayah Samchick</th>
                       <th>Tanggal</th>
                       <th>Nilai Artikel</th>
@@ -46,33 +46,26 @@
                			</tr>
                		</thead>
                   <tbody>
-                     @foreach ($nilaimingguan as $key => $item)
+                  @php
+                  $i = 1;
+                  @endphp
+                     @foreach ($mingguan as $key => $item)
                     <tr>
-                      <td class="text-center">{{ $nilaimingguan->firstItem()+ $key }}</td>
-                      <td class="text-center">{{ $item->nama }}</td>
-                      <td class="text-center">{{ $item->wilayah }}</td>
+                      <td class="text-center">{{ $i++ }}</td>
+                      <td class="text-center">{{ $item->name }}</td>
+                      <td class="text-center">{{ $item->namacbg }}</td>
                       <td class="text-center">{{ $item->tgl }}</td>
-                      <td class="text-center"></td>
-                      <td class="text-center"></td>
-                      <td class="text-center"></td>
-                      <td class="text-center">{{ $item->nilai_kinerja }}</td>
+                      <td class="text-center">{{$item->ar}}</td>
+                      <td class="text-center">{{$item->wa}}</td>
+                      <td class="text-center">{{$item->pam}}</td>
+                      <td class="text-center">{{ $item->total }}</td>
                       
                     </tr>
                     @endforeach 
                   </tbody>
                </table>
                <div class="pull-left">
-                 Menampilkan
-                 {{$nilaimingguan->firstItem()}}
-                 Sampai
-                 {{$nilaimingguan->lastItem()}}
-                 Dari
-                 {{$nilaimingguan->total()}}
-                 Data
-               </div>
-               <div class="pull-right">
-               {{ $nilaimingguan->links()}}
-                </div>
+                 
                	</div>
                </div>
             </div>
