@@ -34,7 +34,7 @@
               <div class="col-md-2 pr-1">
                       <div class="form-group">
                         <label>Nama Karyawan</label>
-                        <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Nama Karayawan" name="q" >
+                        <input type="text" class="form-control" placeholder="Nama Karayawan" name="q" >
                       </div>
               </div>
               <div class="col-md-2 pr-1">
