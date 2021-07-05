@@ -74,6 +74,7 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-bar-chart"></i><a href="{{url('nilaiharian')}}">Penilaian Harian</a></li>
                             <li><i class="fa fa-bar-chart"></i><a href="{{url('nilaimingguan')}}">Penilaian Mingguan</a></li>
+                            <li><i class="fa fa-bar-chart"></i><a href="{{url('nilaibulanan')}}">Total Nilai Bulanan</a></li>
                             <li><i class="fa fa-bar-chart"></i><a href="{{url('ofthemoon')}}">Karyawan Of The Moon</a></li>
                         </ul>
                     </li>

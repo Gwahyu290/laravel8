@@ -23,7 +23,7 @@
         				{{ session('status') }}
     				</div>
 			@endif
-      <div class="col-xl-13">
+      <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -39,133 +39,10 @@
                             </div><!--/.col-->
                         </div><!--/.row-->
                         <div >
-                            <canvas id="myChart" style="height:250px;" height="200"></canvas>
+                            <canvas id="myChart" style="height:250px;" height="180"></canvas>
                         </div>
                     </div>
-                    
-                    <div class="card-footer">
-                        <ul>
-                            <li>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Februari</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="text-muted">Maret</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">April</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Mei</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Juni</div>
-                                <strong>75 Ella (75%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Juli</div>
-                                <strong>90 Ella (90%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Agustus</div>
-                                <strong>100 Ella (100%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">September</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Oktober</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">November</div>
-                                <strong>90 Ella (90%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Desember</div>
-                                <strong>85 Ella (85%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 85%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    
                 </div>
-            </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="pull-left">
-                    <strong>Total Nilai Karyawan Of The Moon</strong>
-                  </div>
-                  
-                </div>
-                <div class="card-body table-responsive">
-                  <table class="table table-bordered">
-                  <thead>
-                    <tr class="text-center">
-                      <th>No</th>
-                      <th>Nama Karyawan</th>
-                      <th>Bulan</th>
-                      <th>Total Nilai Harian</th>
-                      <th>Total Nilai Mingguan</th>
-                      <th>Total Nilai Bulanan</th>
-                    </tr>
-                  </thead>
-                  @php
-                  $i = 1;
-                  @endphp
-                  <tbody>
-                  @foreach ($best as $b)
-                  <tr>
-                  <td>{{$i++}}</td>
-                  <td>{{$b->nama_id}}</td>
-                  <td>{{$b->bulan}} - {{$b->tahun}}</td>
-                  <td>{{$b->harian}}</td>
-                  <td>{{$b->mingguan}}</td>
-                  <td>{{$b->bulanan}}</td>
-                  <tr>
-                  @endforeach
-                  </tbody>
-               </table>
-               </div>
-               
             </div>
         </div>
     </div>
