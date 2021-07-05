@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Googlemap;
 use App\Cabang;
 use Illuminate\Http\Request;
@@ -9,11 +9,42 @@ use Jenssegers\Agent\Agent as Agent;
 
 class GMapsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-    $Agent = new Agent();
+    $googlemaps= "";    
+    $tgl1 = "";
+    $tgl2 = "";
+        if($request->tgl1 == "" || $request->tgl1 == null ){
+            $tgl1 = date("Y-m-d");
+        }
+        if($request->tgl1 != "" || $request->tgl1 != null ){
+            $tgl1 = $request->tgl1;
+            $tgl1 = str_replace("/","-",$tgl1);
+            $tgl1 = date('Y-m-d',strtotime($tgl1));
+            }
+        if($request->tgl2 == "" || $request->tgl2 == null){
+            $tgl2 = date("Y-m-d");
+        }
+        if($request->tgl2 != "" || $request->tgl2 != null){
+            $tgl2 = $request->tgl2;
+            $tgl2 = str_replace("/","-",$tgl2);
+            $tgl2 = date('Y-m-d',strtotime($tgl2));
+        }
 
-    $googlemaps = Googlemap::paginate(5);
+        if($request->orderBy != null || $request->orderBy != ""){
+            if($request->orderBy=="0"){            
+                $googlemaps = Googlemap::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                ->whereBetween('tgl',[$tgl1,$tgl2])->orderBy('nilaigm','ASC')->paginate(5);
+            }else{    
+                $googlemaps = Googlemap::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                ->whereBetween('tgl',[$tgl1,$tgl2])->orderBy('nilaigm','DESC')->paginate(5);     
+            }
+        }
+        else{
+            $googlemaps =Googlemap::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                ->whereBetween('tgl',[$tgl1,$tgl2])->paginate(5);
+        }
+    $Agent = new Agent();
         
     if ($Agent->isMobile()) {
         return view('mobile/googlemap/index', compact('googlemaps'));
@@ -108,6 +139,24 @@ class GMapsController extends Controller
         ]);
         // return $request;
         // cara1
+        $cek = DB::select("select * from rekap where tgl='$googlemap->tgl' AND nama_id='$googlemap->nama_id' AND tipe=0");
+        $nilai = $request->nilaigm;
+       
+
+        if($cek == null || $cek == ""){
+            $save = DB::table('rekap')->insert([
+                'nama_id' => $googlemap->nama_id, 
+                'tgl' => $googlemap->tgl,
+                'gm' => $nilai
+                ]);
+        }else{
+            foreach($cek as $c){
+                DB::table('rekap')->where('id_rekap', $c->id_rekap)->update([
+                    'gm' => ($c->gm - $googlemap->nilaigm)+$nilai
+                    ]);
+            }        
+        }
+
         $googlemap->nilaigm = $request->nilaigm;
         $googlemap->save();
 

@@ -56,6 +56,31 @@ route::resource('googlemapk', 'GMapskController');
 route::resource('nilaiharian', 'NilaiHarianController');
 route::resource('nilaimingguan', 'NilaiMingguanController');
 route::resource('user','UserController');
+route::resource('profil','ProfilController');
+
+//search
+route::post('instagram','InstagramController@index');
+route::post('facebook','FacebookController@index');
+route::post('googlemap','GmapsController@index');
+route::post('artikel','ArtikelController@index');
+route::post('whatsapp','WhatsappController@index');
+route::post('pamflet','PamfletController@index');
+
+route::post('nilaimingguan','NilaiMingguanController@index');
+route::post('nilaiharian','NilaiHarianController@index');
+
+
+//search
+route::post('instagram','InstagramController@index');
+route::post('facebook','FacebookController@index');
+route::post('googlemap','GmapsController@index');
+route::post('artikel','ArtikelController@index');
+route::post('whatsapp','WhatsappController@index');
+route::post('pamflet','PamfletController@index');
+
+route::post('nilaimingguan','NilaiMingguanController@index');
+route::post('nilaiharian','NilaiHarianController@index');
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

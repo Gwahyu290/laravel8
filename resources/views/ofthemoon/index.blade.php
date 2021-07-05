@@ -38,19 +38,14 @@
                                 </div>
                             </div><!--/.col-->
                         </div><!--/.row-->
-                        <div class="chart-wrapper mt-4" >
-                            <canvas id="trafficChart" style="height:250px;" height="200"></canvas>
+                        <div >
+                            <canvas id="myChart" style="height:250px;" height="200"></canvas>
                         </div>
-
                     </div>
+                    
                     <div class="card-footer">
                         <ul>
                             <li>
-                                <div class="text-muted">Januari</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
                             </li>
                             <li class="hidden-sm-down">
                                 <div class="text-muted">Februari</div>
@@ -129,9 +124,9 @@
                                     <div class="progress-bar bg-success" role="progressbar" style="width: 85%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </li>
-                            
                         </ul>
                     </div>
+                    
                 </div>
             </div>
               <div class="card">
@@ -147,17 +142,69 @@
                     <tr class="text-center">
                       <th>No</th>
                       <th>Nama Karyawan</th>
-                      <th>Tanggal</th>
+                      <th>Bulan</th>
                       <th>Total Nilai Harian</th>
                       <th>Total Nilai Mingguan</th>
                       <th>Total Nilai Bulanan</th>
                     </tr>
                   </thead>
+                  @php
+                  $i = 1;
+                  @endphp
+                  <tbody>
+                  @foreach ($best as $b)
+                  <tr>
+                  <td>{{$i++}}</td>
+                  <td>{{$b->nama_id}}</td>
+                  <td>{{$b->bulan}} - {{$b->tahun}}</td>
+                  <td>{{$b->harian}}</td>
+                  <td>{{$b->mingguan}}</td>
+                  <td>{{$b->bulanan}}</td>
+                  <tr>
+                  @endforeach
+                  </tbody>
                </table>
                </div>
                
             </div>
         </div>
     </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script>
+    var year = [<?php foreach ($best as $key) { ?>
+            '<?php echo $key->nama_id ?>',
+        <?php }?>];
+    var nilai = [<?php foreach ($best as $key) { ?>
+            '<?php echo $key->bulanan ?>',
+        <?php }?>];
+    var barChartData = {
+        labels: year,
+        datasets: [{
+            label: 'Jumlah Nilai',
+            backgroundColor: "pink",
+            data: nilai
+        }]
+    };
 
+    window.onload = function() {
+        var ctx = document.getElementById("myChart").getContext("2d");
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                        borderColor: '#c1c1c1',
+                        borderSkipped: 'bottom'
+                    }
+                },
+                responsive: true,
+                title: {
+                    display: true,
+                }
+            }
+        });
+    };
+</script>
 @endsection

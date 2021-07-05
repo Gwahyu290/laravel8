@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
+use App\User;
 use App\Facebook;
 use App\Cabang;
 use Illuminate\Http\Request;
@@ -9,10 +10,42 @@ use Jenssegers\Agent\Agent as Agent;
 
 class FacebookController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+    $facebooks= "";    
+    $tgl1 = "";
+    $tgl2 = "";
+        if($request->tgl1 == "" || $request->tgl1 == null ){
+            $tgl1 = date("Y-m-d");
+        }
+        if($request->tgl1 != "" || $request->tgl1 != null ){
+            $tgl1 = $request->tgl1;
+            $tgl1 = str_replace("/","-",$tgl1);
+            $tgl1 = date('Y-m-d',strtotime($tgl1));
+            }
+        if($request->tgl2 == "" || $request->tgl2 == null){
+            $tgl2 = date("Y-m-d");
+        }
+        if($request->tgl2 != "" || $request->tgl2 != null){
+            $tgl2 = $request->tgl2;
+            $tgl2 = str_replace("/","-",$tgl2);
+            $tgl2 = date('Y-m-d',strtotime($tgl2));
+        }
+
+        if($request->orderBy != null || $request->orderBy != ""){
+            if($request->orderBy=="0"){            
+                $facebooks = Facebook::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                ->whereBetween('tgl',[$tgl1,$tgl2])->orderBy('nilaifb','ASC')->paginate(5);
+            }else{    
+                $facebooks = Facebook::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                ->whereBetween('tgl',[$tgl1,$tgl2])->orderBy('nilaifb','DESC')->paginate(5);     
+            }
+        }
+        else{
+            $facebooks =Facebook::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                ->whereBetween('tgl',[$tgl1,$tgl2])->paginate(5);
+        }
     $Agent = new Agent();
-    $facebooks = Facebook::paginate(5);
 
     if ($Agent->isMobile()) {
         return view('mobile.facebook.index', compact('facebooks'));
@@ -109,7 +142,26 @@ class FacebookController extends Controller
         ]);
         // return $request;
         // cara1
+        $cek = DB::select("select * from rekap where tgl='$facebook->tgl' AND nama_id='$facebook->nama_id' AND tipe=0");
+        $nilai = $request->nilaifb;
+       
+
+        if($cek == null || $cek == ""){
+            $save = DB::table('rekap')->insert([
+                'nama_id' => $facebook->nama_id, 
+                'tgl' => $facebook->tgl,
+                'fb' => $nilai
+                ]);
+        }else{
+            foreach($cek as $c){
+                DB::table('rekap')->where('id_rekap', $c->id_rekap)->update([
+                    'fb' => ($c->fb - $facebook->nilaifb)+$nilai
+                    ]);
+            }        
+        }
+        
         $facebook->nilaifb = $request->nilaifb;
+        
         $facebook->save();
 
         return redirect('facebook')->with('status', 'Tugas Karyawan Berhasil di Nilai!!!');

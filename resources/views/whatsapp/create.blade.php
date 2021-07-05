@@ -20,7 +20,7 @@
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
-               			<strong>Serahkan Artikel</strong>
+               			<strong>Serahkan Tugas WhatsApp</strong>
                		</div>
                		<div class="pull-right">
                			<a href="{{ url('whatsappk')}}" class="btn btn-success btn-sm">

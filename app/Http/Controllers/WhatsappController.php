@@ -5,14 +5,46 @@ use App\Whatsapp;
 use App\Cabang;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent as Agent;
+use DB;
 
 class WhatsappController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-    $Agent = new Agent();
+    $whatsapps= "";    
+    $tgl1 = "";
+    $tgl2 = "";
+        if($request->tgl1 == "" || $request->tgl1 == null ){
+            $tgl1 = date("Y-m-d");
+        }
+        if($request->tgl1 != "" || $request->tgl1 != null ){
+            $tgl1 = $request->tgl1;
+            $tgl1 = str_replace("/","-",$tgl1);
+            $tgl1 = date('Y-m-d',strtotime($tgl1));
+            }
+        if($request->tgl2 == "" || $request->tgl2 == null){
+            $tgl2 = date("Y-m-d");
+        }
+        if($request->tgl2 != "" || $request->tgl2 != null){
+            $tgl2 = $request->tgl2;
+            $tgl2 = str_replace("/","-",$tgl2);
+            $tgl2 = date('Y-m-d',strtotime($tgl2));
+        }
 
-    $whatsapps = Whatsapp::paginate(5);
+        if($request->orderBy != null || $request->orderBy != ""){
+            if($request->orderBy=="0"){            
+                $whatsapps = Whatsapp::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                ->whereBetween('tgl',[$tgl1,$tgl2])->orderBy('nilaiwa','ASC')->paginate(5);
+            }else{    
+                $whatsapps = Whatsapp::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                ->whereBetween('tgl',[$tgl1,$tgl2])->orderBy('nilaiwa','DESC')->paginate(5);     
+            }
+        }
+        else{
+            $whatsapps =Whatsapp::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                ->whereBetween('tgl',[$tgl1,$tgl2])->paginate(10);
+        }
+    $Agent = new Agent();
         
     if ($Agent->isMobile()) {
         return view('mobile.Whatsapp.index', compact('whatsapps'));
@@ -110,6 +142,25 @@ class WhatsappController extends Controller
         ]);
         // return $request;
         // cara1
+
+        $cek = DB::select("select * from rekap where tgl='$whatsapp->tgl' AND nama_id='$whatsapp->nama_id' AND tipe=1");
+        $nilai = $request->nilaiwa;
+       
+
+        if($cek == null || $cek == ""){
+            $save = DB::table('rekap')->insert([
+                'nama_id' => $whatsapp->nama_id, 
+                'tgl' => $whatsapp->tgl,
+                'wa' => $nilai,
+                'tipe' => 1
+                ]);
+        }else{
+            foreach($cek as $c){
+                DB::table('rekap')->where('id_rekap', $c->id_rekap)->update([
+                    'wa' => ($c->wa - $whatsapp->nilaiwa)+$nilai
+                    ]);
+            }        
+        }
         $whatsapp->nilaiwa = $request->nilaiwa;
         $whatsapp->save();
 
