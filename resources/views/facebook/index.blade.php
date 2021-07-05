@@ -63,13 +63,13 @@
               <div class="col-md-1 pr-1">
                       <div class="form-group">
                         <label style="color:white;">,l</label>
-                       <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                       <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"> Search </i></button>
                       </div>
               </div>       
               <div class="col-md-1 pr-1">
                       <div class="form-group">
                         <label style="color:white;">,l</label>
-                       <br><a class="btn btn-danger" href="{{ url('facebook')}}"><i class="fa fa-refresh"></i></a>
+                       <br><a class="btn btn-danger" href="{{ url('facebook')}}"><i class="fa fa-refresh"> Refresh </i></a>
                       </div>
               </div>
               </form>

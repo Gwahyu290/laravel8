@@ -20,7 +20,7 @@
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
-               			<strong>Edit Status Laporan Artikel</strong>
+               			<strong>Nilai Tugas Pamflet</strong>
                		</div>
                		<div class="pull-right">
                			<a href="{{ url('pamflet')}}" class="btn btn-success btn-sm">

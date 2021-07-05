@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
-use App\NilaiM;
 use Jenssegers\Agent\Agent as Agent;
 
 class NilaiMingguanController extends Controller
@@ -15,7 +14,7 @@ class NilaiMingguanController extends Controller
     WHERE a.nama_id = b.name AND b.cabang_id=c.id");
     
     if ($Agent->isMobile()) {
-        return view('mobile.nilaimingguan.index');
+        return view('nilaimingguan.index', compact('mingguan'),);
     } else {
         return view('nilaimingguan.index', compact('mingguan'),);
         }

@@ -19,4 +19,29 @@ class GMapskController extends Controller
         return view('googlemapk.index', compact('googlemaps'));
         }
     }
+    public function store(Request $request)
+    {
+       $request->validate([
+            'tgl' => 'required|min:3',
+            'cabang_id' => 'required',
+            'link' => 'required',
+        ],[
+            'tgl.required' => 'Alamat Karyawan tidak boleh kosong!!!',
+            'cabang_id.required' => 'Wilayah Samchick tidak boleh kosong!!!',
+            'link.required' => 'Link Tugas tidak boleh kosong!!!'
+        ]);
+        // return $request;
+            $nm = $request->gambar;
+            $namafile = $nm->getClientOriginalName();
+
+            $googlemap = new Googlemap;
+            $googlemap->nama = Auth()->user()->id;
+            $googlemap->nama_id = Auth()->user()->name;
+            $googlemap->tgl = $request->tgl;
+            $googlemap->cabang_id = $request->cabang_id;
+            $nm->move(public_path().'/map', $namafile);
+            $googlemap->save();
+
+        return redirect('googlemapk')->with('status', 'Laporan Google Views Berhasil di Serahkan!!!');
+    }
 }
