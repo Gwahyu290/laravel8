@@ -9,11 +9,42 @@ use DB;
 
 class WhatsappController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-    $Agent = new Agent();
+    $whatsapps= "";    
+    $tgl1 = "";
+    $tgl2 = "";
+        if($request->tgl1 == "" || $request->tgl1 == null ){
+            $tgl1 = date("Y-m-d");
+        }
+        if($request->tgl1 != "" || $request->tgl1 != null ){
+            $tgl1 = $request->tgl1;
+            $tgl1 = str_replace("/","-",$tgl1);
+            $tgl1 = date('Y-m-d',strtotime($tgl1));
+            }
+        if($request->tgl2 == "" || $request->tgl2 == null){
+            $tgl2 = date("Y-m-d");
+        }
+        if($request->tgl2 != "" || $request->tgl2 != null){
+            $tgl2 = $request->tgl2;
+            $tgl2 = str_replace("/","-",$tgl2);
+            $tgl2 = date('Y-m-d',strtotime($tgl2));
+        }
 
-    $whatsapps = Whatsapp::paginate(5);
+        if($request->orderBy != null || $request->orderBy != ""){
+            if($request->orderBy=="0"){            
+                $whatsapps = Whatsapp::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                ->whereBetween('tgl',[$tgl1,$tgl2])->orderBy('nilaiwa','ASC')->paginate(5);
+            }else{    
+                $whatsapps = Whatsapp::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                ->whereBetween('tgl',[$tgl1,$tgl2])->orderBy('nilaiwa','DESC')->paginate(5);     
+            }
+        }
+        else{
+            $whatsapps =Whatsapp::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                ->whereBetween('tgl',[$tgl1,$tgl2])->paginate(10);
+        }
+    $Agent = new Agent();
         
     if ($Agent->isMobile()) {
         return view('mobile.Whatsapp.index', compact('whatsapps'));

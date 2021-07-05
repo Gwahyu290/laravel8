@@ -20,7 +20,7 @@
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
-               			<strong>Serahkan Artikel</strong>
+               			<strong>Serahkan Tugas Artikel</strong>
                		</div>
                		<div class="pull-right">
                			<a href="{{ url('artikelk')}}" class="btn btn-success btn-sm">
@@ -32,7 +32,7 @@
                		
                   <div class="row">
                     <div class="col-md-4 offset-md-4">
-                      <form action="{{url('artikel')}}" method="post" enctype="multipart/form-data">
+                      <form action="{{url('artikelk')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                           <table>Nama Pelapor</table>

@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Menu Jobdesk</h1>
+                        <h1>Tugas Mingguan</h1>
                     </div>
                 </div>
             </div>			
@@ -20,7 +20,7 @@
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
-               			<strong>Edit Status Laporan Artikel</strong>
+               			<strong>Nilai Tugas WhatsApp</strong>
                		</div>
                		<div class="pull-right">
                			<a href="{{ url('whatsapp')}}" class="btn btn-success btn-sm">

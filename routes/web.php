@@ -56,6 +56,7 @@ route::resource('googlemapk', 'GMapskController');
 route::resource('nilaiharian', 'NilaiHarianController');
 route::resource('nilaimingguan', 'NilaiMingguanController');
 route::resource('user','UserController');
+route::resource('profil','ProfilController');
 
 //search
 route::post('instagram','InstagramController@index');

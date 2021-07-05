@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="card-body table-responsive">
-    <form role="form" action="{{ url('instagram')}}" method="post" enctype="multipart/form-data">
+    <form role="form" action="{{ url('nilaiharian')}}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="col-md-2 pr-1">
                       <div class="form-group">
@@ -62,13 +62,13 @@
               <div class="col-md-1 pr-1">
                       <div class="form-group">
                         <label style="color:white;">,l</label>
-                       <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                       <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"> Search </i></button>
                       </div>
               </div>       
               <div class="col-md-1 pr-1">
                       <div class="form-group">
                         <label style="color:white;">,l</label>
-                       <br><a class="btn btn-danger" href="{{ url('instagram')}}"><i class="fa fa-refresh"></i></a>
+                       <br><a class="btn btn-danger" href="{{ url('harian')}}"><i class="fa fa-refresh"> Refresh </i></a>
                       </div>
               </div>
               </form>

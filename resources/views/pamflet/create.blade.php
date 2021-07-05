@@ -20,7 +20,7 @@
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
-               			<strong>Serahkan Artikel</strong>
+               			<strong>Serahkan Tugas Pamflet</strong>
                		</div>
                		<div class="pull-right">
                			<a href="{{ url('pamfletk')}}" class="btn btn-success btn-sm">

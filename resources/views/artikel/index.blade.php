@@ -31,7 +31,7 @@
                		</div>
                	</div>
                	<div class="card-body table-responsive">
-                  <form role="form" action="{{ url('googlemap')}}" method="post" enctype="multipart/form-data">
+                  <form role="form" action="{{ url('artikel')}}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="col-md-2 pr-1">
                       <div class="form-group">
@@ -64,13 +64,13 @@
               <div class="col-md-1 pr-1">
                       <div class="form-group">
                         <label style="color:white;">,l</label>
-                       <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                       <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"> Search </i></button>
                       </div>
               </div>       
               <div class="col-md-1 pr-1">
                       <div class="form-group">
                         <label style="color:white;">,l</label>
-                       <br><a class="btn btn-danger" href="{{ url('instagram')}}"><i class="fa fa-refresh"></i></a>
+                       <br><a class="btn btn-danger" href="{{ url('artikel')}}"><i class="fa fa-refresh"> Refresh </i></a>
                       </div>
               </div>
               </form>
@@ -100,13 +100,6 @@
                         <a href="{{url('artikel/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">
                           <i class="fa fa-pencil"> Nilai Tugas</i>
                         </a>
-                        <form action="{{url('artikel/'.$item->id)}}" method="post" class="d-inline" onsubmit="return confirm('Yakin Ingin Hapus Data?')">
-                          @method('delete')
-                          @csrf
-                          <button class="btn btn-danger btn-sm">
-                              <i class="fa fa-trash"> Delete Data</i>
-                          </button>
-                        </form>
                       </td>
                     </tr>
                     @endforeach 
