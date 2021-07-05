@@ -7,7 +7,6 @@ use App\Instagram;
 use App\Cabang;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent as Agent;
-use DB;
 class InstagramController extends Controller
 {
     public function index(Request $request)

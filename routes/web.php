@@ -42,6 +42,7 @@ route::resource('instagram', 'InstagramController');
 route::resource('googlemap', 'GMapsController');
 
 route::resource('ofthemoon','OfthemoonController');
+route::resource('nilaibulanan','NilaiBulananController');
 route::resource('ofthemoonk','OfthemoonkController');
 
 route::resource('profilkaryawan','ProfilController');
