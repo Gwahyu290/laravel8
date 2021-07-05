@@ -49,18 +49,6 @@
                           @enderror
                         </div>
                         <div class="form-group">
-                            <label>WIlayah Samchick</label>
-                            <select name="cabang_id" class="form-control @error('cabang_id') is-invalid @enderror">
-                                <option value="">- Pilih -</option>
-                                @foreach ($cabangs as $item1)
-                                    <option value="{{ $item1->id }}" {{ old('cabang_id') == $item1->id ? 'selected' : null }}>{{ $item1->namacbg }}</option>
-                                @endforeach
-                            </select>
-                            @error('cabang_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
                           <table>File Laporan</table>
                           <input type="file" name="gambar" class="form-control @error('gambar') is-invalid @enderror" value="{{old('gambar')}}" autofocus>
                           @error('gambar')
