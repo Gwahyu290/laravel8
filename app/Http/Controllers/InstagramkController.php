@@ -6,6 +6,7 @@ use App\Instagram;
 use App\Cabang;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent as Agent;
+use DB;
 
 class InstagramkController extends Controller
 {
@@ -25,19 +26,23 @@ class InstagramkController extends Controller
     {
        $request->validate([
             'tgl' => 'required|min:3',
-            'cabang_id' => 'required',
             'link' => 'required'
         ],[
             'tgl.required' => 'Alamat Karyawan tidak boleh kosong!!!',
-            'cabang_id.required' => 'Cabang Samchick tidak boleh kosong!!!',
             'link.required' => 'Status Karyawan tidak boleh kosong!!!'
         ]);
+
+        $cabang_id = Auth()->user()->id;
+        $cabang = DB::select("select * from users where id='$cabang_id'");
+        foreach ($cabang as $c){
+            $cabang_id = $c->cabang_id;
+            }
         // return $request;    
             $instagram = new Instagram;
             $instagram->nama = Auth()->user()->id;
             $instagram->nama_id = Auth()->user()->name;
             $instagram->tgl = $request->tgl;
-            $instagram->cabang_id = $request->cabang_id;
+            $instagram->cabang_id = $cabang_id;
             $instagram->link = $request->link;
             $instagram->save();
 

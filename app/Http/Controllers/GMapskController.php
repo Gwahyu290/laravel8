@@ -23,22 +23,26 @@ class GMapskController extends Controller
     {
        $request->validate([
             'tgl' => 'required|min:3',
-            'cabang_id' => 'required',
             'link' => 'required',
         ],[
             'tgl.required' => 'Alamat Karyawan tidak boleh kosong!!!',
-            'cabang_id.required' => 'Wilayah Samchick tidak boleh kosong!!!',
             'link.required' => 'Link Tugas tidak boleh kosong!!!'
         ]);
         // return $request;
             $nm = $request->gambar;
             $namafile = $nm->getClientOriginalName();
 
+            $cabang_id = Auth()->user()->id;
+            $cabang = DB::select("select * from users where id='$cabang_id'");
+            foreach ($cabang as $c){
+            $cabang_id = $c->cabang_id;
+            }
+        
             $googlemap = new Googlemap;
             $googlemap->nama = Auth()->user()->id;
             $googlemap->nama_id = Auth()->user()->name;
             $googlemap->tgl = $request->tgl;
-            $googlemap->cabang_id = $request->cabang_id;
+            $googlemap->cabang_id = $cabang_id;
             $nm->move(public_path().'/map', $namafile);
             $googlemap->save();
 

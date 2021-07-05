@@ -44,21 +44,25 @@ class WhatsappkController extends Controller
     {
        $request->validate([
             'tgl' => 'required|min:3',
-            'cabang_id' => 'required',
             'gambar' => 'required',
         ],[
             'tgl.required' => 'Alamat Karyawan tidak boleh kosong!!!',
-            'cabang_id.required' => 'Wilayah Samchick tidak boleh kosong!!!',
             'gambar.required' => 'Status Karyawan tidak boleh kosong!!!'
         ]);    
         $nm = $request->gambar;
         $namafile = $nm->getClientOriginalName();
-
+        
+        $cabang_id = Auth()->user()->id;
+        $cabang = DB::select("select * from users where id='$cabang_id'");
+        foreach ($cabang as $c){
+            $cabang_id = $c->cabang_id;
+            }
+        
             $whatsapp = new Whatsapp;
             $whatsapp->nama = Auth()->user()->id;
             $whatsapp->nama_id = Auth()->user()->name;
             $whatsapp->tgl = $request->tgl;
-            $whatsapp->cabang_id = $request->cabang_id;
+            $whatsapp->cabang_id = $cabang_id;
             $whatsapp->gambar = $namafile;
             $nm->move(public_path().'/wa', $namafile);
             $whatsapp->save();

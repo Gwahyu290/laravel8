@@ -25,21 +25,25 @@ class ArtikelkController extends Controller
     {
        $request->validate([
             'tgl' => 'required|min:3',
-            'cabang_id' => 'required',
             'gambar' => 'required',
         ],[
             'tgl.required' => 'Alamat Karyawan tidak boleh kosong!!!',
-            'cabang_id.required' => 'Wilayah Samchick tidak boleh kosong!!!',
             'gambar.required' => 'Status Karyawan tidak boleh kosong!!!'
         ]);    
         $nm = $request->gambar;
         $namafile = $nm->getClientOriginalName();
 
+        $cabang_id = Auth()->user()->id;
+        $cabang = DB::select("select * from users where id='$cabang_id'");
+        foreach ($cabang as $c){
+            $cabang_id = $c->cabang_id;
+            }
+        
             $artikel = new Artikel;
             $artikel->nama = Auth()->user()->id;
             $artikel->nama_id = Auth()->user()->name;
             $artikel->tgl = $request->tgl;
-            $artikel->cabang_id = $request->cabang_id;
+            $artikel->cabang_id = $cabang_id;
             $artikel->gambar = $namafile;
             $nm->move(public_path().'/pdf', $namafile);
             $artikel->save();
