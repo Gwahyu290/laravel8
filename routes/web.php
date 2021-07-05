@@ -69,6 +69,7 @@ route::post('pamflet','PamfletController@index');
 
 route::post('nilaimingguan','NilaiMingguanController@index');
 route::post('nilaiharian','NilaiHarianController@index');
+route::post('nilaibulanan','NilaiBulananController@index');
 
 
 //search

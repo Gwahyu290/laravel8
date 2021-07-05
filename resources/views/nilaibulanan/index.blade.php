@@ -32,6 +32,32 @@
                		
                	</div>
                	<div class="card-body table-responsive">
+                   <form role="form" action="{{ url('nilaibulanan')}}" method="post" enctype="multipart/form-data">
+              {{ csrf_field() }}
+              <div class="col-md-2 pr-1">
+                      <div class="form-group">
+                        <label>Urutkan Berdasarkan </label>
+                        <select class="form-control" name="orderBy"   style="height:35px;">
+                        <option value="">Semua</option>
+                        <option value="0">Nilai Terendah</option>
+                        <option value="1">Nilai Tertinggi</option>
+                        </select>
+                      </div>
+              </div>
+              <div class="col-md-1 pr-1">
+                      <div class="form-group">
+                        <label style="color:white;">,l</label>
+                       <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"> Search </i></button>
+                      </div>
+              </div>       
+              <div class="col-md-1 pr-1">
+                      <div class="form-group">
+                        <label style="color:white;">,l</label>
+                       <br><a class="btn btn-danger" href="{{ url('nilaibulanan')}}"><i class="fa fa-refresh"> Refresh </i></a>
+                      </div>
+              </div>
+              </form>
+    
                     <table class="table table-bordered">
                     <thead>
                       <tr class="text-center">
