@@ -156,6 +156,12 @@
                 responsive: true,
                 title: {
                     display: true,
+                },scales: {
+                    yAxes: [{
+                        ticks: {
+                        beginAtZero:true
+                        }
+                    }]
                 }
             }
         });
