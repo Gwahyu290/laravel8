@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Googlemap;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent as Agent;
+use DB;
 
 class GMapskController extends Controller
 {
@@ -29,20 +30,20 @@ class GMapskController extends Controller
             'link.required' => 'Link Tugas tidak boleh kosong!!!'
         ]);
         // return $request;
-            $nm = $request->gambar;
-            $namafile = $nm->getClientOriginalName();
-
-            $cabang_id = Auth()->user()->id;
+        $cabang_id = Auth()->user()->id;
             $cabang = DB::select("select * from users where id='$cabang_id'");
             foreach ($cabang as $c){
             $cabang_id = $c->cabang_id;
             }
+            $nm = $request->link;
+            $namafile = $nm->getClientOriginalName();
         
             $googlemap = new Googlemap;
             $googlemap->nama = Auth()->user()->id;
             $googlemap->nama_id = Auth()->user()->name;
             $googlemap->tgl = $request->tgl;
             $googlemap->cabang_id = $cabang_id;
+            $googlemap->link = $namafile;
             $nm->move(public_path().'/map', $namafile);
             $googlemap->save();
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Pamflet;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent as Agent;
-
+use DB;
 class PamfletkController extends Controller
 {
     public function index(Request $request)

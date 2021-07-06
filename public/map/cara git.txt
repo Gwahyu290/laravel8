@@ -1,0 +1,22 @@
+git config --global user.name "Agysta Wahyu"
+git config --global user.email "gista290@gmail.com"
+git init
+git add .
+git commit -m "Upload Awal"
+git remote add origin https://gitlab.com/Gista_Wahyu/aplikasi-08.git
+git push -u origin master
+
+MAINTENER
+
+git clone Link
+cd aplikasi-08
+git config --global user.name "pandu_virga"
+git config --global user.email "panduvirgapradana009@gmail.com"
+git init
+git remote add origin https://gitlab.com/Gista_Wahyu/aplikasi-08.git
+git add .
+git commit -m "update project"
+git push -u origin master
+
+youtube: https://youtu.be/nRclXZda2zA
+Gitlab : https://gitlab.com/Gista_Wahyu/aplikasi-08.git
