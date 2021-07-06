@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Facebook;
 use App\Cabang;
 use Illuminate\Http\Request;
@@ -25,27 +25,26 @@ class FacebookkController extends Controller
     {
        $request->validate([
             'tgl' => 'required|min:3',
-            'cabang_id' => 'required',
-            'link' => 'required',
+            'link' => 'required'
         ],[
             'tgl.required' => 'Alamat Karyawan tidak boleh kosong!!!',
-            'cabang_id.required' => 'Cabang Samchick tidak boleh kosong!!!',
-            'link.required' => 'Link Tugas tidak boleh kosong!!!'
+            'link.required' => 'Status Karyawan tidak boleh kosong!!!'
         ]);
-        // return $request;
-            $cabang_id = Auth()->user()->id;
-            $cabang = DB::select("select * from users where id='$cabang_id'");
-            foreach ($cabang as $c){
+
+        $cabang_id = Auth()->user()->id;
+        $cabang = DB::select("select * from users where id='$cabang_id'");
+        foreach ($cabang as $c){
             $cabang_id = $c->cabang_id;
             }
+        // return $request;    
             $facebook = new Facebook;
             $facebook->nama = Auth()->user()->id;
             $facebook->nama_id = Auth()->user()->name;
             $facebook->tgl = $request->tgl;
-            $facebook->cabang_id = $request->cabang_id;
+            $facebook->cabang_id = $cabang_id;
             $facebook->link = $request->link;
             $facebook->save();
 
-        return redirect('facebookk')->with('status', 'Laporan Upload Facebook Berhasil di Serahkan!!!');
+        return redirect('facebookk')->with('status', 'Laporan Repost Facebook Berhasil di Serahkan!!!');
     }
 }

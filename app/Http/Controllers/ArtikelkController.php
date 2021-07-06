@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Artikel;
 use App\Cabang;
 use Illuminate\Http\Request;

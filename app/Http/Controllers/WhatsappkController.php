@@ -5,7 +5,7 @@ use App\Whatsapp;
 use App\Cabang;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent as Agent;
-
+use DB;
 class WhatsappkController extends Controller
 {
     public function index()
