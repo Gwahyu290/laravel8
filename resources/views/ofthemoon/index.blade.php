@@ -25,12 +25,19 @@
 			@endif
       <div class="col-xl-12">
                 <div class="card">
+                    
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-4">
                                 <h4 class="card-title mb-0">Grafik Of TheMoon</h4>
                                 <div class="small text-muted">Juni 2021</div>
                             </div>
+                            <div class="col-md-2 pr-1">
+                                <div class="form-group">
+                                  <label>Tahun</label>
+                                  <input type="date" class="form-control"  placeholder="06/02/2021" name="tgl1" >
+                                </div>
+                        </div>
                             <!--/.col-->
                             <div class="col-sm-8 hidden-sm-down">
                                 <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
@@ -39,8 +46,85 @@
                             </div><!--/.col-->
                         </div><!--/.row-->
                         <div >
-                            <canvas id="myChart" style="height:250px;" height="180"></canvas>
+                            <canvas id="myChart" style="height:250px;" height="160"></canvas>
                         </div>
+                    </div>
+                    <div class="card-footer">
+                        <ul>
+                            <li>
+                                <div class="text-muted">Januari</div>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">Februari</div>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="text-muted">Maret</div>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">April</div>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">Mei</div>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">Juni</div>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">Juli</div>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">Agustus</div>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">September</div>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">Oktober</div>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">November</div>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            <li class="hidden-sm-down">
+                                <div class="text-muted">Desember</div>
+                                <div class="progress progress-xs mt-2" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 85%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </li>
+                            
+                        </ul>
                     </div>
                 </div>
             </div>

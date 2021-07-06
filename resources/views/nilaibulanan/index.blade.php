@@ -25,6 +25,26 @@
 			@endif
 
                <div class="card">
+                <div class="col-xl-12">
+                  <div class="card">
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col-sm-4">
+                                  <h4 class="card-title mb-0">Grafik Nilai Bulanan</h4>
+                              </div>
+                              <!--/.col-->
+                              <div class="col-sm-8 hidden-sm-down">
+                                  <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+                                      
+                                  </div>
+                              </div><!--/.col-->
+                          </div><!--/.row-->
+                          <div >
+                              <canvas id="myChart" style="height:250px;" height="150"></canvas>
+                          </div>
+                      </div>
+                  </div>
+              </div>
                	<div class="card-header">
                		<div class="pull-left">
                			<strong>Data Nilai Bulanan</strong>
@@ -35,8 +55,20 @@
                    <form role="form" action="{{ url('nilaibulanan')}}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="col-md-2 pr-1">
+                <div class="form-group">
+                  <label>Nama Karyawan</label>
+                  <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Nama Karayawan" name="q" >
+                </div>
+              </div>
+        <div class="col-md-2 pr-1">
+                <div class="form-group">
+                  <label>Bulan</label>
+                  <input type="date" class="form-control"  placeholder="06/02/2021" name="tgl1" >
+                </div>
+        </div>
+              <div class="col-md-2 pr-1">
                       <div class="form-group">
-                        <label>Urutkan Berdasarkan </label>
+                        <label>Sorting Nilai Berdasarkan</label>
                         <select class="form-control" name="orderBy"   style="height:35px;">
                         <option value="">Semua</option>
                         <option value="0">Nilai Terendah</option>
@@ -90,4 +122,43 @@
             </div>
         </div>
     </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script>
+    var year = [<?php foreach ($best as $key) { ?>
+            '<?php echo $key->nama_id ?>',
+        <?php }?>];
+    var nilai = [<?php foreach ($best as $key) { ?>
+            '<?php echo $key->bulanan ?>',
+        <?php }?>];
+    var barChartData = {
+        labels: year,
+        datasets: [{
+            label: 'Jumlah Nilai',
+            backgroundColor: "pink",
+            data: nilai
+        }]
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById("myChart").getContext("2d");
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                        borderColor: '#c1c1c1',
+                        borderSkipped: 'bottom'
+                    }
+                },
+                responsive: true,
+                title: {
+                    display: true,
+                }
+            }
+        });
+    };
+</script>
 @endsection
