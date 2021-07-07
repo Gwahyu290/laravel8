@@ -57,15 +57,42 @@
               <div class="col-md-2 pr-1">
                 <div class="form-group">
                   <label>Nama Karyawan</label>
-                  <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Nama Karayawan" name="q" >
+                  <input type="text" class="form-control" placeholder="Nama Karayawan" name="q" >
                 </div>
               </div>
-        <div class="col-md-2 pr-1">
-                <div class="form-group">
-                  <label>Bulan</label>
-                  <input type="date" class="form-control"  placeholder="06/02/2021" name="tgl1" >
-                </div>
-        </div>
+              <div class="col-md-2 pr-1">
+                      <div class="form-group">
+                        <label>Bulan</label>
+                        <select class="form-control" name="bulan1"   style="height:35px;">
+                        <option value="">-- Bulan --</option>
+                        <option value="1">Januari</option>
+                        <option value="2">Fabruari</option>
+                        <option value="3">Maret</option>
+                        <option value="4">April</option>
+                        <option value="5">Mei</option>
+                        <option value="6">Juni</option>
+                        <option value="7">Juli</option>
+                        <option value="8">Agustus</option>
+                        <option value="9">September</option>
+                        <option value="10">Oktober</option>
+                        <option value="11">November</option>
+                        <option value="12">Desember</option>
+                        </select>
+                        </div>
+              </div><div class="col-md-2 pr-1">
+                      <div class="form-group">
+                        @php
+                        $tahun = DB::select("select DISTINCT YEAR(tgl) as tahun from rekap");
+                        @endphp
+                        <label>Tahun</label>
+                        <select class="form-control" name="tahun1"   style="height:35px;">
+                        <option value="">-- Tahun --</option>
+                        @foreach ($tahun as $t)
+                        <option value="{{$t->tahun}}">{{$t->tahun}}</option>
+                        @endforeach
+                        </select>
+                      </div>
+              </div>
               <div class="col-md-2 pr-1">
                       <div class="form-group">
                         <label>Sorting Nilai Berdasarkan</label>
