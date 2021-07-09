@@ -43,30 +43,5 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Cabang');
     }
-    public function wilayah($data){
-        return $data;
-    }
-    public function tanggal($data){
-        $isi = DB::table('users')->rightjoin('facebooks','users.id','=','facebooks.nama')->where('users.id','=',$data)->get();
-        // dd($isi);
-        $a="";
-        foreach ($isi as $i) {
-            $a = $i->tgl;
-        }
-        return $a;
-    }
-    public function fb($data){
-        return $data;
-    }
-    public function ins($data){
-        return $data;
-    }
-    public function gm($data){
-        return $data;
-    }
-    public function total($data){
-        return $data;
-    }
-    
 
 }

@@ -1,13 +1,13 @@
 @extends('main')
 
-@section('title','Data Karyawan|')
+@section('title','Data Jobdesk|')
 
 @section('breadcrumbs')
 <div class="breadcrumbs">
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Menu Karyawan</h1>
+                        <h1>Menu Manajer</h1>
                     </div>
                 </div>
             </div>			
@@ -17,13 +17,11 @@
 @section('content')
         <div class="content mt-3">
             <div class="animated fadeIn">
-
             	@if (session('status'))
     				<div class="alert alert-success">
         				{{ session('status') }}
-    				</div>
+    			</div>
 			@endif
-
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
@@ -31,6 +29,41 @@
                		</div>
                	</div>
                	<div class="card-body table-responsive">
+                 <form role="form" action="{{ url('user')}}" method="post" enctype="multipart/form-data">
+              {{ csrf_field() }}
+              <div class="col-md-2 pr-1">
+                      <div class="form-group">
+                        <label>Nama Karyawan</label>
+                        <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Nama Karayawan" name="q" >
+                      </div>
+              </div>
+              <div class="col-md-2 pr-1">
+                <label>Alamat</label>
+                <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Alamat" name="q" >
+              </div>
+              <div class="col-md-2 pr-1">
+               <label> Wilayah Samchick</label>
+                <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="" name="q" >        
+              </div>
+              <div class="col-md-2 pr-1">
+                
+              </div>
+              <div class="col-md-2 pr-1">
+                     
+              </div>
+              <div class="col-md-1 pr-1">
+                      <div class="form-group">
+                        <label style="color:white;">,l</label>
+                       <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"> Search </i></button>
+                      </div>
+              </div>       
+              <div class="col-md-1 pr-1">
+                      <div class="form-group">
+                        <label style="color:white;">,l</label>
+                       <br><a class="btn btn-danger" href="{{ url('user')}}"><i class="fa fa-refresh"> Refresh </i></a>
+                      </div>
+              </div>
+              </form>
                		<table class="table table-bordered">
                		<thead>
                			<tr class="text-center">
@@ -48,27 +81,29 @@
                      @foreach ($users as $key => $item)
                     <tr>
                       <td class="text-center">{{ $users->firstItem()+ $key }}</td>
-                      <td class="text-center">{{ $item->name }}</td>
+                      <td class="text-center">{{ $item->name}}</td>
                       <td class="text-center">{{ $item->email }}</td>
                       <td class="text-center">{{ $item->level }}</td>
                       <td class="text-center">{{ $item->alamat }}</td>
                       <td class="text-center">{{ $item->no_tlpn }}</td>
                       <td class="text-center">{{ $item->cabang->namacbg}}</td>
+                    
                       <td class="text-center">
-                        <a href="{{url('profilkaryawan/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">
-                          <i class="fa fa-pencil"> Update</i>
+                        <a href="{{url('user/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">
+                          <i class="fa fa-pencil"> Edit Profil</i>
                         </a>
-                        <form action="{{url('profilkaryawan/'.$item->id)}}" method="post" class="d-inline" onsubmit="return confirm('Yakin Ingin Hapus Data?')">
+                        <form action="{{url('user/'.$item->id)}}" method="post" class="d-inline" onsubmit="return confirm('Yakin Ingin Hapus Data?')">
                           @method('delete')
                           @csrf
                           <button class="btn btn-danger btn-sm">
-                              <i class="fa fa-trash"> Delete</i>
+                              <i class="fa fa-trash"> Delete Akun</i>
                           </button>
                         </form>
                       </td>
+                      
                     </tr>
                     @endforeach 
-               		</tbody>
+                  </tbody>
                </table>
                <div class="pull-left">
                  Menampilkan
@@ -79,9 +114,6 @@
                  {{$users->total()}}
                  Data
                </div>
-               <div class="pull-right">
-               {{ $users->links()}}
-                </div>
                	</div>
                </div>
 
