@@ -68,7 +68,7 @@
                             </div><!--/.col-->
                         </div><!--/.row-->
                         <div >
-                            <canvas id="myChart" style="height:250px;" height="160"></canvas>
+                            <canvas id="myChart" style="height:250px;" height="150"></canvas>
                         </div>
                     </div>
                     <div class="card-footer">
