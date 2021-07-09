@@ -58,6 +58,8 @@ route::resource('nilaiharian', 'NilaiHarianController');
 route::resource('nilaimingguan', 'NilaiMingguanController');
 route::resource('user','UserController');
 route::resource('profil','ProfilController');
+//delete
+Route::get('/instagramk/{id}/delete', 'InstagramkController@destroy');
 
 //search
 route::post('instagram','InstagramController@index');

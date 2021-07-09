@@ -48,5 +48,10 @@ class InstagramkController extends Controller
 
         return redirect('instagramk')->with('status', 'Laporan Repost Instagram Berhasil di Serahkan!!!');
     }
+    public function destroy($id,Instagram $instagram)
+    {
+        $instagram->where('id',$id)->delete();
+      return redirect('instagramk')->with('status', 'Data Berhasil di Hapus!!!');
+    }
 }
 

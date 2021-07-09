@@ -44,6 +44,7 @@
                       <th>Wilayah Samchick</th>
                       <th>Laporan Repost Insatgram</th>
                       <th>Nilai Tugas</th>
+                      <th>Action</th>
                			</tr>
                		</thead>
                		<tbody>
@@ -55,7 +56,12 @@
                       <td class="text-center">
                       <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Tugas</a></td>
                       <td class="text-center">{{ $item->nilaiins}}</td>
-                      
+                      <td class="text-center">
+                      <a href="{{url('instagramk/'.$item->id.'/delete')}}">
+                          <button class="btn btn-danger btn-sm" onclick="return confirm('Tugas yang dibatalkan tidak dapat dikirim kembali, apakah anda yakin???')">
+                              <i class="fa fa-times"> Batalkan Kirim</i>
+                          </button></a>
+                      </td>
                     </tr>
                     @endforeach 
                   </tbody>
