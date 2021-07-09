@@ -84,6 +84,8 @@ route::post('pamflet','PamfletController@index');
 route::post('nilaimingguan','NilaiMingguanController@index');
 route::post('nilaiharian','NilaiHarianController@index');
 
+//delete
+route::get('instagramk/{id}/delete','InstagramkController@destroy');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
