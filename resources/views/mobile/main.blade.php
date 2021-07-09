@@ -32,20 +32,20 @@
 
 </head>
 <body>
-@yield('content')
+
 @yield('wrapper')
 <div class="wrapper">
 	<div class="sidebar" data-background-color="white" data-active-color="danger">
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="" class="simple-text">
-                    Admin
+                    {{ Auth::user()->name }}
                 </a>
             </div>
 
             <ul class="nav">
                 <li>
-                    <a href="{{url('profil')}}">
+                    <a href="{{url('user')}}">
                         <p>Profil Karyawan</p>
                     </a>
                 </li>
@@ -76,6 +76,19 @@
                         <p>Karyawan Terbaik (admin)</p>
                     </a>
                 </li>
+                <div class="navbar-header">
+                    
+                    <a class="navbar-brand"  href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+    
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                    </a>
+                </div>
             </ul>
             </ul>
     	</div>
@@ -101,11 +114,11 @@
                 </div>
             </div>
         </nav>
+        @yield('content')
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        Home Admin
                     </div>
                 </div>
             </div>

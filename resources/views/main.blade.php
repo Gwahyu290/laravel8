@@ -45,9 +45,9 @@
                     @if (auth()->user()->level=="Admin")
                     
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-address-card"></i>Menu Admin</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-address-card"></i>Menu Manajer</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-user"></i><a href="{{url('profilkaryawan')}}">Profil Karyawan</a></li>
+                            <li><i class="fa fa-user"></i><a href="{{url('user')}}">Profil Karyawan</a></li>
                             <li><i class="fa fa-bookmark"></i><a href="{{url('cabang')}}">Data Wilayah</a></li>
                         </ul>
                     </li>
@@ -70,12 +70,12 @@
                     </li>
                     
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bell"></i>Menu Manajer</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bell"></i>Menu Nilai</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-bar-chart"></i><a href="{{url('nilaiharian')}}">Penilaian Harian</a></li>
                             <li><i class="fa fa-bar-chart"></i><a href="{{url('nilaimingguan')}}">Penilaian Mingguan</a></li>
                             <li><i class="fa fa-bar-chart"></i><a href="{{url('nilaibulanan')}}">Total Nilai Bulanan</a></li>
-                            <li><i class="fa fa-bar-chart"></i><a href="{{url('ofthemoon')}}">Karyawan Of The Moon</a></li>
+                            <li><i class="fa fa-bar-chart"></i><a href="{{url('ofthemoon')}}">Karyawan Terbaik</a></li>
                         </ul>
                     </li>
                     @endif
@@ -83,8 +83,7 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-address-card"></i>Menu Karyawan</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-user"></i><a href="{{url('profilkaryawank')}}">Profil Karyawan</a></li>
-                            <li><i class="fa fa-bar-chart"></i><a href="{{url('ofthemoonk')}}">Karyawan Of The Moon</a></li>
+                            <li><i class="fa fa-user"></i><a href="{{url('userk')}}">Profil Karyawan</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">

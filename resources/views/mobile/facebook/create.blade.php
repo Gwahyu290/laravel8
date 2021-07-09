@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Kategori Jobdesk</h1>
+                        <h1>Tugas Harian</h1>
                     </div>
                 </div>
             </div>			
@@ -32,7 +32,7 @@
                		
                   <div class="row">
                     <div class="col-md-4 offset-md-4">
-                      <form action="{{url('facebook')}}" method="post" enctype="multipart/form-data">
+                      <form action="{{url('facebookk')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                           <table>Nama Pelapor</table>
@@ -47,18 +47,6 @@
                           @error('tgl')
                           <div class="invalid-feedback">{{$message}}</div>
                           @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Wilayah Samchick</label>
-                            <select name="cabang_id" class="form-control @error('cabang_id') is-invalid @enderror">
-                                <option value="">- Pilih -</option>
-                                @foreach ($cabangs as $item1)
-                                    <option value="{{ $item1->id }}" {{ old('cabang_id') == $item1->id ? 'selected' : null }}>{{ $item1->namacbg }}</option>
-                                @endforeach
-                            </select>
-                            @error('cabang_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
                         </div>
                         <div class="form-group">
                           <table>Link Pengumpulan Tugas</table>

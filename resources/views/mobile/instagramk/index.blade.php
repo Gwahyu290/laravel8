@@ -1,4 +1,4 @@
-@extends('main')
+@extends('mobile.main')
 
 @section('title','Data Jobdesk|')
 

@@ -1,4 +1,4 @@
-@extends('mobile.main')
+@extends('main')
 
 @section('title','Data Jobdesk|')
 
@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Tugas Harian</h1>
+                        <h1>Menu Manajer</h1>
                     </div>
                 </div>
             </div>			
@@ -22,15 +22,14 @@
         				{{ session('status') }}
     			</div>
 			@endif
-
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
-               			<strong>Tugas Instagram</strong>
+               			<strong>Profil Karyawan</strong>
                		</div>
                	</div>
                	<div class="card-body table-responsive">
-                 <form role="form" action="{{ url('instagram')}}" method="post" enctype="multipart/form-data">
+                 <form role="form" action="{{ url('userk')}}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="col-md-2 pr-1">
                       <div class="form-group">
@@ -39,26 +38,18 @@
                       </div>
               </div>
               <div class="col-md-2 pr-1">
-                      <div class="form-group">
-                        <label>Dari</label>
-                        <input type="date" class="form-control"  placeholder="06/02/2021" name="tgl1" >
-                      </div>
+                <label>Alamat</label>
+                <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Alamat" name="q" >
               </div>
               <div class="col-md-2 pr-1">
-                      <div class="form-group">
-                        <label>Sampai</label>
-                        <input type="date" class="form-control"  placeholder="06/02/2021" name="tgl2" >
-                      </div>
+               <label> Wilayah Samchick</label>
+                <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="" name="q" >        
               </div>
               <div class="col-md-2 pr-1">
-                      <div class="form-group">
-                        <label>Urutkan Berdasarkan </label>
-                        <select class="form-control" name="orderBy"   style="height:35px;">
-                        <option value="">Semua</option>
-                        <option value="0">Nilai Terendah</option>
-                        <option value="1">Nilai Tertinggi</option>
-                        </select>
-                      </div>
+                
+              </div>
+              <div class="col-md-2 pr-1">
+                     
               </div>
               <div class="col-md-1 pr-1">
                       <div class="form-group">
@@ -69,7 +60,7 @@
               <div class="col-md-1 pr-1">
                       <div class="form-group">
                         <label style="color:white;">,l</label>
-                       <br><a class="btn btn-danger" href="{{ url('instagram')}}"><i class="fa fa-refresh"> Refresh </i></a>
+                       <br><a class="btn btn-danger" href="{{ url('userk')}}"><i class="fa fa-refresh"> Refresh </i></a>
                       </div>
               </div>
               </form>
@@ -77,42 +68,34 @@
                		<thead>
                			<tr class="text-center">
                				<th>No</th>
-               				<th>Nama Pelapor</th>
-                      <th>Tanggal Laporan</th>
-                      <th>WIlayah Samchick</th>
-                      <th>Link Tugas Repost Insatgram</th>
-                      <th>Nilai</th>
+               				<th>Nama Karyawan</th>
+                      <th>Email</th>
+                      <th>Alamat</th>
+                      <th>No Ponsel</th>
+                      <th>Wilayah Samchick</th>
                				<th>Aksi</th>
                			</tr>
                		</thead>
                		<tbody>
-                     @foreach ($instagrams as $key => $item)
+                     @foreach ($users as $key => $item)
                     <tr>
-                      <td class="text-center">{{ $instagrams->firstItem()+ $key }}</td>
-                      <td class="text-center">{{ $item->nama_id}}</td>
-                      <td class="text-center">{{ $item->tgl }}</td>
+                      <td class="text-center">{{ $users->firstItem()+ $key }}</td>
+                      <td class="text-center">{{ $item->name}}</td>
+                      <td class="text-center">{{ $item->email }}</td>
+                      <td class="text-center">{{ $item->alamat }}</td>
+                      <td class="text-center">{{ $item->no_tlpn }}</td>
                       <td class="text-center">{{ $item->cabang->namacbg}}</td>
+                    
                       <td class="text-center">
-                      <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Tugas</a></td>
-                      <td class="text-center">{{ $item->nilaiins }}</td>
-                      <td class="text-center">
-                        <a href="{{url('instagram/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">
-                          <i class="fa fa-pencil"> Nilai Tugas</i>
+                        <a href="{{url('user/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">
+                          <i class="fa fa-pencil"> Edit Profil</i>
                         </a>
                       </td>
+                      
                     </tr>
                     @endforeach 
                   </tbody>
                </table>
-               <div class="pull-left">
-                 Menampilkan
-                 {{$instagrams->firstItem()}}
-                 Sampai
-                 {{$instagrams->lastItem()}}
-                 Dari
-                 {{$instagrams->total()}}
-                 Data
-               </div>
                	</div>
                </div>
 

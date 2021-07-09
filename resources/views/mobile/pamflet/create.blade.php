@@ -1,4 +1,4 @@
-@extends('main')
+@extends('mobile.main')
 
 @section('title','CreateData | ')
 
@@ -20,7 +20,7 @@
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
-               			<strong>Serahkan Artikel</strong>
+               			<strong>Serahkan Tugas Pamflet</strong>
                		</div>
                		<div class="pull-right">
                			<a href="{{ url('pamfletk')}}" class="btn btn-success btn-sm">
@@ -47,18 +47,6 @@
                           @error('tgl')
                           <div class="invalid-feedback">{{$message}}</div>
                           @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>WIlayah Samchick</label>
-                            <select name="cabang_id" class="form-control @error('cabang_id') is-invalid @enderror">
-                                <option value="">- Pilih -</option>
-                                @foreach ($cabangs as $item1)
-                                    <option value="{{ $item1->id }}" {{ old('cabang_id') == $item1->id ? 'selected' : null }}>{{ $item1->namacbg }}</option>
-                                @endforeach
-                            </select>
-                            @error('cabang_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
                         </div>
                         <div class="form-group">
                           <table>File Laporan</table>

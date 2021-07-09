@@ -1,4 +1,4 @@
-@extends('main')
+@extends('mobile.main')
 
 @section('title','Data Jobdesk|')
 
@@ -53,7 +53,7 @@
                       <td class="text-center">{{ $item->tgl }}</td>
                       <td class="text-center">{{ $item->cabang->namacbg}}</td>
                       <td class="text-center">
-                      <a href="{{ asset('map/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar</a></td>
+                      <a href="{{ asset('map/'. $item->link) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar</a></td>
                       <td class="text-center">{{ $item->nilaigm}}</td>
                     </tr>
                     @endforeach 

@@ -1,4 +1,4 @@
-@extends('main')
+@extends('mobile.main')
 
 @section('title','Data Jobdesk|')
 
@@ -23,14 +23,43 @@
         				{{ session('status') }}
     				</div>
 			@endif
-      <div class="col-xl-13">
+      <div class="col-xl-12">
                 <div class="card">
+            <form role="form" action="{{ url('ofthemoon')}}" method="post" enctype="multipart/form-data">
+              {{ csrf_field() }}
+              <div class="col-md-2 pr-1">
+                      <div class="form-group">
+                        <label>Tahun</label>
+                        @php
+                        $tahun1 = DB::select("select DISTINCT YEAR(tgl) as tahun from rekap");
+                        @endphp
+                        <select class="form-control" name="tahun"   style="height:35px;">
+                        <option value="">-- Tahun --</option>
+                        @foreach ($tahun1 as $t)
+                        <option value="{{$t->tahun}}">{{$t->tahun}}</option>
+                        @endforeach
+                        </select>
+                      </div>
+              </div>
+              <div class="col-md-1 pr-1">
+                      <div class="form-group">
+                        <label style="color:white;">,l</label>
+                       <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"> Search </i></button>
+                      </div>
+              </div>       
+              <div class="col-md-1 pr-1">
+                      <div class="form-group">
+                        <label style="color:white;">,l</label>
+                       <br><a class="btn btn-danger" href="{{ url('ofthemoon')}}"><i class="fa fa-refresh"> Refresh </i></a>
+                      </div>
+              </div>
+              </form>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-4">
-                                <h4 class="card-title mb-0">Grafik Of TheMoon</h4>
-                                <div class="small text-muted">Juni 2021</div>
+                                <h4 class="card-title mb-0">Grafik of The Month {{$tahun}}</h4>
                             </div>
+                            
                             <!--/.col-->
                             <div class="col-sm-8 hidden-sm-down">
                                 <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
@@ -38,126 +67,56 @@
                                 </div>
                             </div><!--/.col-->
                         </div><!--/.row-->
-                        <div class="chart-wrapper mt-4" >
-                            <canvas id="trafficChart" style="height:250px;" height="200"></canvas>
+                        <div >
+                            <canvas id="myChart" style="height:250px;" height="174"></canvas>
                         </div>
-
-                    </div>
-                    <div class="card-footer">
-                        <ul>
-                            <li>
-                                <div class="text-muted">Januari</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Februari</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="text-muted">Maret</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">April</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Mei</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Juni</div>
-                                <strong>75 Ella (75%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 75%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Juli</div>
-                                <strong>90 Ella (90%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Agustus</div>
-                                <strong>100 Ella (100%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">September</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Oktober</div>
-                                <strong>80 Ella (80%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">November</div>
-                                <strong>90 Ella (90%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="hidden-sm-down">
-                                <div class="text-muted">Desember</div>
-                                <strong>85 Ella (85%)</strong>
-                                <div class="progress progress-xs mt-2" style="height: 5px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 85%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            
-                        </ul>
                     </div>
                 </div>
-            </div>
-              <div class="card">
-                <div class="card-header">
-                  <div class="pull-left">
-                    <strong>Total Nilai Karyawan Of The Moon</strong>
-                  </div>
-                  
-                </div>
-                <div class="card-body table-responsive">
-                  <table class="table table-bordered">
-                  <thead>
-                    <tr class="text-center">
-                      <th>No</th>
-                      <th>Nama Karyawan</th>
-                      <th>Tanggal</th>
-                      <th>Total Nilai Harian</th>
-                      <th>Total Nilai Mingguan</th>
-                      <th>Total Nilai Bulanan</th>
-                    </tr>
-                  </thead>
-               </table>
-               </div>
-               
             </div>
         </div>
     </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script>
+    var nilai = [<?php foreach ($nilai as $n) { ?>
+            '<?php echo $n ?>',
+        <?php }?>];
+    var nama = [<?php foreach ($nama as $n) { ?>
+            '<?php echo $n ?>',
+        <?php }?>];
+    var barChartData = {
+        labels: nama,
+        datasets: [{
+            label: 'Jumlah Nilai',
+            backgroundColor: "pink",
+            data: nilai
+        }]
+    };
 
+    window.onload = function() {
+        var ctx = document.getElementById("myChart").getContext("2d");
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                        borderColor: '#c1c1c1',
+                        borderSkipped: 'bottom'
+                    }
+                },
+                responsive: true,
+                title: {
+                    display: true,
+                },scales: {
+                    yAxes: [{
+                        ticks: {
+                        beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    };
+</script>
 @endsection

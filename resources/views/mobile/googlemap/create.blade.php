@@ -1,4 +1,4 @@
-@extends('main')
+@extends('mobile.main')
 
 @section('title','CreateData | ')
 
@@ -32,7 +32,7 @@
                   
                   <div class="row">
                     <div class="col-md-4 offset-md-4">
-                      <form action="{{url('googlemap')}}" method="post" enctype="multipart/form-data">
+                      <form action="{{url('googlemapk')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                           <table>Nama Pelapor</table>
@@ -49,20 +49,8 @@
                           @enderror
                         </div>
                         <div class="form-group">
-                            <label>Wilayah Samchick</label>
-                            <select name="cabang_id" class="form-control @error('cabang_id') is-invalid @enderror">
-                                <option value="">- Pilih -</option>
-                                @foreach ($cabangs as $item1)
-                                    <option value="{{ $item1->id }}" {{ old('cabang_id') == $item1->id ? 'selected' : null }}>{{ $item1->namacbg }}</option>
-                                @endforeach
-                            </select>
-                            @error('cabang_id')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
                           <table>Link Pengumpulan Tugas</table>
-                          <input type="text" name="link" class="form-control @error('link') is-invalid @enderror" value="{{old('link')}}" autofocus>
+                          <input type="file" name="link" class="form-control @error('link') is-invalid @enderror" value="{{old('link')}}" autofocus>
                           @error('link')
                           <div class="invalid-feedback">{{$message}}</div>
                           @enderror
