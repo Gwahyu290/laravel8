@@ -46,7 +46,7 @@ class NilaiHarianController extends Controller
         }
     $Agent = new Agent();
     if ($Agent->isMobile()) {
-        return view('nilaiharian.index', compact('harian'));
+        return view('mobile.nilaiharian.index', compact('harian'));
     } else {
         return view('nilaiharian.index', compact('harian'));
         }

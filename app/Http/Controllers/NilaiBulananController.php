@@ -36,7 +36,7 @@ class NilaiBulananController extends Controller
         $Agent = new Agent();
 
     if ($Agent->isMobile()) {
-        return view('mobile.ofthemoon.index',compact('best'));
+        return view('mobile.nilaibulanan.index',compact('best'));
     } else {
         return view('nilaibulanan.index',compact('best'));
         }

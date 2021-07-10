@@ -5,17 +5,23 @@ namespace App\Http\Controllers;
 use App\Cabang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Jenssegers\Agent\Agent as Agent;
 
 class CabangController extends Controller
 {
     public function data()
     {
+        $Agent = new Agent();
         $cabangs = DB::table('cabangs')->paginate(5);
         //dd($dkaryawan);
         //return $dkaryawan;
         //return view('dkaryawan.data',['dkaryawan'=> $dkaryawan]);
-        return view('cabang.data',compact('cabangs'));
-    }
+        if ($Agent->isMobile()) {
+            return view('mobile.cabang.data', compact('cabangs'));
+        } else {
+            return view('cabang.data', compact('cabangs'));
+            }
+        }
     public function add()
     {
         return view('cabang.add');

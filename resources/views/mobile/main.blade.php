@@ -1,157 +1,161 @@
 
 <!doctype html>
-<html lang="en">
+<html class="no-js" lang="">
 <head>
-	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="{{ asset('style2/assets/img/apple-icon.png')}}">
-	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('style2/assets/img/favicon.png')}}">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Samchick </title>
+    <meta name="description" content="Sufee Samchick - HTML5 Samchick Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title> @yield('title') Samchick Mobile</title>
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
 
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="{{ asset('style2/assets/css/normalize.css')}}">
+    <link rel="stylesheet" href="{{ asset('style2/assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('style2/assets/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('style2/assets/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{ asset('style2/assets/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('style2/assets/css/cs-skin-elastic.css')}}">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
+    <link rel="stylesheet" href="{{ asset('style2/assets/scss/style.css')}}">
 
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
-    <!-- Bootstrap core CSS     -->
-    <link href="{{ asset('style2/assets/css/bootstrap.min.css')}}" rel="stylesheet" />
-
-    <!-- Animation library for notifications   -->
-    <link href="{{ asset('style2/assets/css/animate.min.css')}}" rel="stylesheet"/>
-
-    <!--  Paper Dashboard core CSS    -->
-    <link href="{{ asset('style2/assets/css/paper-dashboard.css')}}" rel="stylesheet"/>
-
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="{{ asset('style2/assets/css/demo.css')}}" rel="stylesheet" />
-
-    <!--  Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
-    <link href="{{ asset('style2/assets/css/themify-icons.css')}}" rel="stylesheet">
 
 </head>
 <body>
+        <!-- Left Panel -->
 
-@yield('wrapper')
-<div class="wrapper">
-	<div class="sidebar" data-background-color="white" data-active-color="danger">
-    	<div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="" class="simple-text">
-                    {{ Auth::user()->name }}
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="{{url('home')}}">{{ Auth::user()->name }}
+
                 </a>
             </div>
 
-            <ul class="nav">
-                <li>
-                    <a href="{{url('user')}}">
-                        <p>Profil Karyawan</p>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <p>Tugas Harian</p>
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{url('instagramk')}}">Tugas Instagram</a></li>
-                        <li><a href="{{url('facebookk')}}">Tugas Facebook</a></li>
-                        <li><a href="{{url('googlemapk')}}">Tugas GoogleMaps</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <p>Tugas Mingguan</p>
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{url('artikelk')}}">Tugas Artikel</a></li>
-                        <li><a href="{{url('whatsappk')}}">Tugas WhatsApp</a></li>
-                        <li><a href="{{url('pamfletk')}}">Tugas Pamflet</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="user.html">
-                        <p>Karyawan Terbaik (admin)</p>
-                    </a>
-                </li>
-                <div class="navbar-header">
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
                     
-                    <a class="navbar-brand"  href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-    
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                    </a>
-                </div>
-            </ul>
-            </ul>
-    	</div>
-    </div>
+                    @if (auth()->user()->level=="Admin")
+                    
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-address-card"></i>Menu Manajer</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-user"></i><a href="{{url('user')}}">Profil Karyawan</a></li>
+                            <li><i class="fa fa-bookmark"></i><a href="{{url('cabang')}}">Data Wilayah</a></li>
+                        </ul>
+                    </li>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-briefcase"></i>Tugas Harian</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-instagram"></i><a href="{{url('instagram')}}">Tugas Instagram</a></li>
+                            <li><i class="menu-icon fa fa-facebook-f"></i><a href="{{url('facebook')}}">Tugas Share Facebook</a></li>
+                            <li><i class="menu-icon fa fa-google"></i><a href="{{url('googlemap')}}">Tugas Google Maps</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-briefcase"></i>Tugas Mingguan</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-file"></i><a href="{{url('artikel')}}">Tugas Artikel</a></li>
+                            <li><i class="menu-icon fa fa-whatsapp"></i><a href="{{url('whatsapp')}}">Tugas Share WhatsApp</a></li>
+                            <li><i class="menu-icon fa fa-file"></i><a href="{{url('pamflet')}}">Tugas Share Pamflet</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bell"></i>Menu Nilai</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-bar-chart"></i><a href="{{url('nilaiharian')}}">Penilaian Harian</a></li>
+                            <li><i class="fa fa-bar-chart"></i><a href="{{url('nilaimingguan')}}">Penilaian Mingguan</a></li>
+                            <li><i class="fa fa-bar-chart"></i><a href="{{url('nilaibulanan')}}">Total Nilai Bulanan</a></li>
+                            <li><i class="fa fa-bar-chart"></i><a href="{{url('ofthemoon')}}">Karyawan Terbaik</a></li>
+                        </ul>
+                    </li>
+                    @endif
+                    @if (auth()->user()->level=="Karyawan")
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-address-card"></i>Menu Karyawan</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-user"></i><a href="{{url('userk')}}">Profil Karyawan</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-briefcase"></i>Tugas Harian</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-instagram"></i><a href="{{url('instagramk')}}">Tugas Instagram</a></li>
+                            <li><i class="menu-icon fa fa-facebook-f"></i><a href="{{url('facebookk')}}">Tugas Share Facebook</a></li>
+                            <li><i class="menu-icon fa fa-google"></i><a href="{{url('googlemapk')}}">Tugas Google Maps</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-briefcase"></i>Tugas Mingguan</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-file"></i><a href="{{url('artikelk')}}">Tugas Artikel</a></li>
+                            <li><i class="menu-icon fa fa-whatsapp"></i><a href="{{url('whatsappk')}}">Tugas Share WhatsApp</a></li>
+                            <li><i class="menu-icon fa fa-file"></i><a href="{{url('pamfletk')}}">Tugas Share Pamflet</a></li>
+                        </ul>
+                    </li>
+                    @endif
 
-    <div class="main-panel">
-		<nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar bar1"></span>
-                        <span class="icon-bar bar2"></span>
-                        <span class="icon-bar bar3"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Samchick</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                
-                    </ul>
+                   <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand"  href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
 
-                </div>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                </a>
             </div>
+                </ul>
+            </div><!-- /.navbar-collapse -->
         </nav>
-        @yield('content')
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                    </div>
+    </aside><!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    
                 </div>
             </div>
-        </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+        @yield('breadcrumbs')
+        @yield('content')
+       
+         
+    <!-- Right Panel -->
 
 
-    </div>
-</div>
+    <script src="{{ asset('style2/assets/js/vendor/jquery-2.1.4.min.js')}}"></script>
+    <script src="{{ asset('style2/assets/js/popper.min.js')}}"></script>
+    <script src="{{ asset('style2/assets/js/plugins.js')}}"></script>
+    <script src="{{ asset('style2/assets/js/main.js')}}"></script>
 
 
 </body>
-
-    <!--   Core JS Files   -->
-    <script src="{{ asset('style2/assets/js/jquery-1.10.2.js')}}" type="text/javascript"></script>
-	<script src="{{asset('style2/assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
-
-	<!--  Checkbox, Radio & Switch Plugins -->
-	<script src="{{ asset('style2/assets/js/bootstrap-checkbox-radio.js')}}"></script>
-
-	<!--  Charts Plugin -->
-	<script src="{{ asset('style2/assets/js/chartist.min.js')}}"></script>
-
-    <!--  Notifications Plugin    -->
-    <script src="{{ asset('style2/assets/js/bootstrap-notify.js')}}"></script>
-
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
-
-    <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
-	<script src="{{ asset('style2/assets/js/paper-dashboard.js')}}"></script>
-
-	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-	<script src="{{ asset('style2/assets/js/demo.js')}}"></script>
-
-
 </html>

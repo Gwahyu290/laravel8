@@ -46,7 +46,7 @@ class NilaiMingguanController extends Controller
         }
     $Agent = new Agent();
     if ($Agent->isMobile()) {
-        return view('nilaimingguan.index', compact('mingguan'),);
+        return view('mobile.nilaimingguan.index', compact('mingguan'),);
     } else {
         return view('nilaimingguan.index', compact('mingguan'),);
         }
