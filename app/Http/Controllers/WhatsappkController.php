@@ -68,4 +68,9 @@ class WhatsappkController extends Controller
             $whatsapp->save();
             return redirect('whatsappk')->with('status', 'Laporan Share Whatsapp Berhasil di Serahkan!!!');
     }
+    public function destroy($id,Whatsapp $whatsapp)
+    {
+        $whatsapp->where('id',$id)->delete();
+      return redirect('whatsappk')->with('status', 'Data Berhasil di Hapus!!!');
+    }
 }

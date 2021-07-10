@@ -45,8 +45,6 @@ route::resource('ofthemoon','OfthemoonController');
 route::resource('nilaibulanan','NilaiBulananController');
 route::resource('ofthemoonk','OfthemoonkController');
 
-route::resource('profilkaryawan','ProfilController');
-route::resource('profilkaryawank','ProfilkController');
 route::resource('reportk', 'ReportkController');
 route::resource('facebookk', 'FacebookkController');
 route::resource('artikelk', 'ArtikelkController');
@@ -57,7 +55,7 @@ route::resource('googlemapk', 'GMapskController');
 route::resource('nilaiharian', 'NilaiHarianController');
 route::resource('nilaimingguan', 'NilaiMingguanController');
 route::resource('user','UserController');
-route::resource('profil','ProfilController');
+route::resource('userk','UserkController');
 
 //search
 route::post('instagram','InstagramController@index');
@@ -86,6 +84,11 @@ route::post('nilaiharian','NilaiHarianController@index');
 
 //delete
 route::get('instagramk/{id}/delete','InstagramkController@destroy');
+route::get('facebookk/{id}/delete','FacebookkController@destroy');
+route::get('googlemapk/{id}/delete','GmapskController@destroy');
+route::get('artikelk/{id}/delete','ArtikelkController@destroy');
+route::get('whatsappk/{id}/delete','WhatsappkController@destroy');
+route::get('pamfletk/{id}/delete','PamfletkController@destroy');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

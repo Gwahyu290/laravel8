@@ -66,4 +66,9 @@ public function create()
             $pamflet->save();
             return redirect('pamfletk')->with('status', 'Laporan Share Pamflet Berhasil di Serahkan!!!');
     }
+    public function destroy($id,Pamflet $pamflet)
+    {
+        $pamflet->where('id',$id)->delete();
+      return redirect('pamfletk')->with('status', 'Data Berhasil di Hapus!!!');
+    }
 }

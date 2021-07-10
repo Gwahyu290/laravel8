@@ -49,4 +49,9 @@ class GMapskController extends Controller
 
         return redirect('googlemapk')->with('status', 'Laporan Google Views Berhasil di Serahkan!!!');
     }
+    public function destroy($id,Googlemap $googlemap)
+    {
+        $googlemap->where('id',$id)->delete();
+      return redirect('googlemapk')->with('status', 'Data Berhasil di Hapus!!!');
+    }
 }

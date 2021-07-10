@@ -49,4 +49,9 @@ class ArtikelkController extends Controller
             $artikel->save();
             return redirect('artikelk')->with('status', 'Laporan Artikel Berhasil di Serahkan!!!');
     }
+    public function destroy($id,Artikel $artikel)
+    {
+        $artikel->where('id',$id)->delete();
+      return redirect('artikelk')->with('status', 'Data Berhasil di Hapus!!!');
+    }
 }

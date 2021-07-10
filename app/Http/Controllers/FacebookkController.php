@@ -47,4 +47,9 @@ class FacebookkController extends Controller
 
         return redirect('facebookk')->with('status', 'Laporan Repost Facebook Berhasil di Serahkan!!!');
     }
+    public function destroy($id,Facebook $facebook)
+    {
+        $facebook->where('id',$id)->delete();
+      return redirect('facebookk')->with('status', 'Data Berhasil di Hapus!!!');
+    }
 }
