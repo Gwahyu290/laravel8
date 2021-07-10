@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 
 class AccakunController extends Controller
@@ -13,9 +13,17 @@ class AccakunController extends Controller
      */
     public function index()
     {
-        return view('accakun.index');
+        $data = DB::select("select * from users where status = 0");
+        return view('accakun.index',compact('data'));
     }
-
+    public function accProcess(Request $request, $id)
+    {
+        DB::table('users')->where('id', $id)->update([
+            'cabang_id' => $request->cabang,
+            'status'=>1
+        ]);
+        return redirect('accakun')->with('status', 'Karyawan telah diverifikasi!!!');
+    }
     /**
      * Show the form for creating a new resource.
      *

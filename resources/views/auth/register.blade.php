@@ -24,19 +24,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="level" class="col-md-4 col-form-label text-md-right">{{ __('Level') }}</label>
-                            <div class="col-md-6">
-                                <select name="level" class="form-control @error('name') is-invalid @enderror" placeholder="Masukan Tipe Lapak" required/>
-                                    <option value="Karyawan">Karyawan</option>
-                                </select>
-                                @error('level')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+    
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -67,7 +55,7 @@
                             <label for="no_tlpn" class="col-md-4 col-form-label text-md-right">{{ __('No Telepon') }}</label>
 
                             <div class="col-md-6">
-                                <input id="no_tlpn" type="text" class="form-control @error('no_tlpn') is-invalid @enderror" name="no_tlpn" value="{{ old('no_tlpn') }}" required autocomplete="no_tlpn" autofocus placeholder="Masukkan No tlpn">
+                                <input id="no_tlpn" type="number" class="form-control @error('no_tlpn') is-invalid @enderror" name="no_tlpn" value="{{ old('no_tlpn') }}" required autocomplete="no_tlpn" autofocus placeholder="Masukkan No tlpn">
 
                                 @error('no_tlpn')
                                     <span class="invalid-feedback" role="alert">

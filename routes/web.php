@@ -93,5 +93,9 @@ route::get('artikelk/{id}/delete','ArtikelkController@destroy');
 route::get('whatsappk/{id}/delete','WhatsappkController@destroy');
 route::get('pamfletk/{id}/delete','PamfletkController@destroy');
 
+//acc akun
+route::post('accakun/{id}','AccakunController@accProcess');
+
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
