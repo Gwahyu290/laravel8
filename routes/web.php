@@ -45,6 +45,7 @@ route::resource('ofthemoon','OfthemoonController');
 route::resource('nilaibulanan','NilaiBulananController');
 route::resource('ofthemoonk','OfthemoonkController');
 
+route::resource('accakun', 'AccakunController');
 route::resource('reportk', 'ReportkController');
 route::resource('facebookk', 'FacebookkController');
 route::resource('artikelk', 'ArtikelkController');
