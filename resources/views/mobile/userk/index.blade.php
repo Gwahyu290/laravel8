@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Menu Manajer</h1>
+                        <h1>Menu Karyawan</h1>
                     </div>
                 </div>
             </div>			
@@ -29,41 +29,6 @@
                		</div>
                	</div>
                	<div class="card-body table-responsive">
-                 <form role="form" action="{{ url('userk')}}" method="post" enctype="multipart/form-data">
-              {{ csrf_field() }}
-              <div class="col-md-2 pr-1">
-                      <div class="form-group">
-                        <label>Nama Karyawan</label>
-                        <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Nama Karayawan" name="q" >
-                      </div>
-              </div>
-              <div class="col-md-2 pr-1">
-                <label>Alamat</label>
-                <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Alamat" name="q" >
-              </div>
-              <div class="col-md-2 pr-1">
-               <label> Wilayah Samchick</label>
-                <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="" name="q" >        
-              </div>
-              <div class="col-md-2 pr-1">
-                
-              </div>
-              <div class="col-md-2 pr-1">
-                     
-              </div>
-              <div class="col-md-1 pr-1">
-                      <div class="form-group">
-                        <label style="color:white;">,l</label>
-                       <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"> Search </i></button>
-                      </div>
-              </div>       
-              <div class="col-md-1 pr-1">
-                      <div class="form-group">
-                        <label style="color:white;">,l</label>
-                       <br><a class="btn btn-danger" href="{{ url('userk')}}"><i class="fa fa-refresh"> Refresh </i></a>
-                      </div>
-              </div>
-              </form>
                		<table class="table table-bordered">
                		<thead>
                			<tr class="text-center">

@@ -23,8 +23,13 @@ class CabangController extends Controller
             }
         }
     public function add()
-    {
-        return view('cabang.add');
+    {   
+        $Agent = new Agent();
+        if ($Agent->isMobile()) {
+            return view('mobile.cabang.add');
+        } else {
+            return view('cabang.add');
+            }
     }
     public function addProcess(Request $request)
     {

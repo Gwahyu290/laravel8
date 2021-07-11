@@ -41,6 +41,13 @@
                           <div class="invalid-feedback">{{$message}}</div>
                           @enderror
                         </div>
+                        <div class="form-group">
+                          <table>Alamat Samchick</table>
+                          <textarea type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" value="{{old('alamat')}}" autofocus></textarea>
+                          @error('alamat')
+                          <div class="invalid-feedback">{{$message}}</div>
+                          @enderror
+                        </div>
                         <button type="submit" class="btn btn-success">Simpan</button>
                       </form>
                     </div>
