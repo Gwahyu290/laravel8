@@ -30,12 +30,15 @@ class CabangController extends Controller
     {
         $request->validate([
             'namacbg' => 'required|min:3',
+            'alamat' => 'required|min:3'
         ],[
-            'namacbg.required' => 'Wilayah Samchick tidak boleh kosong!!!'
+            'namacbg.required' => 'Wilayah Samchick tidak boleh kosong!!!',
+            'alamat.required' => 'Alamat Samchick tidak boleh kosong!!!'
         ]);
 
         DB::table('cabangs')->insert([
-            'namacbg' => $request->namacbg
+            'namacbg' => $request->namacbg,
+            'alamat' => $request->alamat
         ]);
         return redirect('cabang')->with('status', 'Wilayah Samchick Berhasil Ditambah!!!');
     }
@@ -48,11 +51,14 @@ class CabangController extends Controller
     {
         $request->validate([
             'namacbg' => 'required|min:3',
+            'alamat' => 'required|min:3'
         ],[
-            'namacbg.required' => 'Wilayah Samchick tidak boleh kosong!!!'
+            'namacbg.required' => 'Wilayah Samchick tidak boleh kosong!!!',
+            'alamat.required' => 'Alamat Samchick tidak boleh kosong!!!'
         ]);
         DB::table('cabangs')->where('id', $id)->update([
-            'namacbg' => $request->namacbg
+            'namacbg' => $request->namacbg,
+            'alamat' => $request->alamat
         ]);
         return redirect('cabang')->with('status', 'Wilayah Samchick Berhasil update!!!');
     }
