@@ -10,7 +10,17 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
+                            @php if(Session::get('salah')){ @endphp 
+                                            <div class="alert alert-danger">
+                                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+                                                Email dan Password tidak sesuai 
+                                </div> @php } @endphp
+                            @php if(Session::get('verif')){ @endphp 
+                                            <div class="alert alert-warning">
+                                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+                                                Akun anda belum di verifikasi, silahkan hubungi admin agar diverifikasi
+                                </div> @php } @endphp
+   
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 

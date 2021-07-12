@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use DB;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -22,14 +22,20 @@ class LoginController extends Controller
     |
     */
 
-//     public function login(Request $request)
-//    {
-//    		// dd($request->all());
-//    	if (Auth::attempt($request->only('email','password','status'))){
-//         return redirect('/home');
-//    	}
-//    	return redirect('/');
-//    }
+    public function login(Request $request)
+   {
+   		// dd($request->all());
+   	if (Auth::attempt($request->only('email','password','status'))){
+        $pass = md5($request->password);
+        $cek = DB::select("select * from users where email='$request->email' AND password='$pass' AND status='1'");
+        if(count($cek)>0){
+            return redirect('/home');
+        }else{
+            return redirect('/')->with('verif','.');
+        }
+   	}
+   	return redirect('/')->with('salah','.');
+   }
 
     use AuthenticatesUsers;
 
