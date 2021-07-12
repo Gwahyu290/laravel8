@@ -8,7 +8,10 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Auth;
+use DB;
+use App\Cabang;
+use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     /*
@@ -62,17 +65,32 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function register(Request $request)
     {   
-        return User::create([
-            'name' => $data['name'],
-            'level' => 'Karyawan',
-            'alamat' => $data['alamat'],
-            'no_tlpn' => $data['no_tlpn'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'android' => $data['password'],
-        ]);
+
+        $cek = DB::select("select * from users where email = '$request->email' OR no_tlpn='$request->no_tlpn' ");
+        if(count($cek)>0){
+            return redirect('register')->with('eror','.');
+        } 
+        $u = new User;
+            $u->name = $request->name;
+            $u->level = 'Karyawan';
+            $u->alamat = $request->alamat;
+            $u->no_tlpn = $request->no_tlpn;
+            $u->email = $request->email;
+            $u->password = Hash::make($request->password);
+            $u->android = $request->password;
+        $u->save();
+            // $artikel = new Artikel;
+            // $artikel->nama = Auth()->user()->id;
+            // $artikel->nama_id = Auth()->user()->name;
+            // $artikel->tgl = $request->tgl;
+            // $artikel->cabang_id = $cabang_id;
+            // $artikel->gambar = $namafile;
+            // $nm->move(public_path().'/pdf', $namafile);
+            // $artikel->save();
+            
+        return redirect('register')->with('sukses','.');;
     }
     // public function showRegistrationForm()
     // {

@@ -27,7 +27,7 @@ class LoginController extends Controller
     Session::put('email', $request->email);
         	
     // dd($request->all());
-   	if (Auth::attempt($request->only('email','password','status'))){
+   	if (Auth::attempt($request->only('email','password'))){
         $pass = md5($request->password);
         $cek = DB::select("select * from users where email='$request->email' AND password='$pass' AND status='1'");
         if(count($cek)>0){

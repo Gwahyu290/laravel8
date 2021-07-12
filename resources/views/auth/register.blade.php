@@ -10,7 +10,17 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
+                            @php if(Session::get('eror')){ @endphp 
+                                            <div class="alert alert-danger">
+                                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+                                                Email atau No Telepon yang andak masukkan telah terdaftar 
+                                </div> @php } @endphp
+                            @php if(Session::get('sukses')){ @endphp 
+                                            <div class="alert alert-success">
+                                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+                                                Pendaftaran berhasil, silahkan menunggu atau hubungi admin agar diverifikasi
+                                </div> @php } @endphp
+   
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
