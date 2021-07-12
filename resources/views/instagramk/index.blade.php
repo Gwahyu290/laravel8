@@ -42,7 +42,8 @@
                				<th>No</th>
                       <th>Tanggal Laporan</th>
                       <th>Wilayah Samchick</th>
-                      <th>Laporan Repost Insatgram</th>
+                      <th>Link Insatgram</th>
+                      <th>Gambar Instagram</th>
                       <th>Nilai Tugas</th>
                       <th>Action</th>
                			</tr>
@@ -54,7 +55,13 @@
                       <td class="text-center">{{ $item->tgl }}</td>
                       <td class="text-center">{{ $item->cabang->namacbg}}</td>
                       <td class="text-center">
-                      <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Tugas</a></td>
+                        <a href="{{ asset('ig/'. $item->gambarig) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar 1,</a>
+                        <a href="{{ asset('ig/'. $item->gambarig1) }}" target="_blank" rel="noopener noreferrer">Gambar 2,</a>
+                        <a href="{{ asset('ig/'. $item->gambarig2) }}" target="_blank" rel="noopener noreferrer">Gambar 3</a></td>
+                      <td class="text-center">
+                      <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Link 1,</a>
+                      <a href="{{ $item->link1 }}" target="_blank" rel="noopener noreferrer">Link 2,</a>
+                      <a href="{{ $item->link2 }}" target="_blank" rel="noopener noreferrer">Link 3</a></td>
                       <td class="text-center">{{ $item->nilaiins}}</td>
                       <td class="text-center">
                       <a href="{{url('instagramk/'.$item->id.'/delete')}}">

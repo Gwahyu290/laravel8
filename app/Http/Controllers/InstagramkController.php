@@ -38,12 +38,27 @@ class InstagramkController extends Controller
             $cabang_id = $c->cabang_id;
             }
         // return $request;    
+        $nm = $request->gambarig;
+        $nm1 = $request->gambarig1;
+        $nm2 = $request->gambarig2;
+            $namafile = $nm->getClientOriginalName();
+            $namafile1 = $nm1->getClientOriginalName();
+            $namafile2 = $nm2->getClientOriginalName();
+
             $instagram = new Instagram;
             $instagram->nama = Auth()->user()->id;
             $instagram->nama_id = Auth()->user()->name;
             $instagram->tgl = $request->tgl;
             $instagram->cabang_id = $cabang_id;
             $instagram->link = $request->link;
+            $instagram->gambarig = $namafile;
+            $nm->move(public_path().'/ig', $namafile);
+            $instagram->link1 = $request->link1;
+            $instagram->gambarig1 = $namafile1;
+            $nm1->move(public_path().'/ig', $namafile1);
+            $instagram->link2 = $request->link2;
+            $instagram->gambarig2 = $namafile2;
+            $nm2->move(public_path().'/ig', $namafile2);
             $instagram->save();
 
         return redirect('instagramk')->with('status', 'Laporan Repost Instagram Berhasil di Serahkan!!!');
