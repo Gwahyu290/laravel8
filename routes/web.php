@@ -59,7 +59,6 @@ route::post('nilaiharian','NilaiHarianController@index');
 route::post('nilaibulanan','NilaiBulananController@index');
 route::post('ofthemoon','OfthemoonController@index');
 
-route::post('instagramk','InstagramkController@index');
 
 //search
 route::post('instagram','InstagramController@index');

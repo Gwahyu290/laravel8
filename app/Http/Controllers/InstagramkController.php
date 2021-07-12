@@ -56,7 +56,7 @@ class InstagramkController extends Controller
         }
     }
     public function store(Request $request)
-    {  if(auth()->user()->level=="Admin"){
+    {  
        $request->validate([
             'tgl' => 'required|min:3',
             'link' => 'required',
@@ -66,7 +66,7 @@ class InstagramkController extends Controller
             'gambarig.required' => 'Gambar 1 tidak boleh kosong!!!',
             'link.required' => 'Link Pengumpulan tugas 1 tidak boleh kosong!!!'
         ]);
-
+        
         $cabang_id = Auth()->user()->id;
         $cabang = DB::select("select * from users where id='$cabang_id'");
         foreach ($cabang as $c){
@@ -87,7 +87,7 @@ class InstagramkController extends Controller
             $instagram->save();
 
         return redirect('instagramk')->with('status', 'Laporan Repost Instagram Berhasil di Serahkan!!!');
-        }
+        
     }
     public function destroy($id,Instagram $instagram)
     {
