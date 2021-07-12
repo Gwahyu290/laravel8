@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','updated_at','created_at',
     ];
 
     /**
@@ -38,7 +38,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
     public function cabang()
     {
         return $this->belongsTo('App\Cabang');

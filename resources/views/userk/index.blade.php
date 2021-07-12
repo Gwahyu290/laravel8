@@ -36,7 +36,6 @@
                				<th>Nama Karyawan</th>
                       <th>Alamat</th>
                       <th>No Ponsel</th>
-                      <th>Wilayah Samchick</th>
                				<th>Aksi</th>
                			</tr>
                		</thead>
@@ -47,14 +46,13 @@
                       <td class="text-center">{{ $item->name}}</td>
                       <td class="text-center">{{ $item->alamat }}</td>
                       <td class="text-center">{{ $item->no_tlpn }}</td>
-                      <td class="text-center">{{ $item->cabang->namacbg}}</td>
                     
                       <td class="text-center">
                         <a href="{{url('user/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">
                           <i class="fa fa-pencil"> Edit Profil</i>
                         </a>
-                        <a href="{{url('user/'.$item->id.'/edit')}}" class="btn btn-warning btn-sm">
-                          <i class="fa fa-info"> Detail</i>
+                        <a href="{{url('userk/'.$item->id)}}" class="btn btn-warning btn-sm">
+                          <i class="fa fa-eye"> Detail</i>
                         </a>
                       </td>
                       

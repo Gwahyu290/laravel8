@@ -16,14 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login',['title'=> 'Samchick']);
 });
-
-route::get('skaryawan','SkaryawanController@data');
-route::get('skaryawan/add','SkaryawanController@add');
-route::post('skaryawan','SkaryawanController@addProcess');
-route::get('skaryawan/edit/{id}','SkaryawanController@edit');
-route::patch('skaryawan/{id}','SkaryawanController@editProcess');
-route::delete('skaryawan/{id}','SkaryawanController@delete');
-
 route::get('cabang','CabangController@data');
 route::get('cabang/add','CabangController@add');
 route::post('cabang','CabangController@addProcess');
@@ -31,9 +23,6 @@ route::get('cabang/edit/{id}','CabangController@edit');
 route::patch('cabang/{id}','CabangController@editProcess');
 route::delete('cabang/{id}','CabangController@delete');
 
-route::resource('dkaryawan', 'UserController');
-route::resource('dkaryawank', 'DkaryawankController');
-route::resource('report', 'ReportController');
 route::resource('facebook', 'FacebookController');
 route::resource('artikel', 'ArtikelController');
 route::resource('whatsapp', 'WhatsappController');
@@ -46,7 +35,6 @@ route::resource('nilaibulanan','NilaiBulananController');
 route::resource('ofthemoonk','OfthemoonkController');
 
 route::resource('accakun', 'AccakunController');
-route::resource('reportk', 'ReportkController');
 route::resource('facebookk', 'FacebookkController');
 route::resource('artikelk', 'ArtikelkController');
 route::resource('instagramk', 'InstagramkController');

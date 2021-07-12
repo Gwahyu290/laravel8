@@ -57,7 +57,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-briefcase"></i>Tugas Harian</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-instagram"></i><a href="{{url('instagram')}}">Tugas Instagram</a></li>
-                            <li><i class="menu-icon fa fa-facebook-f"></i><a href="{{url('facebook')}}">Tugas Share Facebook</a></li>
+                            <li><i class="menu-icon fa fa-facebook-f"></i><a href="{{url('facebook')}}">Tugas Facebook</a></li>
                             <li><i class="menu-icon fa fa-google"></i><a href="{{url('googlemap')}}">Tugas Google Maps</a></li>
                         </ul>
                     </li>
@@ -65,8 +65,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-briefcase"></i>Tugas Mingguan</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-file"></i><a href="{{url('artikel')}}">Tugas Artikel</a></li>
-                            <li><i class="menu-icon fa fa-whatsapp"></i><a href="{{url('whatsapp')}}">Tugas Share WhatsApp</a></li>
-                            <li><i class="menu-icon fa fa-file"></i><a href="{{url('pamflet')}}">Tugas Share Pamflet</a></li>
+                            <li><i class="menu-icon fa fa-whatsapp"></i><a href="{{url('whatsapp')}}">Tugas WhatsApp</a></li>
+                            <li><i class="menu-icon fa fa-file"></i><a href="{{url('pamflet')}}">Tugas Pamflet</a></li>
                         </ul>
                     </li>
                     
@@ -91,7 +91,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-briefcase"></i>Tugas Harian</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-instagram"></i><a href="{{url('instagramk')}}">Tugas Instagram</a></li>
-                            <li><i class="menu-icon fa fa-facebook-f"></i><a href="{{url('facebookk')}}">Tugas Share Facebook</a></li>
+                            <li><i class="menu-icon fa fa-facebook-f"></i><a href="{{url('facebookk')}}">Tugas Facebook</a></li>
                             <li><i class="menu-icon fa fa-google"></i><a href="{{url('googlemapk')}}">Tugas Google Maps</a></li>
                         </ul>
                     </li>
@@ -99,8 +99,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-briefcase"></i>Tugas Mingguan</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-file"></i><a href="{{url('artikelk')}}">Tugas Artikel</a></li>
-                            <li><i class="menu-icon fa fa-whatsapp"></i><a href="{{url('whatsappk')}}">Tugas Share WhatsApp</a></li>
-                            <li><i class="menu-icon fa fa-file"></i><a href="{{url('pamfletk')}}">Tugas Share Pamflet</a></li>
+                            <li><i class="menu-icon fa fa-whatsapp"></i><a href="{{url('whatsappk')}}">Tugas WhatsApp</a></li>
+                            <li><i class="menu-icon fa fa-file"></i><a href="{{url('pamfletk')}}">Tugas Pamflet</a></li>
                         </ul>
                     </li>
                     @endif

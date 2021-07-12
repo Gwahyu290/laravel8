@@ -40,6 +40,11 @@ class UserkController extends Controller
         return view('userk.create', compact('cabangs'));
         }
     }
+    public function show($id)
+    {
+        $user = User::find($id);
+        return view('userk.show', compact('user'));
+    }
 
     public function edit(User $user)
     {

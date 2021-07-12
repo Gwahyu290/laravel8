@@ -23,7 +23,7 @@
                			<strong>Edit Profil Karyawan</strong>
                		</div>
                		<div class="pull-right">
-               			<a href="{{ url('user')}}" class="btn btn-success btn-sm">
+               			<a href="{{ url('userk')}}" class="btn btn-success btn-sm">
                				<i class="fa fa-undo"></i> Kembali
                			</a>
                		</div>
