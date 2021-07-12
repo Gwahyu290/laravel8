@@ -44,7 +44,7 @@ if(auth()->user()->level=="Karyawan"){
 // agent detection influences the view storage path
 if ($Agent->isMobile()) {
     // you're a mobile device
-        return view('mobile.home');
+        return view('mobile.home',compact('data'));
 } else {
     // you're a desktop device, or something similar
         return view('home',compact('data'));

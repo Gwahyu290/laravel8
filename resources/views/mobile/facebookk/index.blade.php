@@ -92,14 +92,10 @@
                       <td class="text-center">{{ $item->tgl }}</td>
                       <td class="text-center">{{ $item->cabang->namacbg}}</td>
                       <td class="text-center">
-                      <a href="{{ asset('fb/'. $item->gambarfb) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar 1</a>
-                      <a href="{{ asset('fb/'. $item->gambarfb1) }}" target="_blank" rel="noopener noreferrer">Gambar 2</a>
-                      <a href="{{ asset('fb/'. $item->gambarfb2) }}" target="_blank" rel="noopener noreferrer">Gambar 3</a></td>
+                      <a href="{{ asset('fb/'. $item->gambarfb) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar</a></td>
                       <td class="text-center">
-                        <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Tugas 1,</a>
-                        <a href="{{ $item->link1 }}" target="_blank" rel="noopener noreferrer">Tugas 2,</a>
-                        <a href="{{ $item->link2 }}" target="_blank" rel="noopener noreferrer">Tugas 3</a></td>
-                      <td class="text-center">{{ $item->nilaifb }}</td>
+                      <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Tugas</a>
+                      <td class="text-center">{{ $item->nilaifb}}</td>
                       <td class="text-center">
                         <a href="{{url('facebookk/'.$item->id.'/delete')}}">
                             <button class="btn btn-danger btn-sm" onclick="return confirm('Tugas yang dibatalkan tidak dapat dikirim kembali, apakah anda yakin???')">

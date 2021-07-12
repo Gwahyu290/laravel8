@@ -161,7 +161,7 @@
                            <table class="table table-bordered">
                            <thead>
                                <tr class="text-center">
-                                <th>No</th>
+                               <th>No</th>
                                <th>Bulan</th>
                                 <th>Tahun</th>
                                 <th>Nilai Harian</th>
@@ -175,7 +175,7 @@
                            @endphp
                            @foreach ($data as $d)
                            <tr>
-                            <td>{{$i++}}</td>
+                           <td>{{$i++}}</td>
                            <td>{{$d->nmbulan}}</td>
                            <td>{{$d->tahun}}</td>
                            <td>{{$d->harian}}</td>
