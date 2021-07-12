@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Menu Karyawan</h1>
+                        <h1>Menu Manajer</h1>
                     </div>
                 </div>
             </div>			
@@ -29,38 +29,47 @@
                		</div>
                	</div>
                	<div class="card-body table-responsive">
-               		<table class="table table-bordered">
-               		<thead>
-               			<tr class="text-center">
-               				<th>No</th>
-               				<th>Nama Karyawan</th>
-                      <th>Email</th>
-                      <th>Alamat</th>
-                      <th>No Ponsel</th>
-                      <th>Wilayah Samchick</th>
-               				<th>Aksi</th>
-               			</tr>
-               		</thead>
-               		<tbody>
-                     @foreach ($users as $key => $item)
-                    <tr>
-                      <td class="text-center">{{ $users->firstItem()+ $key }}</td>
-                      <td class="text-center">{{ $item->name}}</td>
-                      <td class="text-center">{{ $item->email }}</td>
-                      <td class="text-center">{{ $item->alamat }}</td>
-                      <td class="text-center">{{ $item->no_tlpn }}</td>
-                      <td class="text-center">{{ $item->cabang->namacbg}}</td>
-                    
-                      <td class="text-center">
+               <div class="row">
+                <div class="col-md-8 offset-md-2">
+
+                    <table class="table table-bordered">
+                        <tbody>
+                          @foreach ($users as $key => $item)
+                            <tr>
+                                <th>Nama</th>
+                                <td>{{$item->name}}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{$item->email}}</td>
+                            </tr>
+                            <tr>
+                                <th>No Ponsel</th>
+                                <td>{{$item->no_tlpn}}</td>
+                            </tr>
+                            <tr>
+                                <th>Alamat Rumah</th>
+                                <td>{{$item->alamat}}</td>
+                            </tr>
+                            <tr>
+                                <th>Wilayah Samchick</th>
+                                <td>{{$item->cabang->namacbg}}</td>
+                            </tr>
+                            <tr>
+                                <th>Alamat Samchick</th>
+                                <td>{{$item->cabang->alamat}}</td>
+                            </tr>
+                            @endforeach   
+                        </tbody>
+                    </table>
+                    <td class="text-center">
                         <a href="{{url('user/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">
                           <i class="fa fa-pencil"> Edit Profil</i>
                         </a>
                       </td>
-                      
-                    </tr>
-                    @endforeach 
-                  </tbody>
-               </table>
+                </div>
+
+          </div>
                	</div>
                </div>
 

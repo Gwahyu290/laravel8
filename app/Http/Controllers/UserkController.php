@@ -48,10 +48,16 @@ class UserkController extends Controller
 
     public function edit(User $user)
     {
+        $Agent = new Agent();
+    
         $cabangs = Cabang::all();
-        return view('userk.edit', compact('user','cabangs'));
-    }
-
+    
+        if ($Agent->isMobile()) {
+            return view('mobile.userk.edit', compact('cabangs'));
+        } else {
+            return view('userk.edit', compact('cabangs'));
+            }
+        }
     /**
      * Update the specified resource in storage.
      *

@@ -27,7 +27,7 @@
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
-               			<strong>Laporan Artikel</strong>
+               			<strong>Tugas Artikel</strong>
                		</div>
                	</div>
                	<div class="card-body table-responsive">
@@ -73,6 +73,12 @@
                        <br><a class="btn btn-danger" href="{{ url('artikel')}}"><i class="fa fa-refresh"> Refresh </i></a>
                       </div>
               </div>
+              <div class="col-md-1 pr-1">
+                <div class="form-group">
+                  <label style="color:white;">,l</label>
+                 <br><i> Nilai: 1 - 10 </i></button>
+                </div>
+        </div>
               </form>
                		<table class="table table-bordered">
                		<thead>

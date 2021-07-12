@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group">
                           <table>Alamat Samchick</table>
-                          <textarea type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" value="{{old('alamat')}}" autofocus></textarea>
+                          <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" value="{{old('alamat')}}" autofocus>
                           @error('alamat')
                           <div class="invalid-feedback">{{$message}}</div>
                           @enderror

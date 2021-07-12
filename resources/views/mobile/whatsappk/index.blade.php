@@ -36,14 +36,53 @@
                   </div>
                	</div>
                	<div class="card-body table-responsive">
+                  <form role="form" action="{{ url('whatsapp')}}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="col-md-2 pr-1">
+                            <div class="form-group">
+                              <label>Dari</label>
+                              <input type="date" class="form-control"  placeholder="06/02/2021" name="tgl1" >
+                            </div>
+                    </div>
+                    <div class="col-md-2 pr-1">
+                            <div class="form-group">
+                              <label>Sampai</label>
+                              <input type="date" class="form-control"  placeholder="06/02/2021" name="tgl2" >
+                            </div>
+                    </div>
+                    <div class="col-md-2 pr-1">
+                            <div class="form-group">
+                              <label>Urutkan Berdasarkan </label>
+                              <select class="form-control" name="orderBy"   style="height:35px;">
+                              <option value="">Semua</option>
+                              <option value="0">Nilai Terendah</option>
+                              <option value="1">Nilai Tertinggi</option>
+                              </select>
+                            </div>
+                    </div>
+                    <div class="col-md-1 pr-1">
+                            <div class="form-group">
+                              <label style="color:white;">,l</label>
+                             <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"> Search </i></button>
+      
+                            </div>
+                    </div>       
+                    <div class="col-md-1 pr-1">
+                            <div class="form-group">
+                              <label style="color:white;">,l</label>
+                             <br><a class="btn btn-danger" href="{{ url('whatsapp')}}"><i class="fa fa-refresh"> Refresh </i></a>
+                            </div>
+                    </div>
+                    </form>
                		<table class="table table-bordered">
                		<thead>
                			<tr class="text-center">
                				<th>No</th>
                       <th>Tanggal Laporan</th>
                       <th>Wilayah Samchick</th>
-                      <th>File Tugas Share WhatsApp</th>
+                      <th>Tugas WhatsApp</th>
                       <th>Nilai Tugas</th>
+                      <th>Action</th>
                			</tr>
                		</thead>
                		<tbody>
@@ -53,8 +92,14 @@
                       <td class="text-center">{{ $item->tgl }}</td>
                       <td class="text-center">{{ $item->cabang->namacbg}}</td>
                       <td class="text-center">
-                      <a href="{{ asset('wa/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Download File</a></td>
+                      <a href="{{ asset('wa/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar</a></td>
                       <td class="text-center">{{ $item->nilaiwa }}</td>
+                      <td class="text-center">
+                        <a href="{{url('whatsappk/'.$item->id.'/delete')}}">
+                            <button class="btn btn-danger btn-sm" onclick="return confirm('Tugas yang dibatalkan tidak dapat dikirim kembali, apakah anda yakin???')">
+                                <i class="fa fa-times"> Batalkan Kirim</i>
+                            </button></a>
+                        </td>
                     </tr>
                     @endforeach 
                   </tbody>

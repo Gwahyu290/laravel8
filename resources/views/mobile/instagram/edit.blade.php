@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Menu Jobdesk</h1>
+                        <h1>Tugas Harian</h1>
                     </div>
                 </div>
             </div>			
@@ -20,7 +20,7 @@
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
-               			<strong>Edit Status Laporan IG</strong>
+               			<strong>Nilai Tugas Instagram</strong>
                		</div>
                		<div class="pull-right">
                			<a href="{{ url('instagram')}}" class="btn btn-success btn-sm">
