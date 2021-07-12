@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use DB;
 use Illuminate\Http\Request;
 use Auth;
-
+use Session;
 class LoginController extends Controller
 {
     /*
@@ -24,11 +24,14 @@ class LoginController extends Controller
 
     public function login(Request $request)
    {
-   		// dd($request->all());
+    Session::put('email', $request->email);
+        	
+    // dd($request->all());
    	if (Auth::attempt($request->only('email','password','status'))){
         $pass = md5($request->password);
         $cek = DB::select("select * from users where email='$request->email' AND password='$pass' AND status='1'");
         if(count($cek)>0){
+            Session::put('email', '');
             return redirect('/home');
         }else{
             return redirect('/')->with('verif','.');
