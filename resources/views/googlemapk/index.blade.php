@@ -82,7 +82,8 @@
                				<th>No</th>
                       <th>Tanggal Laporan</th>
                       <th>Wilayah Samchick</th>
-                      <th>Laporan Upload Google Views</th>
+                      <th>Tugas Google Views</th>
+                      <th>Link Google Views</th>
                       <th>Nilai Tugas</th>
                       <th>Action</th>
                			</tr>
@@ -94,7 +95,13 @@
                       <td class="text-center">{{ $item->tgl }}</td>
                       <td class="text-center">{{ $item->cabang->namacbg}}</td>
                       <td class="text-center">
-                      <a href="{{ asset('map/'. $item->link) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar</a></td>
+                        <a href="{{ asset('map/'. $item->gambargm) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar 1</a>
+                        <a href="{{ asset('map/'. $item->gambargm1) }}" target="_blank" rel="noopener noreferrer">Gambar 2</a>
+                        <a href="{{ asset('map/'. $item->gambargm2) }}" target="_blank" rel="noopener noreferrer">Gambar 3</a></td>
+                        <td class="text-center">
+                          <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Tugas 1,</a>
+                          <a href="{{ $item->link1 }}" target="_blank" rel="noopener noreferrer">Tugas 2,</a>
+                          <a href="{{ $item->link2 }}" target="_blank" rel="noopener noreferrer">Tugas 3</a></td>
                       <td class="text-center">{{ $item->nilaigm}}</td>
                       <td class="text-center">
                         <a href="{{url('googlemapk/'.$item->id.'/delete')}}">

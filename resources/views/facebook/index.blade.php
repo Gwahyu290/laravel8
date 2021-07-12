@@ -86,8 +86,8 @@
                				<th>Nama Pelapor</th>
                       <th>Tanggal Laporan</th>
                       <th>Wilayah Samchick</th>
-                      <th>Gambar Facebook</th>
-                      <th>Link Facebook</th>
+                      <th>Gambar Tugas Facebook</th>
+                      <th>Link Tugas Facebook</th>
                       <th>Nilai Tugas</th>
                				<th>Aksi</th>
                			</tr>

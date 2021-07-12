@@ -36,6 +36,44 @@
                   </div>
                	</div>
                	<div class="card-body table-responsive">
+                  <form role="form" action="{{ url('pamflet')}}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="col-md-2 pr-1">
+                            <div class="form-group">
+                              <label>Dari</label>
+                              <input type="date" class="form-control"  placeholder="06/02/2021" name="tgl1" >
+                            </div>
+                    </div>
+                    <div class="col-md-2 pr-1">
+                            <div class="form-group">
+                              <label>Sampai</label>
+                              <input type="date" class="form-control"  placeholder="06/02/2021" name="tgl2" >
+                            </div>
+                    </div>
+                    <div class="col-md-2 pr-1">
+                            <div class="form-group">
+                              <label>Urutkan Berdasarkan </label>
+                              <select class="form-control" name="orderBy"   style="height:35px;">
+                              <option value="">Semua</option>
+                              <option value="0">Nilai Terendah</option>
+                              <option value="1">Nilai Tertinggi</option>
+                              </select>
+                            </div>
+                    </div>
+                    <div class="col-md-1 pr-1">
+                            <div class="form-group">
+                              <label style="color:white;">,l</label>
+                             <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"> Search </i></button>
+      
+                            </div>
+                    </div>       
+                    <div class="col-md-1 pr-1">
+                            <div class="form-group">
+                              <label style="color:white;">,l</label>
+                             <br><a class="btn btn-danger" href="{{ url('pamflet')}}"><i class="fa fa-refresh"> Refresh </i></a>
+                            </div>
+                    </div>
+                    </form>
                		<table class="table table-bordered">
                		<thead>
                			<tr class="text-center">
@@ -54,7 +92,8 @@
                       <td class="text-center">{{ $item->tgl }}</td>
                       <td class="text-center">{{ $item->cabang->namacbg}}</td>
                       <td class="text-center">
-                      <a href="{{ asset('pam/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Download File</a></td>
+                      <a href="{{ asset('pam/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar 1,</a>
+                      <a href="{{ asset('pam/'. $item->gambar1) }}" target="_blank" rel="noopener noreferrer">Gambar 2</a></td>
                       <td class="text-center">{{ $item->nilaipm }}</td>
                       <td class="text-center">
                         <a href="{{url('pamfletk/'.$item->id.'/delete')}}">

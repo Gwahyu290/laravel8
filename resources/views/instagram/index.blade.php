@@ -86,8 +86,8 @@
                				<th>Nama Pelapor</th>
                       <th>Tanggal Laporan</th>
                       <th>WIlayah Samchick</th>
-                      <th>Gambar Instagram</th>
-                      <th>Link Instagram</th>
+                      <th>Gambar Tugas Instagram</th>
+                      <th>Link Tugas Instagram</th>
                       <th>Nilai</th>
                				<th>Aksi</th>
                			</tr>

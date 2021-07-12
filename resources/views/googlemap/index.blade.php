@@ -76,6 +76,12 @@
 
                       </div>
               </div>
+              <div class="col-md-1 pr-1">
+                <div class="form-group">
+                  <label style="color:white;">,l</label>
+                 <br><i> Nilai: 1 - 10 </i></button>
+                </div>
+        </div>
               </form>
                		<table class="table table-bordered">
                		<thead>
@@ -84,8 +90,9 @@
                				<th>Nama Pelapor</th>
                       <th>Tanggal Laporan</th>
                       <th>Cabang Samchick</th>
-                      <th>Laporan Upload Google Views</th>
-                      <th>Status Laporan</th>
+                      <th>Gambar Tugas Google Views</th>
+                      <th>Link Tugas Google Views</th>
+                      <th>Nilai Laporan</th>
                				<th>Aksi</th>
                			</tr>
                		</thead>
@@ -97,7 +104,13 @@
                       <td class="text-center">{{ $item->tgl }}</td>
                       <td class="text-center">{{ $item->cabang->namacbg}}</td>
                       <td class="text-center">
-                      <a href="{{ asset('map/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar</a></td>
+                        <a href="{{ asset('map/'. $item->gambargm) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar 1</a>
+                        <a href="{{ asset('map/'. $item->gambargm1) }}" target="_blank" rel="noopener noreferrer">Gambar 2</a>
+                        <a href="{{ asset('map/'. $item->gambargm2) }}" target="_blank" rel="noopener noreferrer">Gambar 3</a></td>
+                        <td class="text-center">
+                          <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Tugas 1,</a>
+                          <a href="{{ $item->link1 }}" target="_blank" rel="noopener noreferrer">Tugas 2,</a>
+                          <a href="{{ $item->link2 }}" target="_blank" rel="noopener noreferrer">Tugas 3</a></td>
                       <td class="text-center">{{ $item->nilaigm }}</td>
                       <td class="text-center">
                         <a href="{{url('googlemap/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">

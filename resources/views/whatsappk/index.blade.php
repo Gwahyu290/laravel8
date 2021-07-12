@@ -80,7 +80,7 @@
                				<th>No</th>
                       <th>Tanggal Laporan</th>
                       <th>Wilayah Samchick</th>
-                      <th>File Tugas Share WhatsApp</th>
+                      <th>Tugas WhatsApp</th>
                       <th>Nilai Tugas</th>
                       <th>Action</th>
                			</tr>
@@ -92,7 +92,7 @@
                       <td class="text-center">{{ $item->tgl }}</td>
                       <td class="text-center">{{ $item->cabang->namacbg}}</td>
                       <td class="text-center">
-                      <a href="{{ asset('wa/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Download File</a></td>
+                      <a href="{{ asset('wa/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar</a></td>
                       <td class="text-center">{{ $item->nilaiwa }}</td>
                       <td class="text-center">
                         <a href="{{url('whatsappk/'.$item->id.'/delete')}}">

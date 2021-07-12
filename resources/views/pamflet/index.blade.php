@@ -27,7 +27,7 @@
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
-               			<strong>Laporan Share Pamflet</strong>
+               			<strong>Tugas Pamflet</strong>
                		</div>
                	</div>
                	<div class="card-body table-responsive">
@@ -74,6 +74,12 @@
                        <br><a class="btn btn-danger" href="{{ url('pamflet')}}"><i class="fa fa-refresh"> Refresh </i></a>
                       </div>
               </div>
+              <div class="col-md-1 pr-1">
+                <div class="form-group">
+                  <label style="color:white;">,l</label>
+                 <br><i> Nilai: 1 - 10 </i></button>
+                </div>
+        </div>
               </form>
                		<table class="table table-bordered">
                		<thead>
@@ -82,7 +88,7 @@
                				<th>Nama Pelapor</th>
                       <th>Tanggal Laporan</th>
                       <th>WIlayah Samchick</th>
-                      <th>File Laporan Pamflet</th>
+                      <th>Gambar Tugas Pamflet</th>
                       <th>Nilai Laporan</th>
                				<th>Aksi</th>
                			</tr>
@@ -95,7 +101,8 @@
                       <td class="text-center">{{ $item->tgl }}</td>
                       <td class="text-center">{{ $item->cabang->namacbg}}</td>
                       <td class="text-center">
-                      <a href="{{ asset('pdf/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Download File</a></td>
+                        <a href="{{ asset('pam/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar 1,</a>
+                        <a href="{{ asset('pam/'. $item->gambar1) }}" target="_blank" rel="noopener noreferrer">Gambar 2</a></td>
                       <td class="text-center">{{ $item->nilaipm }}</td>
                       <td class="text-center">
                         <a href="{{url('pamflet/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">

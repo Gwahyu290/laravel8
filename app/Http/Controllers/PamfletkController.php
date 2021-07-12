@@ -48,8 +48,10 @@ public function create()
             'gambar.required' => 'Status Karyawan tidak boleh kosong!!!'
         ]);    
         $nm = $request->gambar;
+        $nm1 = $request->gambar1;
         $namafile = $nm->getClientOriginalName();
-        
+        $namafile1 = $nm1->getClientOriginalName();
+
         $cabang_id = Auth()->user()->id;
         $cabang = DB::select("select * from users where id='$cabang_id'");
         foreach ($cabang as $c){
@@ -63,6 +65,8 @@ public function create()
             $pamflet->cabang_id = $cabang_id;
             $pamflet->gambar = $namafile;
             $nm->move(public_path().'/pam', $namafile);
+            $pamflet->gambar1 = $namafile1;
+            $nm1->move(public_path().'/pam', $namafile1);
             $pamflet->save();
             return redirect('pamfletk')->with('status', 'Laporan Share Pamflet Berhasil di Serahkan!!!');
     }
