@@ -37,11 +37,7 @@ class GMapskController extends Controller
             }
 
             $nm = $request->gambargm;
-        $nm1 = $request->gambargm1;
-        $nm2 = $request->gambargm2;
             $namafile = $nm->getClientOriginalName();
-            $namafile1 = $nm1->getClientOriginalName();
-            $namafile2 = $nm2->getClientOriginalName();
         
             $googlemap = new Googlemap;
             $googlemap->nama = Auth()->user()->id;
@@ -51,12 +47,6 @@ class GMapskController extends Controller
             $googlemap->link = $request->link;
             $googlemap->gambargm = $namafile;
             $nm->move(public_path().'/map', $namafile);
-            $googlemap->link1 = $request->link1;
-            $googlemap->gambargm1 = $namafile1;
-            $nm1->move(public_path().'/map', $namafile1);
-            $googlemap->link2 = $request->link2;
-            $googlemap->gambargm2 = $namafile2;
-            $nm2->move(public_path().'/map', $namafile2);
             $googlemap->save();
 
         return redirect('googlemapk')->with('status', 'Laporan Google Views Berhasil di Serahkan!!!');

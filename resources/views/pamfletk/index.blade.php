@@ -114,9 +114,6 @@
                  {{$pamflets->total()}}
                  Data
                </div>
-               <div class="pull-right">
-               {{ $pamflets->links()}}
-                </div>
                	</div>
                </div>
 

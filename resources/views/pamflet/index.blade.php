@@ -69,12 +69,6 @@
                       </div>
               </div>       
               <div class="col-md-1 pr-1">
-                      <div class="form-group">
-                        <label style="color:white;">,l</label>
-                       <br><a class="btn btn-danger" href="{{ url('pamflet')}}"><i class="fa fa-refresh"> Refresh </i></a>
-                      </div>
-              </div>
-              <div class="col-md-1 pr-1">
                 <div class="form-group">
                   <label style="color:white;">,l</label>
                  <br><i> Nilai: 1 - 10 </i></button>
@@ -123,9 +117,6 @@
                  {{$pamflets->total()}}
                  Data
                </div>
-               <div class="pull-right">
-               {{ $pamflets->links()}}
-                </div>
                	</div>
                </div>
 

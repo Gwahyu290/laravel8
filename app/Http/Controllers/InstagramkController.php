@@ -27,19 +27,11 @@ class InstagramkController extends Controller
        $request->validate([
             'tgl' => 'required|min:3',
             'link' => 'required',
-            'link1' => 'required',
-            'gambarig' => 'required',
-            'gambarig1' => 'required',
-            'gambarig2' => 'required',
-            'link2' => 'required'
+            'gambarig' => 'required'
         ],[
             'tgl.required' => 'Tanggal Laporan tidak boleh kosong!!!',
             'gambarig.required' => 'Gambar 1 tidak boleh kosong!!!',
-            'gambarig1.required' => 'Gambar 2 tidak boleh kosong!!!',
-            'gambarig2.required' => 'Gambar 3 tidak boleh kosong!!!',
-            'link.required' => 'Link Pengumpulan tugas 1 tidak boleh kosong!!!',
-            'link1.required' => 'Link Pengumpulan tugas 2 tidak boleh kosong!!!',
-            'link2.required' => 'Link Pengumpulan tugas 3 tidak boleh kosong!!!'
+            'link.required' => 'Link Pengumpulan tugas 1 tidak boleh kosong!!!'
         ]);
 
         $cabang_id = Auth()->user()->id;
@@ -49,11 +41,7 @@ class InstagramkController extends Controller
             }
         // return $request;    
         $nm = $request->gambarig;
-        $nm1 = $request->gambarig1;
-        $nm2 = $request->gambarig2;
             $namafile = $nm->getClientOriginalName();
-            $namafile1 = $nm1->getClientOriginalName();
-            $namafile2 = $nm2->getClientOriginalName();
 
             $instagram = new Instagram;
             $instagram->nama = Auth()->user()->id;
@@ -63,12 +51,6 @@ class InstagramkController extends Controller
             $instagram->link = $request->link;
             $instagram->gambarig = $namafile;
             $nm->move(public_path().'/ig', $namafile);
-            $instagram->link1 = $request->link1;
-            $instagram->gambarig1 = $namafile1;
-            $nm1->move(public_path().'/ig', $namafile1);
-            $instagram->link2 = $request->link2;
-            $instagram->gambarig2 = $namafile2;
-            $nm2->move(public_path().'/ig', $namafile2);
             $instagram->save();
 
         return redirect('instagramk')->with('status', 'Laporan Repost Instagram Berhasil di Serahkan!!!');

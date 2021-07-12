@@ -57,7 +57,6 @@ class UserController extends Controller
     {
         
         $request->validate([
-            'name' => 'required',
             'alamat' => 'required',
             'no_tlpn' => 'required'
         ],[
@@ -67,12 +66,11 @@ class UserController extends Controller
         ]);
         // return $request;
         // cara1
-        $user->name = $request->name;
         $user->alamat = $request->alamat;
         $user->no_tlpn = $request->no_tlpn;
         $user->save();
 
-        return redirect('user')->with('status', 'Profil Karyawan Berhasil di Edit!!!');
+        return redirect('userk')->with('status', 'Profil Karyawan Berhasil di Edit!!!');
     }
 
     public function destroy(User $user)
