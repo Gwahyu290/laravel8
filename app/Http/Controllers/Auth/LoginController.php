@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use DB;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 use Session;
 class LoginController extends Controller
 {
@@ -22,22 +23,36 @@ class LoginController extends Controller
     |
     */
 
-    public function login(Request $request)
-   {
-    Session::put('email', $request->email);
-        	
-    // dd($request->all());
-   	if (Auth::attempt($request->only('email','password'))){
+    public function login(Request $request){
+        Session::put('email', $request->email);
         $pass = md5($request->password);
-        $cek = DB::select("select * from users where email='$request->email' AND password='$pass' AND status='1'");
-        if(count($cek)>0){
-            Session::put('email', '');
-            return redirect('/home');
-        }else{
-            return redirect('/')->with('verif','.');
+        // dd($request->all());
+        $cek = DB::select("select * from users where email='$request->email'");
+        if(count($cek) > 0){
+            foreach ($cek as $c){
+                if($c->status==1 && Hash::check($request->password, $c->password)){
+                    if(Auth::attempt($request->only('email','password'))){
+                        Session::put('email', '');
+                        return redirect('/home');
+                    }
+                }else if($c->status==0){
+                    return redirect('/')->with('verif','.'); 
+                }else{
+                    return redirect('/')->with('salah','.'); 
+                }
+            };
         }
-   	}
-   	return redirect('/')->with('salah','.');
+        
+        // if(Auth::attempt($request->only('email','password'))){
+        //     if(auth()->user()->status > 0 || auth()->user()->status != '0' ){
+        //         Session::put('email', '');
+        //         return redirect('/home');
+        //     }else{
+        //         return redirect('/')->with('verif','.');
+        //     }
+        // }   
+        // return redirect('/')->with('salah','.');
+        
    }
 
     use AuthenticatesUsers;
