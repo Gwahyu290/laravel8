@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use Illuminate\Http\Request;
+use Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -18,6 +21,15 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
+
+//     public function login(Request $request)
+//    {
+//    		// dd($request->all());
+//    	if (Auth::attempt($request->only('email','password','status'))){
+//         return redirect('/home');
+//    	}
+//    	return redirect('/');
+//    }
 
     use AuthenticatesUsers;
 

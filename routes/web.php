@@ -59,6 +59,7 @@ route::post('nilaiharian','NilaiHarianController@index');
 route::post('nilaibulanan','NilaiBulananController@index');
 route::post('ofthemoon','OfthemoonController@index');
 
+route::post('instagramk','InstagramkController@index');
 
 //search
 route::post('instagram','InstagramController@index');
@@ -85,5 +86,19 @@ route::get('pamfletk/{id}/delete','PamfletkController@destroy');
 route::post('accakun/{id}','AccakunController@accProcess');
 
 
-Auth::routes();
+//Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
+
+// Password Reset Routes...
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
