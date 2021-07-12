@@ -81,7 +81,7 @@
               <h4 class="modal-title">Verifikasi Karyawan {{$data->name}}</h4>
             </div>
             <div class="modal-body">
-              <form action="{{url('accakun/'.$item->id)}}" method="post">
+              <form action="{{url('accakun/'.$data->id)}}" method="post">
                 @csrf
                         <div class="card-body"> 
                   <div class="row">
