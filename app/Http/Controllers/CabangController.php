@@ -12,7 +12,7 @@ class CabangController extends Controller
     public function data()
     {
         $Agent = new Agent();
-        $cabangs = DB::table('cabangs')->paginate(5);
+        $cabangs = DB::table('cabangs')->paginate(20);
         //dd($dkaryawan);
         //return $dkaryawan;
         //return view('dkaryawan.data',['dkaryawan'=> $dkaryawan]);

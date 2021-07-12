@@ -27,7 +27,12 @@ class HomeController extends Controller
     {
 $Agent = new Agent();
 $data = [];
+if(auth()->user()->level=="Admin"){
+    $data = DB::select("select * from users where status = 0");
+            return view('home',compact('data'));
+    }
 if(auth()->user()->level=="Karyawan"){
+    
     $bulan1 = "";
     $tahun1 = "";
     $nama = auth()->user()->name;
@@ -49,5 +54,13 @@ if ($Agent->isMobile()) {
     // you're a desktop device, or something similar
         return view('home',compact('data'));
 }
+    }
+    public function accProcess(Request $request, $id)
+    {
+        DB::table('users')->where('id', $id)->update([
+            'cabang_id' => $request->cabang,
+            'status'=>1
+        ]);
+        return redirect('accakun')->with('status', 'Karyawan telah diverifikasi!!!');
     }
 }

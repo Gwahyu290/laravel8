@@ -12,7 +12,7 @@ class UserController extends Controller
     {
     
     $Agent = new Agent();
-    $users = User::paginate(5);
+    $users = User::paginate(20);
     if ($Agent->isMobile()) {
         return view('mobile.user.index', compact('users'));
     } else {
@@ -42,6 +42,10 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        if(auth()->user()->level=="Karyawan"){
+        $cabangs = Cabang::all();
+        return view('user.edit',compact('cabangs','user'));
+        }
         $cabangs = Cabang::all();
         return view('user.edit', compact('user','cabangs'));
     }
@@ -69,8 +73,12 @@ class UserController extends Controller
         $user->alamat = $request->alamat;
         $user->no_tlpn = $request->no_tlpn;
         $user->save();
-
+        if(auth()->user()->level=="Admin"){
+        return redirect('user')->with('status', 'Profil Karyawan Berhasil di Edit!!!');
+    }
+    if(auth()->user()->level=="Karyawan"){
         return redirect('userk')->with('status', 'Profil Karyawan Berhasil di Edit!!!');
+    }
     }
 
     public function destroy(User $user)
