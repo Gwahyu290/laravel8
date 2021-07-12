@@ -11,7 +11,7 @@ class PamfletkController extends Controller
     {
     $Agent = new Agent();
 
-    $pamflets = Pamflet::where('nama','=',Auth()->user()->id)->paginate(5);
+    $pamflets = Pamflet::where('nama','=',Auth()->user()->id)->paginate(15);
         
     if ($Agent->isMobile()) {
         return view('mobile.pamfletk.index', compact('pamflets'));

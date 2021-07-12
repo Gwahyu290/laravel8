@@ -49,7 +49,6 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-user"></i><a href="{{url('user')}}">Profil Karyawan</a></li>
                             <li><i class="fa fa-bookmark"></i><a href="{{url('cabang')}}">Data Wilayah</a></li>
-                            <li><i class="fa fa-user"></i><a href="{{url('accakun')}}">Verifikasi Karyawan</a></li>
                         </ul>
                     </li>
                     </li>

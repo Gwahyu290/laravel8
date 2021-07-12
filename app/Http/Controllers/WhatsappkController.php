@@ -12,7 +12,7 @@ class WhatsappkController extends Controller
     {
     $Agent = new Agent();
 
-    $whatsapps = Whatsapp::where('nama','=',Auth()->user()->id)->paginate(5);
+    $whatsapps = Whatsapp::where('nama','=',Auth()->user()->id)->paginate(15);
         
     if ($Agent->isMobile()) {
         return view('mobile.whatsappk.index', compact('whatsapps'));

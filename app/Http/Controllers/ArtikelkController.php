@@ -13,7 +13,7 @@ class ArtikelkController extends Controller
     {
     $Agent = new Agent();
 
-    $artikels = Artikel::where('nama','=',Auth()->user()->id)->paginate(5);
+    $artikels = Artikel::where('nama','=',Auth()->user()->id)->paginate(15);
 
     if ($Agent->isMobile()) {
         return view('mobile.artikelk.index', compact('artikels'));

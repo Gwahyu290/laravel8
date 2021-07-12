@@ -35,10 +35,8 @@ class CabangController extends Controller
     {
         $request->validate([
             'namacbg' => 'required|min:3',
-            'alamat' => 'required|min:3'
         ],[
-            'namacbg.required' => 'Wilayah Samchick tidak boleh kosong!!!',
-            'alamat.required' => 'Alamat Samchick tidak boleh kosong!!!'
+            'namacbg.required' => 'Wilayah Samchick tidak boleh kosong!!!'
         ]);
 
         DB::table('cabangs')->insert([
@@ -49,8 +47,18 @@ class CabangController extends Controller
     }
     public function edit($id)
     {
+        $Agent = new Agent();
         $cabangg = DB::table('cabangs')->where('id', $id)->first();
-        return view('cabang/edit', compact('cabangg'));
+        if ($Agent->isMobile()) {
+            return view('mobile.cabang/edit', compact('cabangg'));
+        } else {
+            return view('cabang/edit', compact('cabangg'));
+            }
+
+
+
+       
+        
     }
     public function editProcess(Request $request, $id)
     {

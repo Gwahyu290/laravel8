@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Menu Manajer</h1>
+                        <h1>Dashboard Admin</h1>
                     </div>
                 </div>
             </div>			
@@ -36,20 +36,6 @@
                         <label>Nama Karyawan</label>
                         <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Nama Karayawan" name="q" >
                       </div>
-              </div>
-              <div class="col-md-2 pr-1">
-                <label>Alamat</label>
-                <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Alamat" name="q" >
-              </div>
-              <div class="col-md-2 pr-1">
-               <label> Wilayah Samchick</label>
-                <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="" name="q" >        
-              </div>
-              <div class="col-md-2 pr-1">
-                
-              </div>
-              <div class="col-md-2 pr-1">
-                     
               </div>
               <div class="col-md-1 pr-1">
                       <div class="form-group">

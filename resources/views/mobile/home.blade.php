@@ -22,74 +22,100 @@
         <div class="content mt-3">
             <div class="animated fadeIn">
             @if (auth()->user()->level=="Admin")
-                <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-1">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                        </div>
-                        <h4 class="mb-0">
-                            <span class="count">10</span>
-                        </h4>
-                        <p class="text-light">Karyawan Samchick</p>
-                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                            <canvas id="widgetChart1"></canvas>
-                        </div>
-                    </div>
-                </div>
+                
+            @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
             </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-4">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                        </div>
-                        <h4 class="mb-0">
-                            <span class="count">12</span>
-                        </h4>
-                        <p class="text-light">Jumlah Wilayah</p>
-                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                            <canvas id="widgetChart1"></canvas>
-                        </div>
+    @endif
 
-                    </div>
+       <div class="card">
+           <div class="card-header">
+               <div class="pull-left">
+                   <strong>Verifikasi Karyawan </strong>
+               </div>
+           </div>
+           <div class="card-body table-responsive">            
+               <table class="table table-bordered">
+               <thead>
+                   <tr class="text-center">
+                   <th>No</th>
+                   <th>Nama Karyawan</th>
+                <th>Email</th>
+                <th>Alamat</th>
+                <th>Telepon</th>
+                   <th>Aksi</th>
+                   </tr>
+               </thead><tbody>
+            @php
+            $i= 1;
+            @endphp
+            @foreach ($data as $key => $item)
+                        <tr>
+                            <td class="text-center">{{ $i++ }}</td>
+                            <td class="text-center">{{ $item->name}}</td>
+                            <td class="text-center">{{ $item->email}}</td>
+                            <td class="text-center">{{ $item->alamat}}</td>
+                            <td class="text-center">{{ $item->no_tlpn}}</td>
+                            <td>
+                            <a class="btn btn-warning" data-toggle="modal" data-target="#modal-verify{{$item->id}}">
+                  Edit</a>
+                              </td>
+                        </tr>
+            @endforeach 
+            </tbody>	
+       </table>
 
-                </div>
+
+
+
+           </div>
+       </div>
+    </div>
+</div>
+@foreach($data as $data)
+<div class="modal fade" id="modal-verify{{$data->id}}" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Verifikasi Karyawan {{$data->name}}</h4>
+    </div>
+    <div class="modal-body">
+      <form action="{{url('accakun/'.$data->id)}}" method="post">
+        @csrf
+                <div class="card-body"> 
+          <div class="row">
+            <div class="col-md-8 pr-1">
+              <div class="form-group">
+                <label>Pilih Cabang </label>
+                <select class="form-control" name="cabang"  style="height:35px;">
+                @php
+                $cabang = DB::select("select * from cabangs");
+                @endphp
+                @foreach ($cabang as $c)
+                <option value="{{$c->id}}">{{$c->namacbg}}</option>
+                @endforeach
+                </select>
+              </div>
             </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-3">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                        </div>
-                        <h4 class="mb-0">
-                            <span class="count">10</span>
-                        </h4>
-                        <p class="text-light">Karyawan Samchick</p>
-                        
-                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                            <canvas id="widgetChart1"></canvas>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat-color-2">
-                    <div class="card-body pb-0">
-                        <div class="dropdown float-right">
-                        </div>
-                        <h4 class="mb-0">
-                            <span class="count">10</span>
-                        </h4>
-                        <p class="text-light">Karyawan Samchick</p>
-                        
-                        <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                            <canvas id="widgetChart1"></canvas>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="modal-footer justify-content-between">
+     <button type="submit" class="btn btn-primary" style="float: right;">Verifikasi</button>
+      <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+      {{csrf_field()}}
+    </div>
+      </form>
+    </div>
+  </div>
+  <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>   
+@endforeach
+</div>
+@endsection   
 
             @endif
             @if (auth()->user()->level=="Karyawan")

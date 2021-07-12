@@ -70,7 +70,7 @@ route::post('pamflet','PamfletController@index');
 
 route::post('nilaimingguan','NilaiMingguanController@index');
 route::post('nilaiharian','NilaiHarianController@index');
-
+route::post('user','UserController@index');
 route::post('home','HomeController@index');
 
 //delete

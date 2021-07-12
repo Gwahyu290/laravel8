@@ -29,7 +29,6 @@ $Agent = new Agent();
 $data = [];
 if(auth()->user()->level=="Admin"){
     $data = DB::select("select * from users where status = 0");
-            return view('home',compact('data'));
     }
 if(auth()->user()->level=="Karyawan"){
     

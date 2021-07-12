@@ -13,7 +13,7 @@ class FacebookkController extends Controller
     {
     $Agent = new Agent();
 
-    $facebooks = Facebook::where('nama','=',Auth()->user()->id)->paginate(5);
+    $facebooks = Facebook::where('nama','=',Auth()->user()->id)->paginate(15);
 
     if ($Agent->isMobile()) {
         return view('mobile.facebookk.index', compact('facebooks'));

@@ -12,13 +12,26 @@ class UserController extends Controller
     {
     
     $Agent = new Agent();
-    $users = User::paginate(20);
+    if($request->orderBy != null || $request->orderBy != ""){
+        if($request->orderBy=="0"){            
+            $users = User::where('name','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+            ->paginate(20);
+        }else{    
+            $users = User::where('name','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+            ->paginate(20);     
+        }
+    }
+    else{
+        $users = User::where('name','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+            ->paginate(20);
+    }
     if ($Agent->isMobile()) {
         return view('mobile.user.index', compact('users'));
     } else {
         return view('user.index', compact('users'));
         }
     }
+    
  
 
     
@@ -42,12 +55,15 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        if(auth()->user()->level=="Karyawan"){
+        $Agent = new Agent();
+
         $cabangs = Cabang::all();
-        return view('user.edit',compact('cabangs','user'));
-        }
-        $cabangs = Cabang::all();
-        return view('user.edit', compact('user','cabangs'));
+    
+        if ($Agent->isMobile()) {
+            return view('mobile.user.edit', compact('user','cabangs'));
+        } else {
+            return view('user.edit', compact('user','cabangs'));
+            }
     }
 
     /**
@@ -70,6 +86,11 @@ class UserController extends Controller
         ]);
         // return $request;
         // cara1
+        if(auth()->user()->level=="Admin"){
+            $user->cabang_id = $request->cabang_id;
+        }
+        $user->name = $request->name;
+        $user->email = $request->email;
         $user->alamat = $request->alamat;
         $user->no_tlpn = $request->no_tlpn;
         $user->save();

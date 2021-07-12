@@ -68,7 +68,7 @@
                             </div><!--/.col-->
                         </div><!--/.row-->
                         <div >
-                            <canvas id="myChart" style="height:250px;" height="174"></canvas>
+                            <canvas id="myChart" style="height:250px;" height="250"></canvas>
                         </div>
                     </div>
                 </div>
