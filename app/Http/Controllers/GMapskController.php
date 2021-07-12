@@ -12,7 +12,7 @@ class GMapskController extends Controller
     {
     $Agent = new Agent();
 
-    $googlemaps = Googlemap::where('nama','=',Auth()->user()->id)->paginate(5);
+    $googlemaps = Googlemap::where('nama','=',Auth()->user()->id)->paginate(15);
         
     if ($Agent->isMobile()) {
         return view('mobile/googlemapk/index', compact('googlemaps'));
