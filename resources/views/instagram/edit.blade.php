@@ -20,7 +20,7 @@
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
-               			<strong>Edit Status Laporan IG</strong>
+               			<strong>Nilai Tugas Instagram</strong>
                		</div>
                		<div class="pull-right">
                			<a href="{{ url('instagram')}}" class="btn btn-success btn-sm">

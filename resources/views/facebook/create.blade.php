@@ -20,7 +20,7 @@
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
-               			<strong>Laporan Upload Facebook</strong>
+               			<strong>Pengumpulan Tugas Facebook</strong>
                		</div>
                		<div class="pull-right">
                			<a href="{{ url('facebookk')}}" class="btn btn-success btn-sm">
@@ -49,9 +49,44 @@
                           @enderror
                         </div>
                         <div class="form-group">
-                          <table>Link Pengumpulan Tugas</table>
+                          <table>Link Pengumpulan Tugas 1</table>
                           <input type="text" name="link" class="form-control @error('link') is-invalid @enderror" value="{{old('link')}}" autofocus>
                           @error('link')
+                          <div class="invalid-feedback">{{$message}}</div>
+                          @enderror
+                        </div>
+                        <div class="form-group">
+                          <table>Gambar Tugas 1</table>
+                          <input type="file" name="gambarfb" class="form-control @error('gambarfb') is-invalid @enderror" value="{{old('gambarfb')}}" autofocus>
+                          @error('gambarfb')
+                          <div class="invalid-feedback">{{$message}}</div>
+                          @enderror
+                        </div>
+                        <div class="form-group">
+                          <table>Link Pengumpulan Tugas 2</table>
+                          <input type="text" name="link1" class="form-control @error('link1') is-invalid @enderror" value="{{old('link1')}}" autofocus>
+                          @error('link1')
+                          <div class="invalid-feedback">{{$message}}</div>
+                          @enderror
+                        </div>
+                        <div class="form-group">
+                          <table>Gambar Tugas 2</table>
+                          <input type="file" name="gambarfb1" class="form-control @error('gambarfb1') is-invalid @enderror" value="{{old('gambarfb1')}}" autofocus>
+                          @error('gambarfb1')
+                          <div class="invalid-feedback">{{$message}}</div>
+                          @enderror
+                        </div>
+                        <div class="form-group">
+                          <table>Link Pengumpulan Tugas 3</table>
+                          <input type="text" name="link2" class="form-control @error('link2') is-invalid @enderror" value="{{old('link2')}}" autofocus>
+                          @error('link2')
+                          <div class="invalid-feedback">{{$message}}</div>
+                          @enderror
+                        </div>
+                        <div class="form-group">
+                          <table>Gambar Tugas 3</table>
+                          <input type="file" name="gambarfb2" class="form-control @error('gambarfb2') is-invalid @enderror" value="{{old('gambarfb2')}}" autofocus>
+                          @error('gambarfb2')
                           <div class="invalid-feedback">{{$message}}</div>
                           @enderror
                         </div>

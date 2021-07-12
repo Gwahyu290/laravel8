@@ -37,12 +37,27 @@ class FacebookkController extends Controller
             $cabang_id = $c->cabang_id;
             }
         // return $request;    
+        $nm = $request->gambarfb;
+        $nm1 = $request->gambarfb1;
+        $nm2 = $request->gambarfb2;
+            $namafile = $nm->getClientOriginalName();
+            $namafile1 = $nm1->getClientOriginalName();
+            $namafile2 = $nm2->getClientOriginalName();
+
             $facebook = new Facebook;
             $facebook->nama = Auth()->user()->id;
             $facebook->nama_id = Auth()->user()->name;
             $facebook->tgl = $request->tgl;
             $facebook->cabang_id = $cabang_id;
             $facebook->link = $request->link;
+            $facebook->gambarfb = $namafile;
+            $nm->move(public_path().'/fb', $namafile);
+            $facebook->link1 = $request->link1;
+            $facebook->gambarfb1 = $namafile1;
+            $nm1->move(public_path().'/fb', $namafile1);
+            $facebook->link2 = $request->link2;
+            $facebook->gambarfb2 = $namafile2;
+            $nm2->move(public_path().'/fb', $namafile2);
             $facebook->save();
 
         return redirect('facebookk')->with('status', 'Laporan Repost Facebook Berhasil di Serahkan!!!');

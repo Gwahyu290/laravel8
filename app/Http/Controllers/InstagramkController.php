@@ -26,10 +26,20 @@ class InstagramkController extends Controller
     {
        $request->validate([
             'tgl' => 'required|min:3',
-            'link' => 'required'
+            'link' => 'required',
+            'link1' => 'required',
+            'gambarig' => 'required',
+            'gambarig1' => 'required',
+            'gambarig2' => 'required',
+            'link2' => 'required'
         ],[
-            'tgl.required' => 'Alamat Karyawan tidak boleh kosong!!!',
-            'link.required' => 'Status Karyawan tidak boleh kosong!!!'
+            'tgl.required' => 'Tanggal Laporan tidak boleh kosong!!!',
+            'gambarig.required' => 'Gambar 1 tidak boleh kosong!!!',
+            'gambarig1.required' => 'Gambar 2 tidak boleh kosong!!!',
+            'gambarig2.required' => 'Gambar 3 tidak boleh kosong!!!',
+            'link.required' => 'Link Pengumpulan tugas 1 tidak boleh kosong!!!',
+            'link1.required' => 'Link Pengumpulan tugas 2 tidak boleh kosong!!!',
+            'link2.required' => 'Link Pengumpulan tugas 3 tidak boleh kosong!!!'
         ]);
 
         $cabang_id = Auth()->user()->id;
