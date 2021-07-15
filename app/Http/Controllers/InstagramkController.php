@@ -27,8 +27,7 @@ class InstagramkController extends Controller
     {  
        $request->validate([
             'tgl' => 'required|min:3',
-            'link' => 'required',
-            'gambarig' => 'required'
+            'link' => 'required'
         ],[
             'tgl.required' => 'Tanggal Laporan tidak boleh kosong!!!',
             'gambarig.required' => 'Gambar 1 tidak boleh kosong!!!',

@@ -76,9 +76,6 @@
                  {{$whatsapps->total()}}
                  Data
                </div>
-               <div class="pull-right">
-               {{ $whatsapps->links()}}
-                </div>
                	</div>
                </div>
 
