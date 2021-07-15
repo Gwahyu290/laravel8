@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Menu Manajer</h1>
+                        <h1>Dashboard Admin</h1>
                     </div>
                 </div>
             </div>			
@@ -76,7 +76,7 @@
               <h4 class="modal-title">Verifikasi Karyawan {{$data->name}}</h4>
             </div>
             <div class="modal-body">
-              <form action="{{url('accakun/'.$item->id)}}" method="post">
+              <form action="{{url('accakun/'.$data->id)}}" method="post">
                 @csrf
                         <div class="card-body"> 
                   <div class="row">

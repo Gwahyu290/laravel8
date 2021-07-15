@@ -6,9 +6,12 @@
 <div class="breadcrumbs">
             <div class="col-sm-4">
                 <div class="page-header float-left">
-                    <div class="page-title">
-                        <h1>Dashboard Admin</h1>
-                    </div>
+                  @if (auth()->user()->level=="Admin")  
+                  <h1>Menu Manajer</h1>
+                  @endif
+                  @if (auth()->user()->level=="Karyawan")  
+                  <h1>Menu Karyawan</h1>
+                  @endif
                 </div>
             </div>			
         </div>

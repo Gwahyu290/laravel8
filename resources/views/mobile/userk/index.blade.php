@@ -7,11 +7,11 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     @if (auth()->user()->level=="Admin")  
-                      <h1>Menu Manajer</h1>
-                      @endif
-                      @if (auth()->user()->level=="Karyawan")  
-                      <h1>Menu Karyawan</h1>
-                      @endif
+                    <h1>Menu Manajer</h1>
+                    @endif
+                    @if (auth()->user()->level=="Karyawan")  
+                    <h1>Menu Karyawan</h1>
+                    @endif
                 </div>
             </div>			
         </div>

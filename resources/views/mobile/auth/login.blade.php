@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('mobile.layouts.app')
 
 @section('content')
 <div class="container">
@@ -10,12 +10,22 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
+                            @php if(Session::get('salah')){ @endphp 
+                                            <div class="alert alert-danger">
+                                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+                                                Email dan Password tidak sesuai 
+                                </div> @php } @endphp
+                            @php if(Session::get('verif')){ @endphp 
+                                            <div class="alert alert-warning">
+                                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
+                                                Akun anda belum di verifikasi, silahkan hubungi admin agar diverifikasi
+                                </div> @php } @endphp
+   
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="E-Mail Address">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"  required autocomplete="email" value="{{Session::get('email')}}" autofocus placeholder="E-Mail Address">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -30,6 +40,7 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Masukkan Password">
+                                <input id="status" type="text" class="form-control  name="status" required autocomplete="current-password" placeholder="Masukkan Password" value="1" hidden>
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

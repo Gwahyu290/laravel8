@@ -7,7 +7,12 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Menu Manajer</h1>
+                      @if (auth()->user()->level=="Admin")  
+                      <h1>Menu Manajer</h1>
+                      @endif
+                      @if (auth()->user()->level=="Karyawan")  
+                      <h1>Menu Karyawan</h1>
+                      @endif
                     </div>
                 </div>
             </div>			
@@ -65,7 +70,18 @@
                           <div class="invalid-feedback">{{$message}}</div>
                           @enderror
                         </div>
-
+                        <div class="form-group">
+                          <label>Wilayah Samchick</label>
+                          <select name="cabang_id" class="form-control @error('cabang_id') is-invalid @enderror">
+                              <option value="">- Pilih -</option>
+                              @foreach ($cabangs as $item)
+                                  <option value="{{ $item->id }}" {{ old('cabang_id', $user->cabang_id) == $item->id ? 'selected' : null }}>{{ $item->namacbg }}</option>
+                              @endforeach
+                          </select>
+                          @error('cabang_id')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                          @enderror
+                      </div>
                         <button type="submit" class="btn btn-success">Simpan</button>
                         @endif
                         @if (auth()->user()->level=="Karyawan")
@@ -88,7 +104,7 @@
                        
                            <div class="form-group">
                              <table>Nama Karyawan</table>
-                             <input  type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name', $user->name)}}">
+                             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name', $user->name)}}">
                              @error('name')
                              <div class="invalid-feedback">{{$message}}</div>
                              @enderror
@@ -114,7 +130,6 @@
                              <div class="invalid-feedback">{{$message}}</div>
                              @enderror
                            </div>
-                           
                            <button type="submit" class="btn btn-success">Simpan</button>
                            @endif
                       </form>
