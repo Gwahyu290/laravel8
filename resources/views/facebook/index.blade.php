@@ -46,12 +46,6 @@
               </div>
               <div class="col-md-2 pr-1">
                       <div class="form-group">
-                        <label>Sampai</label>
-                        <input type="date" class="form-control"  placeholder="06/02/2021" name="tgl2" >
-                      </div>
-              </div>
-              <div class="col-md-2 pr-1">
-                      <div class="form-group">
                         <label>Urutkan Berdasarkan </label>
                         <select class="form-control" name="orderBy"   style="height:35px;">
                         <option value="">Semua</option>
