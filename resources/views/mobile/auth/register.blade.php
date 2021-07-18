@@ -1,4 +1,4 @@
-@extends('mobile.layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -13,7 +13,7 @@
                             @php if(Session::get('eror')){ @endphp 
                                             <div class="alert alert-danger">
                                                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span></button>
-                                                Email atau No Telepon yang andak masukkan telah terdaftar 
+                                                Email atau No Telepon yang anda masukkan telah terdaftar 
                                 </div> @php } @endphp
                             @php if(Session::get('sukses')){ @endphp 
                                             <div class="alert alert-success">

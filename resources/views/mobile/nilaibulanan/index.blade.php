@@ -110,7 +110,7 @@
                       </div>
                   </div>
               </div>
-               	<div class="card-header">
+               	<!-- <div class="card-header">
                		<div class="pull-left">
                			<strong>Data Nilai Bulanan</strong>
                		</div>
@@ -144,7 +144,7 @@
                     </tbody>
                  </table>
                  </div>
-                 
+                 --> 
             </div>
         </div>
     </div>

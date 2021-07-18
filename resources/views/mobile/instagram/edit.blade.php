@@ -37,7 +37,7 @@
                         @csrf
                         <div class="form-group">
                           <table>Nilai Kinerja</table>
-                          <input type="text" name="nilaiins" class="form-control @error('nilaiins') is-invalid @enderror" value="{{old('nilaiins')}}">
+                          <input type="number" name="nilaiins" min="1" max="10" class="form-control @error('nilaiins') is-invalid @enderror" value="{{old('nilaiins')}}">
                           @error('nilaiins')
                           <div class="invalid-feedback">{{$message}}</div>
                           @enderror
