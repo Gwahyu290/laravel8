@@ -89,7 +89,7 @@
                       <div class="card-body">
                           <div class="row">
                               <div class="col-sm-4">
-                                  <h4 class="card-title mb-0">Grafik Nilai Bulanan </h4>
+                                  <h4 class="card-title mb-0">Grafik Nilai Pada Bulan {{$bulan1}} {{$tahun1}} </h4>
                               </div>
                               <!--/.col-->
                               <div class="col-sm-8 hidden-sm-down">
