@@ -26,11 +26,9 @@ class InstagramkController extends Controller
     public function store(Request $request)
     {  
        $request->validate([
-            'tgl' => 'required|min:3',
             'link' => 'required',
             'gambarig' => 'required'
         ],[
-            'tgl.required' => 'Tanggal Laporan tidak boleh kosong!!!',
             'gambarig.required' => 'Gambar tidak boleh kosong!!!',
             'link.required' => 'Link Pengumpulan tugas tidak boleh kosong!!!'
         ]);
@@ -47,7 +45,7 @@ class InstagramkController extends Controller
             $instagram = new Instagram;
             $instagram->nama = Auth()->user()->id;
             $instagram->nama_id = Auth()->user()->name;
-            $instagram->tgl = $request->tgl;
+            $instagram->tgl = date('Y-m-d');
             $instagram->cabang_id = $cabang_id;
             $instagram->link = $request->link;
             $instagram->gambarig = $namafile;
