@@ -41,13 +41,13 @@
                           <div class="invalid-feedback">{{$message}}</div>
                           @enderror
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                           <table>Tanggal Laporan</table>
                           <input type="date" name="tgl" class="form-control @error('tgl') is-invalid @enderror" value="{{old('tgl')}}" autofocus>
                           @error('tgl')
                           <div class="invalid-feedback">{{$message}}</div>
                           @enderror
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                           <table>Tugas Gambar 1</table>
                           <input type="file" name="gambar" class="form-control @error('gambar') is-invalid @enderror" value="{{old('gambar')}}" autofocus>

@@ -42,7 +42,7 @@ class ArtikelkController extends Controller
             $artikel = new Artikel;
             $artikel->nama = Auth()->user()->id;
             $artikel->nama_id = Auth()->user()->name;
-            $artikel->tgl = $request->tgl;
+            $artikel->tgl = date('Y-m-d');
             $artikel->cabang_id = $cabang_id;
             $artikel->gambar = $namafile;
             $nm->move(public_path().'/pdf', $namafile);

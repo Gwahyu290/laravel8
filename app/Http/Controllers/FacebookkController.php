@@ -43,7 +43,7 @@ class FacebookkController extends Controller
             $facebook = new Facebook;
             $facebook->nama = Auth()->user()->id;
             $facebook->nama_id = Auth()->user()->name;
-            $facebook->tgl = $request->tgl;
+            $facebook->tgl = date('Y-m-d');
             $facebook->cabang_id = $cabang_id;
             $facebook->link = $request->link;
             $facebook->gambarfb = $namafile;

@@ -42,7 +42,7 @@ class GMapskController extends Controller
             $googlemap = new Googlemap;
             $googlemap->nama = Auth()->user()->id;
             $googlemap->nama_id = Auth()->user()->name;
-            $googlemap->tgl = $request->tgl;
+            $googlemap->tgl = date('Y-m-d');
             $googlemap->cabang_id = $cabang_id;
             $googlemap->link = $request->link;
             $googlemap->gambargm = $namafile;

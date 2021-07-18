@@ -61,7 +61,7 @@ class WhatsappkController extends Controller
             $whatsapp = new Whatsapp;
             $whatsapp->nama = Auth()->user()->id;
             $whatsapp->nama_id = Auth()->user()->name;
-            $whatsapp->tgl = $request->tgl;
+            $whatsapp->tgl = date('Y-m-d');
             $whatsapp->cabang_id = $cabang_id;
             $whatsapp->gambar = $namafile;
             $nm->move(public_path().'/wa', $namafile);

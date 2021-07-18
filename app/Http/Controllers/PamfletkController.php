@@ -61,7 +61,7 @@ public function create()
             $pamflet = new Pamflet;
             $pamflet->nama = Auth()->user()->id;
             $pamflet->nama_id = Auth()->user()->name;
-            $pamflet->tgl = $request->tgl;
+            $pamflet->tgl = date('Y-m-d');
             $pamflet->cabang_id = $cabang_id;
             $pamflet->gambar = $namafile;
             $nm->move(public_path().'/pam', $namafile);

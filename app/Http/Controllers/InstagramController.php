@@ -87,7 +87,7 @@ class InstagramController extends Controller
             $instagram = new Instagram;
             $instagram->nama = Auth()->user()->id;
             $instagram->nama_id = Auth()->user()->name;
-            $instagram->tgl = $request->tgl;
+            $instagram->tgl = date('Y-m-d');
             $instagram->cabang_id = $request->cabang_id;
             $instagram->link = $request->link;
             $instagram->save();
