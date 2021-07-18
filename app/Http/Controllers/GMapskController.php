@@ -23,10 +23,10 @@ class GMapskController extends Controller
     public function store(Request $request)
     {
        $request->validate([
-            'tgl' => 'required|min:3',
-            'link' => 'required',
+            'gambargm' => 'required',
+            'link' => 'required'
         ],[
-            'tgl.required' => 'Alamat Karyawan tidak boleh kosong!!!',
+            'gambargm.required' => 'Gambar Tugas tidak boleh kosong!!!',
             'link.required' => 'Link Tugas tidak boleh kosong!!!'
         ]);
         // return $request;

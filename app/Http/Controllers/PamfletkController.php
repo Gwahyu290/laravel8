@@ -41,11 +41,11 @@ public function create()
     public function store(Request $request)
     {
        $request->validate([
-            'tgl' => 'required|min:3',
             'gambar' => 'required',
+            'gambar1' => 'required'
         ],[
-            'tgl.required' => 'Alamat Karyawan tidak boleh kosong!!!',
-            'gambar.required' => 'Status Karyawan tidak boleh kosong!!!'
+            'gambar.required' => 'Gambar tidak boleh kosong!!!',
+            'gambar1.required' => 'Gambar tidak boleh kosong!!!'
         ]);    
         $nm = $request->gambar;
         $nm1 = $request->gambar1;

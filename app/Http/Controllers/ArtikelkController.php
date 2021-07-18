@@ -24,11 +24,9 @@ class ArtikelkController extends Controller
     public function store(Request $request)
     {
        $request->validate([
-            'tgl' => 'required|min:3',
-            'gambar' => 'required',
-        ],[
-            'tgl.required' => 'Alamat Karyawan tidak boleh kosong!!!',
-            'gambar.required' => 'Status Karyawan tidak boleh kosong!!!'
+        'gambar' => 'required'
+    ],[
+        'gambar.required' => 'Gambar tidak boleh kosong!!!',
         ]);    
         $nm = $request->gambar;
         $namafile = $nm->getClientOriginalName();

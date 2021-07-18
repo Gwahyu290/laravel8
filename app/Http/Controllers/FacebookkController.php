@@ -24,11 +24,11 @@ class FacebookkController extends Controller
     public function store(Request $request)
     {
        $request->validate([
-            'tgl' => 'required|min:3',
-            'link' => 'required'
-        ],[
-            'tgl.required' => 'Alamat Karyawan tidak boleh kosong!!!',
-            'link.required' => 'Status Karyawan tidak boleh kosong!!!'
+        'link' => 'required',
+        'gambarfb' => 'required'
+    ],[
+        'gambarfb.required' => 'Gambar tidak boleh kosong!!!',
+        'link.required' => 'Link Pengumpulan tugas tidak boleh kosong!!!'
         ]);
 
         $cabang_id = Auth()->user()->id;

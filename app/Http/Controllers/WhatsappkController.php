@@ -43,10 +43,8 @@ class WhatsappkController extends Controller
     public function store(Request $request)
     {
        $request->validate([
-            'tgl' => 'required|min:3',
             'gambar' => 'required',
         ],[
-            'tgl.required' => 'Alamat Karyawan tidak boleh kosong!!!',
             'gambar.required' => 'Status Karyawan tidak boleh kosong!!!'
         ]);    
         $nm = $request->gambar;
