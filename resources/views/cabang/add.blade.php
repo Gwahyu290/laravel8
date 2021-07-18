@@ -20,7 +20,7 @@
                <div class="card">
                	<div class="card-header">
                		<div class="pull-left">
-               			<strong>Tambah WIlayah</strong>
+               			<strong>Tambah WIlayah Samchick</strong>
                		</div>
                		<div class="pull-right">
                			<a href="{{ url('cabang')}}" class="btn btn-success btn-sm">
@@ -35,7 +35,7 @@
                       <form action="{{url('cabang')}}" method="post">
                         @csrf
                         <div class="form-group">
-                          <table>Wilayah Samchick</table>
+                          <table>Nama Daerah Samchick</table>
                           <input type="text" name="namacbg" class="form-control @error('namacbg') is-invalid @enderror" value="{{old('namacbg')}}" autofocus>
                           @error('namacbg')
                           <div class="invalid-feedback">{{$message}}</div>
