@@ -112,8 +112,17 @@ class PamfletController extends Controller
      */
     public function edit(Pamflet $pamflet)
     {
-        $cabangs = Cabang::all();
-        return view('pamflet.edit', compact('pamflet', 'cabangs'));
+        {
+            $Agent = new Agent();
+        
+            $cabangs = Cabang::all();
+        
+            if ($Agent->isMobile()) {
+                return view('mobile.pamflet.edit', compact('pamflet','cabangs'));
+            } else {
+                return view('pamflet.edit', compact('pamflet', 'cabangs'));
+                }
+            }
     }
 
     /**

@@ -121,8 +121,17 @@ class InstagramController extends Controller
      */
     public function edit(Instagram $instagram)
     {
+        {
+        $Agent = new Agent();
+    
         $cabangs = Cabang::all();
-        return view('instagram.edit', compact('instagram','cabangs'));
+    
+        if ($Agent->isMobile()) {
+            return view('mobile.instagram.edit', compact('instagram','cabangs'));
+        } else {
+            return view('instagram.edit', compact('instagram', 'cabangs'));
+            }
+        }
     }
 
     /**

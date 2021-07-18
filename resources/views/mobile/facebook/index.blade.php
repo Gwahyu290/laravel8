@@ -90,7 +90,7 @@
                       <td class="text-center">
                         <a href="{{ asset('fb/'. $item->gambarfb) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar</a></td>
                         <td class="text-center">
-                          <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Tugas</a></td>
+                          <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Link</a></td>
                       <td class="text-center">{{ $item->nilaifb }}</td>
                       <td class="text-center">
                         <a href="{{url('facebook/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">

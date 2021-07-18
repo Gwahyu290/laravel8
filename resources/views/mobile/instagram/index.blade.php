@@ -90,7 +90,7 @@
                       <td class="text-center">
                         <a href="{{ asset('ig/'. $item->gambarig) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar</a></td>
                       <td class="text-center">
-                      <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Tugas</a></td>
+                      <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Link</a></td>
                       <td class="text-center">{{ $item->nilaiins }}</td>
                       <td class="text-center">
                         <a href="{{url('instagram/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">

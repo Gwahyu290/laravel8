@@ -112,8 +112,17 @@ class WhatsappController extends Controller
      */
     public function edit(Whatsapp $whatsapp)
     {
-        $cabangs = Cabang::all();
-        return view('whatsapp.edit', compact('whatsapp', 'cabangs'));
+        {
+            $Agent = new Agent();
+        
+            $cabangs = Cabang::all();
+        
+            if ($Agent->isMobile()) {
+                return view('mobile.whatsapp.edit', compact('whatsapp','cabangs'));
+            } else {
+                return view('whatsapp.edit', compact('whatsapp', 'cabangs'));
+                }
+            }
     }
 
     /**

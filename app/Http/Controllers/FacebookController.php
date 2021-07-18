@@ -113,9 +113,17 @@ class FacebookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Facebook $facebook)
-    {
+    {{
+        $Agent = new Agent();
+    
         $cabangs = Cabang::all();
-        return view('facebook.edit', compact('facebook', 'cabangs'));
+    
+        if ($Agent->isMobile()) {
+            return view('mobile.facebook.edit', compact('facebook','cabangs'));
+        } else {
+            return view('facebook.edit', compact('facebook', 'cabangs'));
+            }
+        }
     }
     /**
      * Update the specified resource in storage.

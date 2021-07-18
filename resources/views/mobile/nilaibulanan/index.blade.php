@@ -82,12 +82,6 @@
                              <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"> Search </i></button>
                             </div>
                     </div>       
-                    <div class="col-md-1 pr-1">
-                            <div class="form-group">
-                              <label style="color:white;">,l</label>
-                             <br><a class="btn btn-danger" href="{{ url('nilaibulanan')}}"><i class="fa fa-refresh"> Refresh </i></a>
-                            </div>
-                    </div>
                     </form>
           
                 <div class="col-xl-12">

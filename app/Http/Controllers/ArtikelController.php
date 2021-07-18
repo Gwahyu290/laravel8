@@ -112,8 +112,17 @@ class ArtikelController extends Controller
      */
     public function edit(Artikel $artikel)
     {
-        $cabangs = Cabang::all();
-        return view('artikel.edit', compact('artikel', 'cabangs'));
+        {
+            $Agent = new Agent();
+        
+            $cabangs = Cabang::all();
+        
+            if ($Agent->isMobile()) {
+                return view('mobile.artikel.edit', compact('artikel','cabangs'));
+            } else {
+                return view('artikel.edit', compact('artikel', 'cabangs'));
+                }
+            }
     }
 
     /**
