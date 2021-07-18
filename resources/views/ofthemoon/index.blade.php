@@ -57,7 +57,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-4">
-                                <h4 class="card-title mb-0">Grafik of The Month {{$tahun}}</h4>
+                                <h4 class="card-title mb-0">Grafik Karyawan Terbaik Tahun {{$tahun}}</h4>
                             </div>
                             
                             <!--/.col-->

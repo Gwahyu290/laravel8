@@ -50,6 +50,7 @@
                			<tr>
                				<td class="text-center">{{ $cabangs->firstItem()+ $key }}</td>
                				<td class="text-center">{{ $item->namacbg }}</td>
+							<td class="text-center">{{ $item->alamat }}</td>   
 							<!--  -->
                				<td class="text-center">
                					<a href="{{url('cabang/edit/'.$item->id)}}" class="btn btn-warning btn-sm">
