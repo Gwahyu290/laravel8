@@ -136,7 +136,7 @@
                       </div>
                       <div class="pull-right">
                         <a href="{{ url('kinerja')}}" class="btn btn-success btn-sm">
-                          <i class="fa fa-plus"></i> Lihat Nilai Saya 
+                          <i class="fa fa-line-chart"></i> Lihat Nilai Saya 
                         </a>
                       </div>
                   </div>
