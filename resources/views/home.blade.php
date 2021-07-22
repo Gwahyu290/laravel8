@@ -186,7 +186,7 @@
                               </div><!--/.col-->
                           </div><!--/.row-->
                           <div >
-                              <canvas id="myChart" style="height:250px;" height="165"></canvas>
+                              <canvas id="myChart" style="height:250px;" height="164"></canvas>
                           </div>
                       </div>
                   </div>
