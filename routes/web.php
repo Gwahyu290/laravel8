@@ -45,6 +45,7 @@ route::resource('nilaiharian', 'NilaiHarianController');
 route::resource('nilaimingguan', 'NilaiMingguanController');
 route::resource('user','UserController');
 route::resource('userk','UserkController');
+route::resource('kinerja','KinerjaController');
 
 //search
 route::post('instagram','InstagramController@index');
@@ -72,6 +73,7 @@ route::post('nilaimingguan','NilaiMingguanController@index');
 route::post('nilaiharian','NilaiHarianController@index');
 route::post('user','UserController@index');
 route::post('home','HomeController@index');
+route::post('kinerja','KinerjaController@index');
 
 //delete
 route::get('instagramk/{id}/delete','InstagramkController@destroy');
