@@ -41,8 +41,8 @@ public function create()
     public function store(Request $request)
     {
        $request->validate([
-            'gambar' => 'required',
-            'gambar1' => 'required'
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'gambar1' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ],[
             'gambar.required' => 'Gambar tidak boleh kosong!!!',
             'gambar1.required' => 'Gambar tidak boleh kosong!!!'

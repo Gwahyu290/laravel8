@@ -24,7 +24,7 @@ class GMapskController extends Controller
     {
        $request->validate([
             'gambargm' => 'required',
-            'link' => 'required'
+            'link' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ],[
             'gambargm.required' => 'Gambar Tugas tidak boleh kosong!!!',
             'link.required' => 'Link Tugas tidak boleh kosong!!!'

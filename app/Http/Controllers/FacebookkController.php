@@ -25,7 +25,7 @@ class FacebookkController extends Controller
     {
        $request->validate([
         'link' => 'required',
-        'gambarfb' => 'required'
+        'gambarfb' => 'required|image|mimes:jpeg,png,jpg|max:2048'
     ],[
         'gambarfb.required' => 'Gambar tidak boleh kosong!!!',
         'link.required' => 'Link Pengumpulan tugas tidak boleh kosong!!!'

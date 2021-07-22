@@ -43,7 +43,7 @@ class WhatsappkController extends Controller
     public function store(Request $request)
     {
        $request->validate([
-            'gambar' => 'required',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ],[
             'gambar.required' => 'Status Karyawan tidak boleh kosong!!!'
         ]);    
