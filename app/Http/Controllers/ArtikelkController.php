@@ -24,7 +24,7 @@ class ArtikelkController extends Controller
     public function store(Request $request)
     {
        $request->validate([
-        'gambar' => 'required'
+        'gambar' => 'required|mimes:pdf,doc,docx'
     ],[
         'gambar.required' => 'Gambar tidak boleh kosong!!!',
         ]);    
