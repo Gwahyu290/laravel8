@@ -27,7 +27,7 @@ class InstagramkController extends Controller
     {  
        $request->validate([
             'link' => 'required',
-            'gambarig' => 'required'
+            'gambarig' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ],[
             'gambarig.required' => 'Gambar tidak boleh kosong!!!',
             'link.required' => 'Link Pengumpulan tugas tidak boleh kosong!!!'
