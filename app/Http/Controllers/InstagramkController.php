@@ -10,19 +10,6 @@ use DB;
 
 class InstagramkController extends Controller
 {
-    public function index(Request $request)
-    {
-    $Agent = new Agent();
-
-    $instagrams = Instagram::where('nama','=',Auth()->user()->id)->paginate(15);
-   
-    
-    if ($Agent->isMobile()) {
-        return view('mobile.instagramk.index', compact('instagrams'));
-    } else {
-        return view('instagramk.index', compact('instagrams'));
-        }
-    }
     public function store(Request $request)
     {  
        $request->validate([

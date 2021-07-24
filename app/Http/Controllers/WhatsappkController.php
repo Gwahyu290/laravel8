@@ -8,19 +8,6 @@ use Jenssegers\Agent\Agent as Agent;
 use DB;
 class WhatsappkController extends Controller
 {
-    public function index()
-    {
-    $Agent = new Agent();
-
-    $whatsapps = Whatsapp::where('nama','=',Auth()->user()->id)->paginate(15);
-        
-    if ($Agent->isMobile()) {
-        return view('mobile.whatsappk.index', compact('whatsapps'));
-    } else {
-        return view('whatsappk.index', compact('whatsapps'));
-        }
-    }
-
     public function create()
     {
     $Agent = new Agent();

@@ -36,7 +36,21 @@
                   </div>
                	</div>
                	<div class="card-body table-responsive">
-                 
+                  <form role="form" action="{{ url('instagram')}}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="col-md-2 pr-1">
+                            <div class="form-group">
+                              <label>Tanggal</label>
+                              <input type="date" class="form-control"  placeholder="06/02/2021" name="tgl1" >
+                            </div>
+                    </div>
+                    <div class="col-md-1 pr-1">
+                            <div class="form-group">
+                              <label style="color:white;">,l</label>
+                             <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"> Search </i></button>
+                            </div>
+                    </div>       
+                    </form>
                		<table class="table table-bordered">
                		<thead>
                			<tr class="text-center">

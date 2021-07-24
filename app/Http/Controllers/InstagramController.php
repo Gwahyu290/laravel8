@@ -12,37 +12,78 @@ class InstagramController extends Controller
     public function index(Request $request)
     {
     //declare tgl 1 and tgl2
-    $instagrams= "";    
-    $tgl1 = "";
-        if($request->tgl1 == "" || $request->tgl1 == null ){
-            $tgl1 = date("Y-m-d");
-        }
-        if($request->tgl1 != "" || $request->tgl1 != null ){
-            $tgl1 = $request->tgl1;
-            $tgl1 = str_replace("/","-",$tgl1);
-            $tgl1 = date('Y-m-d',strtotime($tgl1));
+    if(auth()->user()->level=="Admin"){
+        $instagrams= "";    
+        $tgl1 = "";
+            if($request->tgl1 == "" || $request->tgl1 == null ){
+                $tgl1 = date("Y-m-d");
             }
+            if($request->tgl1 != "" || $request->tgl1 != null ){
+                $tgl1 = $request->tgl1;
+                $tgl1 = str_replace("/","-",$tgl1);
+                $tgl1 = date('Y-m-d',strtotime($tgl1));
+                }
+        
+            if($request->orderBy != null || $request->orderBy != ""){
+                if($request->orderBy=="0"){            
+                    $instagrams = Instagram::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                    ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaiins','ASC')->paginate(5);
+                }else{    
+                    $instagrams = Instagram::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                    ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaiins','DESC')->paginate(5);     
+                }
+            }
+            else{
+                $instagrams = Instagram::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                    ->whereBetween('tgl',[$tgl1,$tgl1])->paginate(5);
+            }}
+    if(auth()->user()->level=="Karyawan"){
+        $instagrams= "";    
+        $tgl1 = "";
+            if($request->tgl1 == "" || $request->tgl1 == null ){
+                $tgl1 = date("Y-m-d");
+            }
+            if($request->tgl1 != "" || $request->tgl1 != null ){
+                $tgl1 = $request->tgl1;
+                $tgl1 = str_replace("/","-",$tgl1);
+                $tgl1 = date('Y-m-d',strtotime($tgl1));
+                }
+        
+            if($request->orderBy != null || $request->orderBy != ""){
+                if($request->orderBy=="0"){            
+                    $instagrams = Instagram::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')->where('nama','=',Auth()->user()->id)
+                    ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaiins','ASC')->paginate(5);
+                }else{    
+                    $instagrams = Instagram::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')->where('nama','=',Auth()->user()->id)
+                    ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaiins','DESC')->paginate(5);     
+                }
+            }
+            else{
+                $instagrams = Instagram::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')->where('nama','=',Auth()->user()->id)
+                    ->whereBetween('tgl',[$tgl1,$tgl1])->paginate(5);
+            }
+        }
     
-        if($request->orderBy != null || $request->orderBy != ""){
-            if($request->orderBy=="0"){            
-                $instagrams = Instagram::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
-                ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaiins','ASC')->paginate(5);
-            }else{    
-                $instagrams = Instagram::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
-                ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaiins','DESC')->paginate(5);     
-            }
-        }
-        else{
-            $instagrams = Instagram::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
-                ->whereBetween('tgl',[$tgl1,$tgl1])->paginate(5);
-        }
     $Agent = new Agent();
         
-    if ($Agent->isMobile()) {
-        return view('mobile.instagram.index', compact('instagrams'));
-    } else {
-        return view('instagram.index', compact('instagrams'));
+    if(auth()->user()->level=="Admin"){
+        if ($Agent->isMobile()) {
+            // you're a mobile device
+                return view('mobile.instagram.index',compact('instagrams'));
+        } else {
+            // you're a desktop device, or something similar
+                return view('instagram.index',compact('instagrams'));
         }
+    }
+    if(auth()->user()->level=="Karyawan"){
+        if ($Agent->isMobile()) {
+            // you're a mobile device
+                return view('mobile.instagramk.index',compact('instagrams'));
+        } else {
+            // you're a desktop device, or something similar
+                return view('instagramk.index',compact('instagrams'));
+        }
+    }
     }
  
 

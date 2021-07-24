@@ -12,38 +12,79 @@ class FacebookController extends Controller
 {
     public function index(Request $request)
     {
-    $facebooks= "";    
-    $tgl1 = "";
-        if($request->tgl1 == "" || $request->tgl1 == null ){
-            $tgl1 = date("Y-m-d");
-        }
-        if($request->tgl1 != "" || $request->tgl1 != null ){
-            $tgl1 = $request->tgl1;
-            $tgl1 = str_replace("/","-",$tgl1);
-            $tgl1 = date('Y-m-d',strtotime($tgl1));
+        if(auth()->user()->level=="Admin"){
+            $facebooks= "";    
+            $tgl1 = "";
+                if($request->tgl1 == "" || $request->tgl1 == null ){
+                    $tgl1 = date("Y-m-d");
+                }
+                if($request->tgl1 != "" || $request->tgl1 != null ){
+                    $tgl1 = $request->tgl1;
+                    $tgl1 = str_replace("/","-",$tgl1);
+                    $tgl1 = date('Y-m-d',strtotime($tgl1));
+                    }
+            
+                if($request->orderBy != null || $request->orderBy != ""){
+                    if($request->orderBy=="0"){            
+                        $facebooks = Facebook::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                        ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaifb','ASC')->paginate(5);
+                    }else{    
+                        $facebooks = Facebook::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                        ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaifb','DESC')->paginate(5);     
+                    }
+                }
+                else{
+                    $facebooks = Facebook::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                        ->whereBetween('tgl',[$tgl1,$tgl1])->paginate(5);
+                }}
+        if(auth()->user()->level=="Karyawan"){
+            $facebooks= "";    
+            $tgl1 = "";
+                if($request->tgl1 == "" || $request->tgl1 == null ){
+                    $tgl1 = date("Y-m-d");
+                }
+                if($request->tgl1 != "" || $request->tgl1 != null ){
+                    $tgl1 = $request->tgl1;
+                    $tgl1 = str_replace("/","-",$tgl1);
+                    $tgl1 = date('Y-m-d',strtotime($tgl1));
+                    }
+            
+                if($request->orderBy != null || $request->orderBy != ""){
+                    if($request->orderBy=="0"){            
+                        $facebooks = Facebook::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')->where('nama','=',Auth()->user()->id)
+                        ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaifb','ASC')->paginate(5);
+                    }else{    
+                        $facebooks = Facebook::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')->where('nama','=',Auth()->user()->id)
+                        ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaifb','DESC')->paginate(5);     
+                    }
+                }
+                else{
+                    $facebooks = Facebook::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')->where('nama','=',Auth()->user()->id)
+                        ->whereBetween('tgl',[$tgl1,$tgl1])->paginate(5);
+                }
             }
         
-        if($request->orderBy != null || $request->orderBy != ""){
-            if($request->orderBy=="0"){            
-                $facebooks = Facebook::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
-                ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaifb','ASC')->paginate(5);
-            }else{    
-                $facebooks = Facebook::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
-                ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaifb','DESC')->paginate(5);     
+        $Agent = new Agent();
+            
+        if(auth()->user()->level=="Admin"){
+            if ($Agent->isMobile()) {
+                // you're a mobile device
+                    return view('mobile.facebook.index',compact('facebooks'));
+            } else {
+                // you're a desktop device, or something similar
+                    return view('facebook.index',compact('facebooks'));
             }
         }
-        else{
-            $facebooks =Facebook::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
-                ->whereBetween('tgl',[$tgl1,$tgl1])->paginate(5);
+        if(auth()->user()->level=="Karyawan"){
+            if ($Agent->isMobile()) {
+                // you're a mobile device
+                    return view('mobile.facebookk.index',compact('facebooks'));
+            } else {
+                // you're a desktop device, or something similar
+                    return view('facebookk.index',compact('facebooks'));
+            }
         }
-    $Agent = new Agent();
-
-    if ($Agent->isMobile()) {
-        return view('mobile.facebook.index', compact('facebooks'));
-    } else {
-        return view('facebook.index', compact('facebooks'));
         }
-    }
 
     
         

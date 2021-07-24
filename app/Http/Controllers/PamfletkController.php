@@ -7,31 +7,6 @@ use Jenssegers\Agent\Agent as Agent;
 use DB;
 class PamfletkController extends Controller
 {
-    public function index(Request $request)
-    {
-    $Agent = new Agent();
-
-    $pamflets = Pamflet::where('nama','=',Auth()->user()->id)->paginate(15);
-        
-    if ($Agent->isMobile()) {
-        return view('mobile.pamfletk.index', compact('pamflets'));
-    } else {
-        return view('pamfletk.index', compact('pamflets'));
-        }
-    }
-public function create()
-    {
-    $Agent = new Agent();
-    $cabangs = Cabang::all();
-
-    if ($Agent->isMobile()) {
-        return view('mobile.pamflet.create', compact('cabangs'));
-    } else {    
-        return view('pamflet.create', compact('cabangs'));
-        }
-    }
-
-
     /**
      * Store a newly created resource in storage.
      *

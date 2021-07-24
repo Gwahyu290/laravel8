@@ -35,12 +35,12 @@ route::resource('nilaibulanan','NilaiBulananController');
 route::resource('ofthemoonk','OfthemoonkController');
 
 route::resource('accakun', 'AccakunController');
-route::resource('facebookk', 'FacebookkController');
-route::resource('artikelk', 'ArtikelkController');
-route::resource('instagramk', 'InstagramkController');
-route::resource('pamfletk', 'PamfletkController');
-route::resource('whatsappk', 'WhatsappkController');
-route::resource('googlemapk', 'GMapskController');
+route::resource('facebookk', 'FacebookController');
+route::resource('artikelk', 'ArtikelController');
+route::resource('instagramk', 'InstagramController');
+route::resource('pamfletk', 'PamfletController');
+route::resource('whatsappk', 'WhatsappController');
+route::resource('googlemapk', 'GMapsController');
 route::resource('nilaiharian', 'NilaiHarianController');
 route::resource('nilaimingguan', 'NilaiMingguanController');
 route::resource('user','UserController');
@@ -59,7 +59,12 @@ route::post('nilaimingguan','NilaiMingguanController@index');
 route::post('nilaiharian','NilaiHarianController@index');
 route::post('nilaibulanan','NilaiBulananController@index');
 route::post('ofthemoon','OfthemoonController@index');
-
+route::post('instagramk','InstagramkController@store');
+route::post('facebookk','FacebookkController@store');
+route::post('artikelk','ArtikelkController@store');
+route::post('whatsappk','WhatsappkController@store');
+route::post('pamfletk','PamfletkController@store');
+route::post('googlemapk','GmapskController@store');
 
 //search
 route::post('instagram','InstagramController@index');
@@ -68,6 +73,7 @@ route::post('googlemap','GmapsController@index');
 route::post('artikel','ArtikelController@index');
 route::post('whatsapp','WhatsappController@index');
 route::post('pamflet','PamfletController@index');
+route::post('cabang','cabangController@data');
 
 route::post('nilaimingguan','NilaiMingguanController@index');
 route::post('nilaiharian','NilaiHarianController@index');

@@ -11,37 +11,79 @@ class ArtikelController extends Controller
 {
     public function index(Request $request)
     {
-    $artikels= "";    
-    $tgl1 = "";
-        if($request->tgl1 == "" || $request->tgl1 == null ){
-            $tgl1 = date("Y-m-d");
-        }
-        if($request->tgl1 != "" || $request->tgl1 != null ){
-            $tgl1 = $request->tgl1;
-            $tgl1 = str_replace("/","-",$tgl1);
-            $tgl1 = date('Y-m-d',strtotime($tgl1));
+        if(auth()->user()->level=="Admin"){
+            $artikels= "";    
+            $tgl1 = "";
+                if($request->tgl1 == "" || $request->tgl1 == null ){
+                    $tgl1 = date("Y-m-d");
+                }
+                if($request->tgl1 != "" || $request->tgl1 != null ){
+                    $tgl1 = $request->tgl1;
+                    $tgl1 = str_replace("/","-",$tgl1);
+                    $tgl1 = date('Y-m-d',strtotime($tgl1));
+                    }
+            
+                if($request->orderBy != null || $request->orderBy != ""){
+                    if($request->orderBy=="0"){            
+                        $artikels = Artikel::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                        ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaiar','ASC')->paginate(5);
+                    }else{    
+                        $artikels = Artikel::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                        ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaiar','DESC')->paginate(5);     
+                    }
+                }
+                else{
+                    $artikels = Artikel::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
+                        ->whereBetween('tgl',[$tgl1,$tgl1])->paginate(5);
+                }}
+        if(auth()->user()->level=="Karyawan"){
+            $artikels= "";    
+            $tgl1 = "";
+                if($request->tgl1 == "" || $request->tgl1 == null ){
+                    $tgl1 = date("Y-m-d");
+                }
+                if($request->tgl1 != "" || $request->tgl1 != null ){
+                    $tgl1 = $request->tgl1;
+                    $tgl1 = str_replace("/","-",$tgl1);
+                    $tgl1 = date('Y-m-d',strtotime($tgl1));
+                    }
+            
+                if($request->orderBy != null || $request->orderBy != ""){
+                    if($request->orderBy=="0"){            
+                        $artikels = Artikel::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')->where('nama','=',Auth()->user()->id)
+                        ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaiar','ASC')->paginate(5);
+                    }else{    
+                        $artikels = Artikel::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')->where('nama','=',Auth()->user()->id)
+                        ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaiar','DESC')->paginate(5);     
+                    }
+                }
+                else{
+                    $artikels = Artikel::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')->where('nama','=',Auth()->user()->id)
+                        ->whereBetween('tgl',[$tgl1,$tgl1])->paginate(5);
+                }
             }
         
-        if($request->orderBy != null || $request->orderBy != ""){
-            if($request->orderBy=="0"){            
-                $artikels = Artikel::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
-                ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaiar','ASC')->paginate(5);
-            }else{    
-                $artikels = Artikel::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
-                ->whereBetween('tgl',[$tgl1,$tgl1])->orderBy('nilaiar','DESC')->paginate(5);     
+        $Agent = new Agent();
+            
+        if(auth()->user()->level=="Admin"){
+            if ($Agent->isMobile()) {
+                // you're a mobile device
+                    return view('mobile.artikel.index',compact('artikels'));
+            } else {
+                // you're a desktop device, or something similar
+                    return view('artikel.index',compact('artikels'));
             }
         }
-        else{
-            $artikels =Artikel::where('nama_id','like','%'.$request->q.'%')->where('cabang_id','like','%'.$request->cabang_id.'%')
-                ->whereBetween('tgl',[$tgl1,$tgl1])->paginate(10);
+        if(auth()->user()->level=="Karyawan"){
+            if ($Agent->isMobile()) {
+                // you're a mobile device
+                    return view('mobile.artikelk.index',compact('artikels'));
+            } else {
+                // you're a desktop device, or something similar
+                    return view('artikelk.index',compact('artikels'));
+            }
         }
-    $Agent = new Agent();
-    if ($Agent->isMobile()) {
-        return view('mobile.artikel.index', compact('artikels'));
-    } else {
-        return view('artikel.index', compact('artikels'));
         }
-    }
 
     /**
      * Show the form for creating a new resource.

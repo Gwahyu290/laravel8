@@ -9,18 +9,6 @@ use Jenssegers\Agent\Agent as Agent;
 
 class ArtikelkController extends Controller
 {
-    public function index()
-    {
-    $Agent = new Agent();
-
-    $artikels = Artikel::where('nama','=',Auth()->user()->id)->paginate(15);
-
-    if ($Agent->isMobile()) {
-        return view('mobile.artikelk.index', compact('artikels'));
-    } else {
-        return view('artikelk.index', compact('artikels'));
-        }
-    }
     public function store(Request $request)
     {
        $request->validate([

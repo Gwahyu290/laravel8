@@ -8,23 +8,11 @@ use DB;
 
 class GMapskController extends Controller
 {
-    public function index()
-    {
-    $Agent = new Agent();
-
-    $googlemaps = Googlemap::where('nama','=',Auth()->user()->id)->paginate(15);
-        
-    if ($Agent->isMobile()) {
-        return view('mobile/googlemapk/index', compact('googlemaps'));
-    } else {
-        return view('googlemapk.index', compact('googlemaps'));
-        }
-    }
     public function store(Request $request)
     {
        $request->validate([
-            'gambargm' => 'required',
-            'link' => 'required|image|mimes:jpeg,png,jpg|max:2048'
+            'link' => 'required',
+            'gambargm' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ],[
             'gambargm.required' => 'Gambar Tugas tidak boleh kosong!!!',
             'link.required' => 'Link Tugas tidak boleh kosong!!!'
