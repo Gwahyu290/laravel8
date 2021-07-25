@@ -184,16 +184,39 @@ class ArtikelController extends Controller
         ]);
         // return $request;
         // cara1
-        $cek = DB::select("select * from rekap where tgl='$artikel->tgl' AND nama_id='$artikel->nama_id' AND tipe=1 ");
+        $cek = DB::select("select * from rekap where tgl='$artikel->tgl' AND nama_id='$artikel->nama_id' AND tipe=0");
         $nilai = $request->nilaiar;
-       
+        $predikat = "";
+        if ($nilai == "0") {
+            $predikat = "E";
+        }else if ($nilai == "1") {
+            $predikat = "D-";
+        }else if ($nilai == "2") {
+            $predikat = "D";
+        }else if ($nilai == "3") {
+            $predikat = "D+";
+        }else if ($nilai == "4") {
+            $predikat = "C-";
+        }else if ($nilai == "5") {
+            $predikat = "C";
+        }else if ($nilai == "6") {
+            $predikat = "C+";
+        }else if ($nilai == "7") {
+            $predikat = "B-";
+        }else if ($nilai == "8") {
+            $predikat = "B";
+        }else if ($nilai == "9") {
+            $predikat = "B+";
+        }else if ($nilai == "10") {
+            $predikat = "A";
+        }
+
 
         if($cek == null || $cek == ""){
             $save = DB::table('rekap')->insert([
                 'nama_id' => $artikel->nama_id, 
                 'tgl' => $artikel->tgl,
-                'ar' => $nilai,
-                'tipe' => 1
+                'ar' => $nilai
                 ]);
         }else{
             foreach($cek as $c){
@@ -202,8 +225,8 @@ class ArtikelController extends Controller
                     ]);
             }        
         }
-
         $artikel->nilaiar = $request->nilaiar;
+        $artikel->predikat = $predikat;
         $artikel->save();
 
         return redirect('artikel')->with('status', 'Tugas Karyawan Berhasil di Nilai!!!');

@@ -58,7 +58,8 @@
                       <th>Tanggal Laporan</th>
                       <th>Wilayah Samchick</th>
                       <th>Laporan Artikel</th>
-                      <th>Nilai Tugas</th>
+                      <th>Nilai</th>
+                      <th>Predikat</th>
                       <th>Aktion</th>
                			</tr>
                		</thead>
@@ -71,6 +72,7 @@
                       <td class="text-center">
                       <a href="{{ asset('pdf/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Download File</a></td>
                       <td class="text-center">{{ $item->nilaiar }}</td>
+                      <td class="text-center">{{ $item->predikat }}</td>
                       <td class="text-center">
                         <a href="{{url('artikelk/'.$item->id.'/delete')}}">
                             <button class="btn btn-danger btn-sm" onclick="return confirm('Tugas yang dibatalkan tidak dapat dikirim kembali, apakah anda yakin???')">

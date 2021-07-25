@@ -59,7 +59,8 @@
                       <th>Wilayah Samchick</th>
                       <th>Tugas Google Views</th>
                       <th>Link Google Views</th>
-                      <th>Nilai Tugas</th>
+                      <th>Nilai</th>
+                      <th>Predikat</th>
                       <th>Action</th>
                			</tr>
                		</thead>
@@ -74,6 +75,7 @@
                         <td class="text-center">
                           <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Tugas</a></td>
                       <td class="text-center">{{ $item->nilaigm}}</td>
+                      <td class="text-center">{{ $item->predikat }}</td>
                       <td class="text-center">
                         <a href="{{url('googlemapk/'.$item->id.'/delete')}}">
                             <button class="btn btn-danger btn-sm" onclick="return confirm('Tugas yang dibatalkan tidak dapat dikirim kembali, apakah anda yakin???')">

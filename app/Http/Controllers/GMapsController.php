@@ -173,7 +173,31 @@ class GMapsController extends Controller
         // cara1
         $cek = DB::select("select * from rekap where tgl='$googlemap->tgl' AND nama_id='$googlemap->nama_id' AND tipe=0");
         $nilai = $request->nilaigm;
-       
+        $predikat = "";
+        if ($nilai == "0") {
+            $predikat = "E";
+        }else if ($nilai == "1") {
+            $predikat = "D-";
+        }else if ($nilai == "2") {
+            $predikat = "D";
+        }else if ($nilai == "3") {
+            $predikat = "D+";
+        }else if ($nilai == "4") {
+            $predikat = "C-";
+        }else if ($nilai == "5") {
+            $predikat = "C";
+        }else if ($nilai == "6") {
+            $predikat = "C+";
+        }else if ($nilai == "7") {
+            $predikat = "B-";
+        }else if ($nilai == "8") {
+            $predikat = "B";
+        }else if ($nilai == "9") {
+            $predikat = "B+";
+        }else if ($nilai == "10") {
+            $predikat = "A";
+        }
+
 
         if($cek == null || $cek == ""){
             $save = DB::table('rekap')->insert([
@@ -188,8 +212,8 @@ class GMapsController extends Controller
                     ]);
             }        
         }
-
         $googlemap->nilaigm = $request->nilaigm;
+        $googlemap->predikat = $predikat;
         $googlemap->save();
 
         return redirect('googlemap')->with('status', 'Tugas Google Maps Berihasil Dinilai!!!');

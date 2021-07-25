@@ -59,6 +59,7 @@
                       <th>Wilayah Samchick</th>
                       <th>Laporan Share Pamflet</th>
                       <th>Nilai Tugas</th>
+                      <th>Predikat</th>
                       <th>Action</th>
                			</tr>
                		</thead>
@@ -72,6 +73,7 @@
                       <a href="{{ asset('pam/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar 1,</a>
                       <a href="{{ asset('pam/'. $item->gambar1) }}" target="_blank" rel="noopener noreferrer">Gambar 2</a></td>
                       <td class="text-center">{{ $item->nilaipm }}</td>
+                      <td class="text-center">{{ $item->predikat }}</td>
                       <td class="text-center">
                         <a href="{{url('pamfletk/'.$item->id.'/delete')}}">
                             <button class="btn btn-danger btn-sm" onclick="return confirm('Tugas yang dibatalkan tidak dapat dikirim kembali, apakah anda yakin???')">

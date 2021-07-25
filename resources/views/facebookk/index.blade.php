@@ -59,7 +59,8 @@
                       <th>Wilayah Samchick</th>
                       <th>Gambar Facebook</th>
                       <th>Link Facebook</th>
-                      <th>Nilai Tugas</th>
+                      <th>Nilai</th>
+                      <th>Predikat</th>
                       <th>Action</th>
                			</tr>
                		</thead>
@@ -74,6 +75,7 @@
                       <td class="text-center">
                       <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Tugas</a>
                       <td class="text-center">{{ $item->nilaifb}}</td>
+                      <td class="text-center">{{ $item->predikat}}</td>
                       <td class="text-center">
                         <a href="{{url('facebookk/'.$item->id.'/delete')}}">
                             <button class="btn btn-danger btn-sm" onclick="return confirm('Tugas yang dibatalkan tidak dapat dikirim kembali, apakah anda yakin???')">

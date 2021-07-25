@@ -77,7 +77,8 @@
                       <th>Tanggal Laporan</th>
                       <th>WIlayah Samchick</th>
                       <th>File Laporan WhatsApp</th>
-                      <th>Nilai Laporan</th>
+                      <th>Nilai</th>
+                      <th>Predikat</th>
                				<th>Aksi</th>
                			</tr>
                		</thead>
@@ -91,6 +92,7 @@
                       <td class="text-center">
                       <a href="{{ asset('pdf/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar</a></td>
                       <td class="text-center">{{ $item->nilaiwa }}</td>
+                      <td class="text-center">{{ $item->predikat }}</td>
                       <td class="text-center">
                         <a href="{{url('whatsapp/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">
                           <i class="fa fa-pencil"> Nilai Tugas</i>
