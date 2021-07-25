@@ -12,7 +12,7 @@ class Instagram extends Model
     }
      protected $table = "instagrams";
     protected $primaryKey ="id";
-    protected $fillable =['id','nama_id','tgl','cabang_id','link'];
+    protected $fillable =['id','nama_id','tgl','cabang_id','link','nilaiins','predikat'];
 
     public function users()
     {

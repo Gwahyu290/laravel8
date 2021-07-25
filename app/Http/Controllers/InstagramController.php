@@ -194,7 +194,31 @@ class InstagramController extends Controller
         // cara1
         $cek = DB::select("select * from rekap where tgl='$instagram->tgl' AND nama_id='$instagram->nama_id' AND tipe=0");
         $nilai = $request->nilaiins;
-       
+        $predikat = "";
+        if ($nilai == "0") {
+            $predikat = "E";
+        }else if ($nilai == "1") {
+            $predikat = "D-";
+        }else if ($nilai == "2") {
+            $predikat = "D";
+        }else if ($nilai == "3") {
+            $predikat = "D+";
+        }else if ($nilai == "4") {
+            $predikat = "C-";
+        }else if ($nilai == "5") {
+            $predikat = "C";
+        }else if ($nilai == "6") {
+            $predikat = "C+";
+        }else if ($nilai == "7") {
+            $predikat = "B-";
+        }else if ($nilai == "8") {
+            $predikat = "B";
+        }else if ($nilai == "9") {
+            $predikat = "B+";
+        }else if ($nilai == "10") {
+            $predikat = "A";
+        }
+
 
         if($cek == null || $cek == ""){
             $save = DB::table('rekap')->insert([
@@ -205,11 +229,12 @@ class InstagramController extends Controller
         }else{
             foreach($cek as $c){
                 DB::table('rekap')->where('id_rekap', $c->id_rekap)->update([
-                    'ig' => ($c->ig - $instagram->nilaiig)+$nilai
+                    'ig' => ($c->ig - $instagram->nilaiins)+$nilai
                     ]);
             }        
         }
         $instagram->nilaiins = $request->nilaiins;
+        $instagram->predikat = $predikat;
         $instagram->save();
 
         return redirect('instagram')->with('status', 'Tugas Karyawan Berhasil di Nilai!!!');
