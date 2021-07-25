@@ -77,7 +77,8 @@
                       <th>Gambar Tugas Instagram</th>
                       <th>Link Tugas Instagram</th>
                       <th>Nilai</th>
-               				<th>Aksi</th>
+               				<th>Predikat</th>
+                      <th>Aksi</th>
                			</tr>
                		</thead>
                		<tbody>
@@ -92,6 +93,7 @@
                       <td class="text-center">
                       <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Tugas</a></td>
                       <td class="text-center">{{ $item->nilaiins }}</td>
+                      <td class="text-center">{{ $item->predikat }}</td>
                       <td class="text-center">
                         <a href="{{url('instagram/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">
                           <i class="fa fa-pencil"> Nilai Tugas</i>
