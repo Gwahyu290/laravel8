@@ -36,7 +36,21 @@
                   </div>
                	</div>
                	<div class="card-body table-responsive">
-                 
+                  <form role="form" action="{{ url('artikel')}}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="col-md-2 pr-1">
+                            <div class="form-group">
+                              <label>Tanggal</label>
+                              <input type="date" class="form-control"  placeholder="06/02/2021" name="tgl1" >
+                            </div>
+                    </div>
+                    <div class="col-md-1 pr-1">
+                            <div class="form-group">
+                              <label style="color:white;">,l</label>
+                             <br><button class="btn btn-primary" type="submit"><i class="fa fa-search"> Search </i></button>
+                            </div>
+                    </div>       
+                    </form>
                		<table class="table table-bordered">
                		<thead>
                			<tr class="text-center">
@@ -44,7 +58,8 @@
                       <th>Tanggal Laporan</th>
                       <th>Wilayah Samchick</th>
                       <th>Laporan Artikel</th>
-                      <th>Nilai Tugas</th>
+                      <th>Nilai</th>
+                      <th>Predikat</th>
                       <th>Aktion</th>
                			</tr>
                		</thead>
@@ -57,6 +72,7 @@
                       <td class="text-center">
                       <a href="{{ asset('pdf/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Download File</a></td>
                       <td class="text-center">{{ $item->nilaiar }}</td>
+                      <td class="text-center">{{ $item->predikat }}</td>
                       <td class="text-center">
                         <a href="{{url('artikelk/'.$item->id.'/delete')}}">
                             <button class="btn btn-danger btn-sm" onclick="return confirm('Tugas yang dibatalkan tidak dapat dikirim kembali, apakah anda yakin???')">

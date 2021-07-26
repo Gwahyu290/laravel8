@@ -7,7 +7,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Karyawan Terbaik</h1>
+                        <h1>Menu Nilai</h1>
                     </div>
                 </div>
             </div>			
@@ -25,6 +25,11 @@
 			@endif
       <div class="col-xl-12">
                 <div class="card">
+                    <div class="card-header">
+                        <div class="pull-left">
+                            <strong>Karyawan Terbaik</strong>
+                        </div>
+                    </div>
             <form role="form" action="{{ url('ofthemoon')}}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="col-md-2 pr-1">
@@ -68,7 +73,7 @@
                             </div><!--/.col-->
                         </div><!--/.row-->
                         <div >
-                            <canvas id="myChart" style="height:250px;" height="230"></canvas>
+                            <canvas id="myChart" style="height:250px;" height="240"></canvas>
                         </div>
                     </div>
                 </div>

@@ -73,7 +73,6 @@ route::post('googlemap','GmapsController@index');
 route::post('artikel','ArtikelController@index');
 route::post('whatsapp','WhatsappController@index');
 route::post('pamflet','PamfletController@index');
-route::post('cabang','cabangController@data');
 
 route::post('nilaimingguan','NilaiMingguanController@index');
 route::post('nilaiharian','NilaiHarianController@index');

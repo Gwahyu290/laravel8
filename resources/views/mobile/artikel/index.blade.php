@@ -36,7 +36,7 @@
               <div class="col-md-2 pr-1">
                       <div class="form-group">
                         <label>Nama Karyawan</label>
-                        <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Nama Karayawan" name="q" >
+                        <input type="text" class="form-control" value="{{Session::get('q')}}" placeholder="Nama Karyawan" name="q" >
                       </div>
               </div>
               <div class="col-md-2 pr-1">
@@ -76,7 +76,8 @@
                       <th>Tanggal Laporan</th>
                       <th>WIlayah Samchick</th>
                       <th>File Laporan Artikel</th>
-                      <th>Nilai Laporan</th>
+                      <th>Nilai</th>
+                      <th>Predikat</th>
                				<th>Aksi</th>
                			</tr>
                		</thead>
@@ -90,6 +91,7 @@
                       <td class="text-center">
                       <a href="{{ asset('pdf/'. $item->gambar) }}" target="_blank" rel="noopener noreferrer">Download File</a></td>
                       <td class="text-center">{{ $item->nilaiar }}</td>
+                      <td class="text-center">{{ $item->predikat }}</td>
                       <td class="text-center">
                         <a href="{{url('artikel/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">
                           <i class="fa fa-pencil"> Nilai Tugas</i>

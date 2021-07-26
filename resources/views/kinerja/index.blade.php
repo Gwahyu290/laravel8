@@ -81,7 +81,7 @@
                           <div class="col-md-1 pr-1">
                                   <div class="form-group">
                                     <label style="color:white;">,l</label>
-                                   <br><a class="btn btn-danger" href="{{ url('home')}}"><i class="fa fa-refresh"> Refresh </i></a>
+                                   <br><a class="btn btn-danger" href="{{ url('kinerja')}}"><i class="fa fa-refresh"> Refresh </i></a>
                                   </div>
                           </div>        
                            <table class="table table-bordered">

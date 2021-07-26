@@ -25,16 +25,16 @@ class NilaiMingguanController extends Controller
             if($request->orderBy=="0"){            
                 $mingguan = DB::select("select a.id_rekap , a.tgl , a.ar , a.wa , a.pam, b.name, (a.ar+a.wa+a.pam) as total, c.namacbg from rekap a, users b, cabangs c
                 WHERE a.nama_id LIKE '%$request->q%' AND a.tgl BETWEEN  CAST('$tgl1' as DATE) AND CAST('$tgl1' as DATE) 
-                AND a.nama_id = b.name AND b.cabang_id=c.id AND a.tipe=1 ORDER BY total ASC");
+                AND a.nama_id = b.name AND b.cabang_id=c.id AND a.tipe=0 ORDER BY total ASC");
             }else{    
                 $mingguan = DB::select("select a.id_rekap , a.tgl , a.ar , a.wa , a.pam, b.name, (a.ar+a.wa+a.pam) as total, c.namacbg from rekap a, users b, cabangs c
                 WHERE a.nama_id LIKE '%$request->q%' AND a.tgl BETWEEN  CAST('$tgl1' as DATE) AND CAST('$tgl1' as DATE) 
-                AND a.nama_id = b.name AND b.cabang_id=c.id AND a.tipe=1 ORDER BY total DESC");
+                AND a.nama_id = b.name AND b.cabang_id=c.id AND a.tipe=0 ORDER BY total DESC");
             }
         }
         else{$mingguan = DB::select("select a.id_rekap , a.tgl , a.ar , a.wa , a.pam, b.name, (a.ar+a.wa+a.pam) as total, c.namacbg from rekap a, users b, cabangs c
             WHERE a.nama_id LIKE '%$request->q%' AND a.tgl BETWEEN  CAST('$tgl1' as DATE) AND CAST('$tgl1' as DATE) 
-            AND a.nama_id = b.name AND b.cabang_id=c.id AND a.tipe=1");
+            AND a.nama_id = b.name AND b.cabang_id=c.id AND a.tipe=0");
         }
     $Agent = new Agent();
     if ($Agent->isMobile()) {

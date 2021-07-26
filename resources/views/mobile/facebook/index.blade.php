@@ -76,7 +76,8 @@
                       <th>Wilayah Samchick</th>
                       <th>Gambar Tugas Facebook</th>
                       <th>Link Tugas Facebook</th>
-                      <th>Nilai Tugas</th>
+                      <th>Nilai</th>
+                      <th>Predikat</th>
                				<th>Aksi</th>
                			</tr>
                		</thead>
@@ -90,8 +91,9 @@
                       <td class="text-center">
                         <a href="{{ asset('fb/'. $item->gambarfb) }}" target="_blank" rel="noopener noreferrer">Lihat Gambar</a></td>
                         <td class="text-center">
-                          <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Link</a></td>
+                          <a href="{{ $item->link }}" target="_blank" rel="noopener noreferrer">Lihat Tugas</a></td>
                       <td class="text-center">{{ $item->nilaifb }}</td>
+                      <td class="text-center">{{ $item->predikat }}</td>
                       <td class="text-center">
                         <a href="{{url('facebook/'.$item->id.'/edit')}}" class="btn btn-primary btn-sm">
                           <i class="fa fa-pencil"> Nilai Tugas</i>

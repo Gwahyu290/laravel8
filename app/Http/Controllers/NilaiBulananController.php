@@ -38,7 +38,7 @@ class NilaiBulananController extends Controller
     if ($Agent->isMobile()) {
         return view('mobile.nilaibulanan.index',compact('bulan1','tahun1','best'));
     } else {
-        return view('nilaibulanan.index',compact('best'));
+        return view('nilaibulanan.index',compact('bulan1','tahun1','best'));
         }
     }
     
