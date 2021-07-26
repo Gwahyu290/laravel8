@@ -105,6 +105,9 @@
                         <th>Total Nilai Harian</th>
                         <th>Total Nilai Mingguan</th>
                         <th>Total Nilai Bulanan</th>
+                        <th>Jml Tugas</th>
+                        <th>Rata - rata</th>
+                      
                       </tr>
                     </thead>
                     @php
@@ -114,11 +117,13 @@
                     @foreach ($best as $b)
                     <tr>
                     <td>{{$i++}}</td>
-                    <td>{{$b->nama_id}}</td>
+                    <td>{{$b->name}}</td>
                     <td>{{$b->bulan}} - {{$b->tahun}}</td>
                     <td>{{$b->harian}}</td>
                     <td>{{$b->mingguan}}</td>
                     <td>{{$b->bulanan}}</td>
+                    <td>{{$b->jmltugas}}</td>
+                    <td>{{$b->hasil}}</td>
                     <tr>
                     @endforeach
                     </tbody>
@@ -131,7 +136,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script>
     var year = [<?php foreach ($best as $key) { ?>
-            '<?php echo $key->nama_id ?>',
+            '<?php echo $key->name ?>',
         <?php }?>];
     var nilai = [<?php foreach ($best as $key) { ?>
             '<?php echo $key->bulanan ?>',
