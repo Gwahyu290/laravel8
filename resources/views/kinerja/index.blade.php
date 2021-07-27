@@ -93,6 +93,9 @@
                                 <th>Nilai Harian</th>
                                 <th>Nilai Mingguan</th>
                                 <th>Total Nilai</th>
+                                <th>Jml Tugas</th>
+                                <th>Rata - rata</th>
+                                <th>Predikat</th>
                                </tr>
                            </thead>
                            <tbody>
@@ -107,6 +110,34 @@
                            <td>{{$d->harian}}</td>
                            <td>{{$d->mingguan}}</td>
                            <td>{{$d->bulanan}}</td>
+                           <td>{{$d->jmltugas}}</td>
+                           <td>{{$d->hasil}}</td>
+                           @php
+                            $p = "E";
+                            if($d->hasil <= 10 && $d->hasil > 9){
+                              $p = "A";
+                            }else if ($d->hasil <= 9 && $d->hasil > 8){
+                              $p = "B+";
+                            }else if ($d->hasil <= 8 && $d->hasil > 7){
+                              $p = "B";
+                            }else if ($d->hasil <= 7 && $d->hasil > 6){
+                              $p = "B-";
+                            }else if ($d->hasil <= 6 && $d->hasil > 5){
+                              $p = "C+";
+                            }else if ($d->hasil <= 5 && $d->hasil > 4){
+                              $p = "C";
+                            }else if ($d->hasil <= 4 && $d->hasil > 3){
+                              $p = "C-";
+                            }else if ($d->hasil <= 3 && $d->hasil > 2){
+                              $p = "D+";
+                            }else if ($d->hasil <= 2 && $d->hasil > 1){
+                              $p = "D";
+                            }else if ($d->hasil <= 1 && $d->hasil > 0){
+                              $p = "D-";
+                            }
+                            @endphp
+                            <td>{{$p}}</td>
+                            
                            </tr>
                            @endforeach
                            </tbody>	
