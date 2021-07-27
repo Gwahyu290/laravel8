@@ -107,6 +107,7 @@
                         <th>Total Nilai Bulanan</th>
                         <th>Jml Tugas</th>
                         <th>Rata - rata</th>
+                        <th>Predikat</th>
                       
                       </tr>
                     </thead>
@@ -124,6 +125,32 @@
                     <td>{{$b->bulanan}}</td>
                     <td>{{$b->jmltugas}}</td>
                     <td>{{$b->hasil}}</td>
+                    @php
+                    $p = "E";
+                    if($b->hasil <= 10 && $b->hasil > 9){
+                      $p = "A";
+                    }else if ($b->hasil <= 9 && $b->hasil > 8){
+                      $p = "B+";
+                    }else if ($b->hasil <= 8 && $b->hasil > 7){
+                      $p = "B";
+                    }else if ($b->hasil <= 7 && $b->hasil > 6){
+                      $p = "B-";
+                    }else if ($b->hasil <= 6 && $b->hasil > 5){
+                      $p = "C+";
+                    }else if ($b->hasil <= 5 && $b->hasil > 4){
+                      $p = "C";
+                    }else if ($b->hasil <= 4 && $b->hasil > 3){
+                      $p = "C-";
+                    }else if ($b->hasil <= 3 && $b->hasil > 2){
+                      $p = "D+";
+                    }else if ($b->hasil <= 2 && $b->hasil > 1){
+                      $p = "D";
+                    }else if ($b->hasil <= 1 && $b->hasil > 0){
+                      $p = "D-";
+                    }
+                    @endphp
+                    <td>{{$p}}</td>
+                    
                     <tr>
                     @endforeach
                     </tbody>
