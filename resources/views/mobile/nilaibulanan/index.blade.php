@@ -96,26 +96,6 @@
                                 </div>
                         </div>
                         </form>
-                        {{-- <div class="col-xl-12">
-                  <div class="card">
-                      <div class="card-body">
-                          <div class="row">
-                              <div class="col-sm-4">
-                                  <h4 class="card-title mb-0">Grafik Nilai Bulanan {{$bulan1}}/{{$tahun1}} </h4>
-                              </div>
-                              <!--/.col-->
-                              <div class="col-sm-8 hidden-sm-down">
-                                  <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
-                                      
-                                  </div>
-                              </div><!--/.col-->
-                          </div><!--/.row-->
-                          <div >
-                              <canvas id="myChart" style="height:250px;" height="150"></canvas>
-                          </div>
-                      </div>
-                  </div>
-              </div> --}}
                     <table class="table table-bordered">
                     <thead>
                       <tr class="text-center">
@@ -125,6 +105,10 @@
                         <th>Total Nilai Harian</th>
                         <th>Total Nilai Mingguan</th>
                         <th>Total Nilai Bulanan</th>
+                        <th>Jml Tugas</th>
+                        <th>Rata - rata</th>
+                        <th>Predikat</th>
+                      
                       </tr>
                     </thead>
                     @php
@@ -134,11 +118,39 @@
                     @foreach ($best as $b)
                     <tr>
                     <td>{{$i++}}</td>
-                    <td>{{$b->nama_id}}</td>
+                    <td>{{$b->name}}</td>
                     <td>{{$b->bulan}} - {{$b->tahun}}</td>
                     <td>{{$b->harian}}</td>
                     <td>{{$b->mingguan}}</td>
                     <td>{{$b->bulanan}}</td>
+                    <td>{{$b->jmltugas}}</td>
+                    <td>{{$b->hasil}}</td>
+                    @php
+                    $p = "E";
+                    if($b->hasil <= 10 && $b->hasil > 9){
+                      $p = "A";
+                    }else if ($b->hasil <= 9 && $b->hasil > 8){
+                      $p = "B+";
+                    }else if ($b->hasil <= 8 && $b->hasil > 7){
+                      $p = "B";
+                    }else if ($b->hasil <= 7 && $b->hasil > 6){
+                      $p = "B-";
+                    }else if ($b->hasil <= 6 && $b->hasil > 5){
+                      $p = "C+";
+                    }else if ($b->hasil <= 5 && $b->hasil > 4){
+                      $p = "C";
+                    }else if ($b->hasil <= 4 && $b->hasil > 3){
+                      $p = "C-";
+                    }else if ($b->hasil <= 3 && $b->hasil > 2){
+                      $p = "D+";
+                    }else if ($b->hasil <= 2 && $b->hasil > 1){
+                      $p = "D";
+                    }else if ($b->hasil <= 1 && $b->hasil > 0){
+                      $p = "D-";
+                    }
+                    @endphp
+                    <td>{{$p}}</td>
+                    
                     <tr>
                     @endforeach
                     </tbody>
@@ -147,11 +159,11 @@
             </div>
         </div>
     </div>
-{{--     
+    
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script>
     var year = [<?php foreach ($best as $key) { ?>
-            '<?php echo $key->nama_id ?>',
+            '<?php echo $key->name ?>',
         <?php }?>];
     var nilai = [<?php foreach ($best as $key) { ?>
             '<?php echo $key->bulanan ?>',
@@ -191,5 +203,5 @@
             }
         });
     };
-</script> --}}
+</script>
 @endsection
